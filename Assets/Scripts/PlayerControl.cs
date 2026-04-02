@@ -13,19 +13,22 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateMovement();
+    }
+
+    //movimiento wasd
+    private void UpdateMovement()
+    {
         float hor = Input.GetAxisRaw("Horizontal");
         float ver = Input.GetAxisRaw("Vertical");
+        Vector3 mVelocity = Vector3.zero;
         if (hor != 0 || ver != 0)
         {
             Debug.Log("se mueve");
             Vector3 direction = (transform.forward * ver + transform.right * hor).normalized;
-            rb.linearVelocity = direction*mvSpeed;
+            mVelocity = direction * mvSpeed;
         }
-        else
-        {
-            rb.linearVelocity= Vector3.zero;
-        }
+        mVelocity.y = rb.linearVelocity.y;
+        rb.linearVelocity = mVelocity;
     }
-
-    
 }
