@@ -595,6 +595,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControl
   mvSpeed: 10
+  sensitivity: {x: 3, y: 3}
+  cameraTransform: {fileID: 330585546}
+  camUpMax: 60
+  camDownMin: 200
 --- !u!1 &638909357
 GameObject:
   m_ObjectHideFlags: 0
