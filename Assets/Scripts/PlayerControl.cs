@@ -34,7 +34,6 @@ public class PlayerControl : MonoBehaviour
         Vector3 mVelocity = Vector3.zero;
         if (hor != 0 || ver != 0)
         {
-            Debug.Log("se mueve");
             Vector3 direction = (transform.forward * ver + transform.right * hor).normalized;
             mVelocity = direction * mvSpeed;
         }
