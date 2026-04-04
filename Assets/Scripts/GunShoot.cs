@@ -5,14 +5,17 @@ public class GunShoot : MonoBehaviour
     [SerializeField] private GameObject referenceProyectile;
     [SerializeField] private Transform barrel;
     [SerializeField] private float bulletSpeed;
+    [SerializeField] private float shootDelay;
+    private float lastShootTime;
 
     private Vector3 destination;
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)&&(lastShootTime+shootDelay<Time.time))
         {
             OnFire();
+            lastShootTime = Time.time;
         }
     }
 
