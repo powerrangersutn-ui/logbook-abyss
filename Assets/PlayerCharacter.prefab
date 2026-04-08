@@ -357,17 +357,13 @@ MonoBehaviour:
   gravity: 1
   mouseSensitivity: 2
   upDownRange: 80
-  horizontalMoveInput: Horizontal
-  verticalMoveInput: Vertical
-  mouseXInput: Mouse X
-  mouseYInput: Mouse Y
-  sprintKey: 304
   footsteepSource: {fileID: 3786779706432571100}
   footsteepSounds:
   - {fileID: 8300000, guid: 51ed91b8838f7c849b35cb6c716ceeb2, type: 3}
   walkStepInterval: 1
   sprintStepInterval: 0.5
   velocityTreshold: 2
+  PlayerContorls: {fileID: -944628639613478452, guid: 2ffa3be9b11a03f46b425b6a25c51556, type: 3}
 --- !u!82 &3786779706432571100
 AudioSource:
   m_ObjectHideFlags: 0
