@@ -12,7 +12,7 @@ public class GunShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)&&(lastShootTime+shootDelay<Time.time))
+        if (Input.GetMouseButton(0)&&(lastShootTime+shootDelay<Time.time))
         {
             OnFire();
             lastShootTime = Time.time;
@@ -32,6 +32,7 @@ public class GunShoot : MonoBehaviour
     private void CreateProyectile()
     {
         GameObject proyectile=Instantiate(referenceProyectile,barrel.position,Quaternion.identity);
+        Debug.Log(barrel.position);
         Destroy(proyectile, 3);
         proyectile.GetComponent<Rigidbody>().AddForce((destination-proyectile.transform.position).normalized*bulletSpeed, ForceMode.Impulse);
     }
