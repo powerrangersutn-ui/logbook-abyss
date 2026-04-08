@@ -5,11 +5,11 @@ using System.Collections.Generic;
 public class PlayerControl : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float walkSpeed = 5.0f;
+    [SerializeField] private float walkSpeed =5.0f;
     [SerializeField] private float sprintMultiplier = 2.0f;
 
-    [Header("Fall Parameters")]
-    [SerializeField] private float gravity = 1.0f;
+    [Header ("Fall Parameters")]
+    [SerializeField] private float gravity = 4.0f;
     //por ahora no hay salto, lo dejo por las dudas
     //[SerializeField] private float jumpForce = 5.0f;
 
@@ -40,13 +40,13 @@ public class PlayerControl : MonoBehaviour
     private float nextStepTime;
     private Camera mainCamera;
     private float verticalRotation;
-    private Vector3 currentMovement = Vector3.zero;
+    private Vector3 currentMovement=Vector3.zero;
     private CharacterController characterController;
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
-        mainCamera = Camera.main;
+        mainCamera=Camera.main;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -68,7 +68,7 @@ public class PlayerControl : MonoBehaviour
         //float verticalSpeed = verticalInput * walkSpeed * speedMultiplier;
         //float horizontalSpeed = horizontalInput * walkSpeed * speedMultiplier;
 
-        Vector3 horizontalMovement = new Vector3(horizontalInput, 0, verticalInput);
+        Vector3 horizontalMovement = new Vector3 (horizontalInput, 0, verticalInput);
         horizontalMovement.Normalize();
         horizontalMovement = transform.rotation * horizontalMovement * walkSpeed * speedMultiplier;
 
@@ -79,13 +79,13 @@ public class PlayerControl : MonoBehaviour
 
         characterController.Move(currentMovement * Time.deltaTime);
 
-        isMoving = verticalInput != 0 || horizontalInput != 0;
+        isMoving = verticalInput!=0 || horizontalInput!=0;
     }
 
     void HandleGravity()
     {
         if (characterController.isGrounded)
-            currentMovement.y = -0.5f;
+            currentMovement.y= -0.5f;
         else
             currentMovement.y -= gravity * Time.deltaTime;
     }
@@ -111,20 +111,20 @@ public class PlayerControl : MonoBehaviour
     void HandleRotation()
     {
         float mouseXRotation = Input.GetAxis(mouseXInput) * mouseSensitivity;
-        transform.Rotate(0, mouseXRotation, 0);
+        transform.Rotate(0,mouseXRotation,0);
 
         verticalRotation -= Input.GetAxis(mouseYInput) * mouseSensitivity;
         verticalRotation = Mathf.Clamp(verticalRotation, -upDownRange, upDownRange);
-        mainCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+        mainCamera.transform.localRotation = Quaternion.Euler(verticalRotation,0,0);
     }
 
     void HandleFootstep()
     {
         float currentStepInterval = (Input.GetKey(sprintKey) ? sprintStepInterval : walkStepInterval);
-        if (characterController.isGrounded && isMoving && Time.time > nextStepTime && characterController.velocity.magnitude > velocityTreshold)
+        if(characterController.isGrounded && isMoving && Time.time >nextStepTime && characterController.velocity.magnitude > velocityTreshold)
         {
             PlayFootstepSounds();
-            nextStepTime = Time.time + currentStepInterval;
+            nextStepTime = Time.time+currentStepInterval;
         }
     }
 
