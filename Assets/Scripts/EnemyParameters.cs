@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyParameters : MonoBehaviour
 {
 
     public float distanciaSeguir;
