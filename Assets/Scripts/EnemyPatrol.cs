@@ -11,6 +11,8 @@ public class EnemyPatrol : MonoBehaviour
     [Header("Waypoints/Rutines")]
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private float waitTime;
+    [SerializeField] private float rotationSpeed = 5f;
+
     private int currentWaypoint;
     private bool isWaiting;
 
@@ -31,6 +33,9 @@ public class EnemyPatrol : MonoBehaviour
             if (Vector3.Distance(transform.position, waypoints[currentWaypoint].position) > 0.01f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);
+                Vector3 direction = (waypoints[currentWaypoint].position - transform.position).normalized;
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             }
             //This start the Coroutine between Waypoints if waiting
             else if (!isWaiting)
