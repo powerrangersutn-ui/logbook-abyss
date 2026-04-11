@@ -1,4 +1,5 @@
 using System.Collections;
+//using System.Numerics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -11,7 +12,7 @@ public class EnemyPatrol : MonoBehaviour
     [Header("Waypoints/Rutines")]
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private float waitTime;
-    [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField] private float rotationSpeed = 5.3f;
 
     private int currentWaypoint;
     private bool isWaiting;
@@ -26,16 +27,17 @@ public class EnemyPatrol : MonoBehaviour
 
     void Update()
     {
+        
         //Just still patrol if the player hasnt been detected
         if (!playerDetected)
         {
             //If the enemy hasnt reached the current waypoint, move towards it
             if (Vector3.Distance(transform.position, waypoints[currentWaypoint].position) > 0.01f)
             {
-                transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);
-                Vector3 direction = (waypoints[currentWaypoint].position - transform.position).normalized;
-                Quaternion targetRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+                if (!isWaiting)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);
+                }
             }
             //This start the Coroutine between Waypoints if waiting
             else if (!isWaiting)
@@ -47,15 +49,32 @@ public class EnemyPatrol : MonoBehaviour
 
     IEnumerator Wait()
     {
-        isWaiting = true;
         //"waitTime" defines how long the enemy waits between each waypoint
+        isWaiting = true;
+
+        int nextWaypoint;
+        do  nextWaypoint = Random.Range(0, waypoints.Length);
+        while (nextWaypoint == currentWaypoint);
+
+        currentWaypoint = nextWaypoint;
+
+        StartCoroutine(RotBetweenWaypoints(waypoints[currentWaypoint].position));
+        
         yield return new WaitForSeconds(waitTime);
-        currentWaypoint++;
-        //Restart to the first Waypoint (0)
-        if(currentWaypoint == waypoints.Length)
-        {
-            currentWaypoint = 0;
-        }
+
         isWaiting = false;
     }
+
+    IEnumerator RotBetweenWaypoints(Vector3 target)
+    {
+        Vector3 direction = (target - transform.position).normalized;
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    
 }
