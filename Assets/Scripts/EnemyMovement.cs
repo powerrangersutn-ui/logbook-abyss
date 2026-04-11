@@ -1,13 +1,14 @@
 using System.Collections;
-using UnityEditor.Rendering;
+//using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
-using UnityEngine.Timeline;
+//using UnityEngine.InputSystem.LowLevel;
+//using UnityEngine.Timeline;
 
 public class EnemyMovementTowardsPlayer : MonoBehaviour
 {
     [SerializeField] private Transform player;
     [SerializeField] private float attackCooldown = 2f;
+    public bool attacking;
 
 //Adjust the detection distance and speed for the enemy here
     [Header("Movimiento")]
@@ -37,17 +38,17 @@ public class EnemyMovementTowardsPlayer : MonoBehaviour
 
         if (patrol.playerDetected) 
         {
-        if (currentDistance > minDistance)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-            //Look at the player
-            transform.LookAt(player.position);
-        }
-            //If the enemy is close enough to the player, stop and attack
-            else
+            if (currentDistance > minDistance)
             {
-                Attack();
+                transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                //Look at the player
+                transform.LookAt(player.position);
             }
+                //If the enemy is close enough to the player, stop and attack
+                else
+                {
+                    Attack();
+                }
         }
     }
 

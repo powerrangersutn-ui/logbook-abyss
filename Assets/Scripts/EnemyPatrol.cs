@@ -56,6 +56,7 @@ public class EnemyPatrol : MonoBehaviour
         //"waitTime" defines how long the enemy waits between each waypoint
         yield return new WaitForSeconds(waitTime);
 
+        //Randomize nextWaypoint
         int nextWaypoint;
         do  nextWaypoint = Random.Range(0, waypoints.Length);
         while (nextWaypoint == currentWaypoint);
