@@ -1,7 +1,8 @@
 using System.Collections;
+//using System.Runtime.ExceptionServices;
 //using System.Numerics;
 using UnityEngine;
-using UnityEngine.UIElements;
+//using UnityEngine.UIElements;
 
 public class EnemyPatrol : MonoBehaviour
 {
@@ -22,7 +23,8 @@ public class EnemyPatrol : MonoBehaviour
 
     void Start()
     {
-        
+        Vector3 direction = (waypoints[0].position - transform.position).normalized;
+        transform.rotation = Quaternion.LookRotation(direction);
     }
 
     void Update()
@@ -49,8 +51,10 @@ public class EnemyPatrol : MonoBehaviour
 
     IEnumerator Wait()
     {
-        //"waitTime" defines how long the enemy waits between each waypoint
         isWaiting = true;
+
+        //"waitTime" defines how long the enemy waits between each waypoint
+        yield return new WaitForSeconds(waitTime);
 
         int nextWaypoint;
         do  nextWaypoint = Random.Range(0, waypoints.Length);
@@ -58,11 +62,9 @@ public class EnemyPatrol : MonoBehaviour
 
         currentWaypoint = nextWaypoint;
 
-        StartCoroutine(RotBetweenWaypoints(waypoints[currentWaypoint].position));
-        
-        yield return new WaitForSeconds(waitTime);
-
         isWaiting = false;
+
+        StartCoroutine(RotBetweenWaypoints(waypoints[currentWaypoint].position));
     }
 
     IEnumerator RotBetweenWaypoints(Vector3 target)
