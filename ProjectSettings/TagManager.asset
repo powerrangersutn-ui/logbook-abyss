@@ -7,11 +7,12 @@ TagManager:
   - Bullet
   - Enemy
   - Gun
+  - Stone
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Gound
   - Water
   - UI
   - 

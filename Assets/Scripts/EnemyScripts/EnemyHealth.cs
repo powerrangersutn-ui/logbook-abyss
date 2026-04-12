@@ -2,30 +2,29 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private int health;
+    [Header("Salud del Enemigo")]
+    [SerializeField] private int maxHealth = 100;
 
-    //Reducir vida (y otros efectos del daño)
-    private void TakeDamage(int damage)
+    private int currentHealth;
+
+    private void Awake()
     {
-        health -= damage;
-        if (health <= 0)
-            Dead();
+        currentHealth = maxHealth;
     }
 
-    //que pasa cuando muere
-    private void Dead()
+    public void TakeDamage(int damage)
     {
-        Destroy(gameObject);
-    }
+        currentHealth -= damage;
 
-  
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (currentHealth <= 0)
         {
-            BulletScript bulletScript = collision.gameObject.GetComponent<BulletScript>();
-            TakeDamage(bulletScript.damage);
-            Destroy(collision.gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        // Aquí puedes agregar más tarde: partículas, sonido, animación de muerte, etc.
+        Destroy(gameObject);
     }
 }
