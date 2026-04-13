@@ -3,15 +3,20 @@ using System.Collections.Generic;
 
 public class HarpoonPool : MonoBehaviour
 {
+    [Header("Configuración de Pool")]
     [SerializeField] private GameObject harpoonPrefab;
     [SerializeField] private int poolSize = 3;
 
-    private Queue<GameObject> pool = new Queue<GameObject>();
-    private HarpoonGun harpoonGun;   // Referencia directa
+    [Header("Debug")]
+    [SerializeField] private bool showDebugInfo = true;
+
+    private Queue<GameObject> availableHarpoons = new Queue<GameObject>();
+    private HashSet<GameObject> activeHarpoons = new HashSet<GameObject>();
+    private HarpoonGun harpoonGun;
 
     private void Awake()
     {
-        harpoonGun = FindAnyObjectByType<HarpoonGun>(); // Solo se busca una vez al inicio
+        harpoonGun = FindAnyObjectByType<HarpoonGun>();
         CreatePool();
     }
 
@@ -20,38 +25,61 @@ public class HarpoonPool : MonoBehaviour
         for (int i = 0; i < poolSize; i++)
         {
             GameObject harpoon = Instantiate(harpoonPrefab);
+            harpoon.name = $"Harpoon_{i}";
             harpoon.SetActive(false);
-            pool.Enqueue(harpoon);
+            availableHarpoons.Enqueue(harpoon);
         }
+
+        if (showDebugInfo)
+            Debug.Log($"Pool creado con {poolSize} arpones");
     }
 
     public GameObject GetHarpoon()
     {
-        if (pool.Count > 0)
+        if (availableHarpoons.Count > 0)
         {
-            GameObject harpoon = pool.Dequeue();
-            harpoon.SetActive(true);
-            return harpoon;
+            GameObject harpoonObj = availableHarpoons.Dequeue();
+            harpoonObj.SetActive(true);
+            activeHarpoons.Add(harpoonObj);
+
+            if (showDebugInfo)
+                Debug.Log($"Arpón obtenido. Disponibles: {availableHarpoons.Count}/{poolSize}");
+
+            return harpoonObj;
         }
+
+        if (showDebugInfo)
+            Debug.LogWarning("¡No hay arpones disponibles! Recoge los que disparaste.");
+
         return null;
     }
 
-    public void ReturnToPool(GameObject harpoon)
+    public void ReturnToPool(GameObject harpoonObj)
     {
-        if (harpoon == null) return;
+        if (harpoonObj == null) return;
 
-        harpoon.SetActive(false);
-        harpoon.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+        // Remover de activos
+        activeHarpoons.Remove(harpoonObj);
 
-        Harpoon h = harpoon.GetComponent<Harpoon>();
-        if (h != null)
-            h.ResetHarpoon();
+        // Reset
+        harpoonObj.SetActive(false);
+        harpoonObj.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
 
-        pool.Enqueue(harpoon);
+        Harpoon harpoon = harpoonObj.GetComponent<Harpoon>();
+        if (harpoon != null)
+        {
+            harpoon.ResetForPool();
+        }
+
+        // Retornar a disponibles
+        availableHarpoons.Enqueue(harpoonObj);
+
+        if (showDebugInfo)
+            Debug.Log($"Arpón recuperado. Disponibles: {availableHarpoons.Count}/{poolSize}");
     }
 
-    public int GetAvailableCount() => pool.Count;
-
-    // Getter para que Harpoon pueda devolver el arpón sin FindAnyObjectByType
+    public int GetAvailableCount() => availableHarpoons.Count;
+    public int GetActiveCount() => activeHarpoons.Count;
+    public int GetTotalCount() => poolSize;
     public HarpoonGun GetHarpoonGun() => harpoonGun;
 }
