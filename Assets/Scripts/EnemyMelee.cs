@@ -9,12 +9,19 @@ public class EnemyWeapon : MonoBehaviour
     
     void Start()
     {
-        
     }
 
     
     void Update()
     {
         
+    }
+
+    void OnTriggerEnter(Collider coll)
+    {
+        if (coll.CompareTag("EnemyAttack"))
+        {
+            print("Daño");
+        }
     }
 }

@@ -9,6 +9,7 @@ public class EnemyMovementTowardsPlayer : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private float attackCooldown = 2f;
     public bool attacking;
+    private float lastAttackTime;
 
 //Adjust the detection distance and speed for the enemy here
     [Header("Movimiento")]
@@ -17,14 +18,10 @@ public class EnemyMovementTowardsPlayer : MonoBehaviour
     [SerializeField] private float maxDistance = 8f;
 
     private EnemyPatrol patrol;
-    private float lastAttackTime;
-    
-
-    
-        
 
     void Start()
     {
+        
         patrol = GetComponent<EnemyPatrol>();
     }
 
