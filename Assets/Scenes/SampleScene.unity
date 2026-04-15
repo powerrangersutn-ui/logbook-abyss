@@ -331,6 +331,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162233640}
   m_CullTransparentMesh: 1
+--- !u!114 &233796835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341724366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82318bbf9a363214d808bdffff1bf7cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AmmoHUDController
+  ammoText: {fileID: 1341724365}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,6 +1227,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208954898}
   m_CullTransparentMesh: 1
+--- !u!1 &1341724364 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8279180296814999567, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
+  m_PrefabInstance: {fileID: 3780100875718585660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1341724365 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 151394504572423083, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
+  m_PrefabInstance: {fileID: 3780100875718585660}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &1341724366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1513331749619381374, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
+  m_PrefabInstance: {fileID: 3780100875718585660}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1407912842
 GameObject:
   m_ObjectHideFlags: 0
@@ -2696,7 +2730,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5699049145442081010, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
       insertIndex: 0
       addedObject: {fileID: 1809220312}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1513331749619381374, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 233796835}
+    - targetCorrespondingSourceObject: {fileID: 8279180296814999567, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3780100875718585666}
   m_SourcePrefab: {fileID: 100100000, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
 --- !u!224 &3780100875718585661 stripped
 RectTransform:
@@ -2723,6 +2763,20 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5699049145442081010, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
   m_PrefabInstance: {fileID: 3780100875718585660}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3780100875718585666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341724364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a22d30d6450a29142b1cb00c70bd8c98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthBarController
+  healthBarFill: {fileID: 674287365}
+  percentageText: {fileID: 162233642}
 --- !u!1001 &3941253475301289911
 PrefabInstance:
   m_ObjectHideFlags: 0
