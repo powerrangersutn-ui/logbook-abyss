@@ -4,13 +4,15 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Ground
-  - EnemyAttack
+  - Bullet
+  - Enemy
+  - Gun
+  - Stone
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Gound
   - Water
   - UI
   - 
