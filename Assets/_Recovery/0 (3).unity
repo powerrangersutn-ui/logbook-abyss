@@ -1005,6 +1005,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6132809021200565593, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
   m_PrefabInstance: {fileID: 3780100875718585660}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &871297978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871297977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fa9ca318902744581c8c8b732a148d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogManager
+  dialogPanel: {fileID: 871297977}
+  textDialog: {fileID: 871297976}
+  timeBetweenLines: 2.5
 --- !u!1 &1043913050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,11 +1613,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1603172683 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4670083981289853034, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
-  m_PrefabInstance: {fileID: 3780100875718585660}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1699801801
 GameObject:
   m_ObjectHideFlags: 0
@@ -2893,9 +2903,9 @@ PrefabInstance:
       insertIndex: 0
       addedObject: {fileID: 1809220312}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4670083981289853034, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 6132809021200565593, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3780100875718585672}
+      addedObject: {fileID: 871297978}
     - targetCorrespondingSourceObject: {fileID: 1513331749619381374, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
       insertIndex: -1
       addedObject: {fileID: 233796835}
@@ -2942,21 +2952,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthBarController
   healthBarFill: {fileID: 674287365}
   percentageText: {fileID: 162233642}
---- !u!114 &3780100875718585672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603172683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7fa9ca318902744581c8c8b732a148d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DialogManager
-  dialogPanel: {fileID: 871297977}
-  textDialog: {fileID: 871297976}
-  timeBetweenLines: 2.5
 --- !u!1001 &3941253475301289911
 PrefabInstance:
   m_ObjectHideFlags: 0
