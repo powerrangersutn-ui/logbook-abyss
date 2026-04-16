@@ -15,9 +15,13 @@ GameObject:
   - component: {fileID: 7534516721660693559}
   - component: {fileID: 470447585068573869}
   - component: {fileID: 2176084391136167164}
-  m_Layer: 0
+  - component: {fileID: 5707872238682201445}
+  - component: {fileID: 4405063856203522415}
+  - component: {fileID: 1978666435150504461}
+  - component: {fileID: 1056448127116414691}
+  m_Layer: 6
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,8 +56,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   player: {fileID: 0}
-  attackCooldown: 2
-  attacking: 0
   speed: 1
   minDistance: 1.8
   maxDistance: 8
@@ -71,7 +73,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPatrol
   speed: 4
   waypoints:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -172,6 +173,69 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5707872238682201445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989338585170645242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb5066e4220b9f45b8098787614eb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 2
+  showStuckHarpoons: 1
+--- !u!114 &4405063856203522415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989338585170645242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25cb76d948874c047ae0ff028bc571da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
+  maxHealth: 2
+  destroyOnDeath: 1
+  destroyDelay: 0.15
+  OnDamageTaken:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1978666435150504461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989338585170645242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3110ca3cff021842b2acbbbd0ca0738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyWeapon
+  damage: 5
+  attackDuration: 0.5
+--- !u!114 &1056448127116414691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989338585170645242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf0e29b3ca170524eac828709dc3ace2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
+  attackCooldown: 2
+  attackRange: 2
 --- !u!1 &5919435636307578684
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +248,7 @@ GameObject:
   - component: {fileID: 4814349172846995801}
   - component: {fileID: 2582519420678634437}
   - component: {fileID: 3855851729050975295}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,8 +360,9 @@ GameObject:
   - component: {fileID: 277615885261232502}
   - component: {fileID: 1754053819503651239}
   - component: {fileID: 2140363373340796940}
-  m_Layer: 0
-  m_Name: arma?
+  - component: {fileID: 2457057016975997659}
+  m_Layer: 6
+  m_Name: arma
   m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -312,8 +377,8 @@ Transform:
   m_GameObject: {fileID: 9004887754009592635}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.366, y: -0, z: 0.751}
-  m_LocalScale: {x: 0.28405, y: 0.23739482, z: 0.11102094}
+  m_LocalPosition: {x: -0.366, y: -0, z: 0.75003}
+  m_LocalScale: {x: 0.28405, y: 0.24750786, z: 0.11102094}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5389804904809842159}
@@ -395,6 +460,19 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 4.2269735
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000052459644, y: 1.5, z: 0}
+--- !u!114 &2457057016975997659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9004887754009592635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba04206c7180a44a96db9a04bd8f721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleHitbox
+  damage: 1

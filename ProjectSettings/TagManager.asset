@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Gun
   - Stone
+  - EnemyAttack
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - Gound
   - Water
   - UI
-  - 
-  - 
+  - Enemy
+  - Stone
   - 
   - 
   - 
