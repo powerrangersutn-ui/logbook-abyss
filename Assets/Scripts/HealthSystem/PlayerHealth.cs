@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int maxLives = 3;
 
     [Header("Configuración de Daño")]
-    [SerializeField] private float damageCooldown = 0.6f;     // Tiempo de invulnerabilidad después de recibir daño
+    [SerializeField] private float damageCooldown = 0.6f;     // Tiempo de invulnerabilidad
 
     [Header("Eventos")]
     public UnityEvent OnTakeDamage;
@@ -27,29 +27,22 @@ public class PlayerHealth : MonoBehaviour
     {
         InitializeComponents();
         currentLives = maxLives;
-        lastDamageTime = -damageCooldown;        // Para poder recibir daño desde el primer segundo
+        lastDamageTime = -1f;           // Para poder recibir daño inmediatamente
     }
 
     private void InitializeComponents()
     {
-        healthSystem = GetComponent<HealthSystem>();
-        if (healthSystem == null)
-            healthSystem = gameObject.AddComponent<HealthSystem>();
-
+        healthSystem = GetComponent<HealthSystem>() ?? gameObject.AddComponent<HealthSystem>();
         playerRb = GetComponent<Rigidbody>();
     }
 
-    #region Daño General (Trigger / Ataques)
+    #region Daño desde Ataques (Trigger del arma enemiga)
     public void TakeDamage(int damage)
     {
         if (IsInvulnerable || !healthSystem.IsAlive)
-        {
-            // Debug.Log("Daño ignorado por invulnerabilidad");   // Descomenta si querés debug
             return;
-        }
 
         lastDamageTime = Time.time;
-
         healthSystem.TakeDamage(damage);
         OnTakeDamage?.Invoke();
 
@@ -59,7 +52,7 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
-            healthSystem.ResetHealth();     // Resetear la barra de vida por cada "vida" perdida
+            healthSystem.ResetHealth();
         }
     }
     #endregion
@@ -83,6 +76,10 @@ public class PlayerHealth : MonoBehaviour
     {
         OnPlayerDeath?.Invoke();
         Debug.Log("Jugador murió");
+
+        // Desactivamos física para que no se mueva más
+        if (playerRb != null)
+            playerRb.isKinematic = true;
 
         if (GameManager.Instance != null)
         {

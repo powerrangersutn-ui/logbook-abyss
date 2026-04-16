@@ -576,7 +576,7 @@ PrefabInstance:
       objectReference: {fileID: 91724326}
     - target: {fileID: 1978666435150504461, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
       propertyPath: damage
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2140363373340796940, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
       propertyPath: m_Height
@@ -601,6 +601,10 @@ PrefabInstance:
     - target: {fileID: 2140363373340796940, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
       propertyPath: m_Center.z
       value: -0.90805715
+      objectReference: {fileID: 0}
+    - target: {fileID: 2457057016975997659, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
+      propertyPath: damage
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3855851729050975295, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
       propertyPath: m_Enabled
