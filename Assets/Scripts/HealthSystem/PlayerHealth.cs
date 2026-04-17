@@ -5,6 +5,7 @@ public class PlayerHealth : MonoBehaviour
 {
     [Header("Sistema de Vidas")]
     [SerializeField] private int maxLives = 3;
+    [SerializeField] private GameObject gameOverPanel;
 
     [Header("Configuración de Daño")]
     [SerializeField] private float damageCooldown = 0.6f;     // Tiempo de invulnerabilidad
@@ -64,6 +65,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentLives <= 0)
         {
+            gameOverPanel.SetActive(true);
             Die();
         }
         else
@@ -87,7 +89,7 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
     }
 

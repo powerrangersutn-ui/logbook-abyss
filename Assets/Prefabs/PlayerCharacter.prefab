@@ -356,7 +356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControl
   walkSpeed: 5
   sprintMultiplier: 2
-  gravity: 1
+  gravity: 9
   mouseSensitivity: 1
   upDownRange: 80
   footsteepSource: {fileID: 3786779706432571100}
@@ -379,9 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxLives: 3
-  contactDamage: 1
   damageCooldown: 1
-  knockbackForce: 5
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -498,15 +496,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1656996385654481865, guid: e2d09acf41252fd4e9b3016f04ac7f8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1656996385654481865, guid: e2d09acf41252fd4e9b3016f04ac7f8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00999999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1656996385654481865, guid: e2d09acf41252fd4e9b3016f04ac7f8b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.09
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1656996385654481865, guid: e2d09acf41252fd4e9b3016f04ac7f8b, type: 3}
       propertyPath: m_LocalRotation.w

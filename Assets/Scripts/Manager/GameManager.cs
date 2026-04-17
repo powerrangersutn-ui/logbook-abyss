@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
     // ====================== DERROTA ======================
     public void PlayerDied()
     {
-        if (gameEnded) return;
+        //if (gameEnded) return;
 
         gameEnded = true;
         Time.timeScale = 0f;                    // Pausa el juego
