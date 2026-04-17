@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using TMPro;                    // Si usas TextMeshPro (recomendado)
 using UnityEngine.UI;           // Si usas texto UI normal de Unity
 using UnityEngine.SceneManagement;
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("¡Necesitas recoger la Vitácora para escapar!");
+            Debug.LogWarning("ï¿½Necesitas recoger la Vitï¿½cora para escapar!");
         }
     }
 
@@ -64,10 +64,10 @@ public class GameManager : MonoBehaviour
 
         if (victoryText != null)
         {
-            victoryText.text = "¡VICTORIA!\nEscapaste con la Vitácora";
+            victoryText.text = "ï¿½VICTORIA!\nEscapaste con la Vitï¿½cora";
         }
 
-        Debug.Log("¡Victoria!");
+        Debug.Log("ï¿½Victoria!");
     }
 
     // ====================== DERROTA ======================
@@ -91,11 +91,11 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over - Te quedaste sin vidas");
     }
 
-    // ====================== VITÁCORA ======================
+    // ====================== VITï¿½CORA ======================
     public void CollectLogbook()
     {
         hasLogbook = true;
-        Debug.Log("¡Vitácora recogida!");
+        Debug.Log("ï¿½Vitï¿½cora recogida!");
     }
 
     // ====================== REINICIO (opcional) ======================
