@@ -1845,7 +1845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   dialogPanel: {fileID: 6132809021200565593}
   textDialog: {fileID: 630186074289054320}
-  timeBetweenLines: 5
+  timeBetweenLines: 4
 --- !u!1 &5526333395708207998
 GameObject:
   m_ObjectHideFlags: 0
