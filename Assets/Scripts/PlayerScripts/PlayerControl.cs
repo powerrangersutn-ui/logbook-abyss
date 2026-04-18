@@ -28,7 +28,11 @@ public class PlayerControl : MonoBehaviour
 
     [Header ("Input Actions")]
     [SerializeField] private InputActionAsset PlayerContorls;
+
+    [Header ("Check panels")]
     [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject victoryPanel;
+    [SerializeField] private GameObject deathPanel;
 
     private int lastPlayedIndex = -1;
     private bool isMoving;
@@ -79,9 +83,9 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
-        if (!pausePanel.activeInHierarchy)
+        if (!pausePanel.activeInHierarchy && !victoryPanel.activeInHierarchy && !deathPanel.activeInHierarchy)
         {
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             HandleMovement();
             HandleRotation();
