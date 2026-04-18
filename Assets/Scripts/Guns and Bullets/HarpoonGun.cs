@@ -67,7 +67,7 @@ public class HarpoonGun : MonoBehaviour
         {
             int available = harpoonPool.GetAvailableCount();
             int total = harpoonPool.GetTotalCount();
-            ammoText.text = $"Arpones: {available}/{total}";
+            ammoText.text = $"{available}/{total}";
 
             // Cambiar color si quedan pocos
             if (available == 0)
