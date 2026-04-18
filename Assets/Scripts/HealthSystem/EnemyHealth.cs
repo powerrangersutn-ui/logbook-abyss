@@ -74,6 +74,7 @@ public class EnemyHealth : MonoBehaviour
             Debug.Log($"{gameObject.name} murió. Soltando {stuckHarpoons.Count} arpones.");
 
         ReleaseAllStuckHarpoons();
+        Destroy(gameObject);
     }
 
     private void ReleaseAllStuckHarpoons()
