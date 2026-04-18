@@ -28,6 +28,7 @@ public class PlayerControl : MonoBehaviour
 
     [Header ("Input Actions")]
     [SerializeField] private InputActionAsset PlayerContorls;
+    [SerializeField] private GameObject pausePanel;
 
     private int lastPlayedIndex = -1;
     private bool isMoving;
@@ -48,8 +49,6 @@ public class PlayerControl : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         mainCamera=Camera.main;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
 
         moveAction = PlayerContorls.FindActionMap("Player").FindAction("Move");
         lookAction = PlayerContorls.FindActionMap("Player").FindAction("Look");
@@ -80,9 +79,21 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
-        HandleMovement();
-        HandleRotation();
-        HandleFootstep();
+        if (!pausePanel.activeInHierarchy)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
+            HandleMovement();
+            HandleRotation();
+            HandleFootstep();
+            return;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        
     }
 
     void HandleMovement()
