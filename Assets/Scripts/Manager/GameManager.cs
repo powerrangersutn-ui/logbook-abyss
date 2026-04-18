@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour
     {
         gameEnded = true;
         Time.timeScale = 0f;                    // Pausa el juego
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
 
         if (victoryPanel != null)
         {
@@ -77,6 +79,8 @@ public class GameManager : MonoBehaviour
 
         gameEnded = true;
         Time.timeScale = 0f;                    // Pausa el juego
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
 
         if (gameOverPanel != null)
         {
