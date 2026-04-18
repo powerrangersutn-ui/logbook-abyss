@@ -2,6 +2,7 @@
 
 public class EnemyMovementTowardsPlayer : MonoBehaviour
 {
+    [Header("Referencias")]
     [SerializeField] private Transform player;
 
     [Header("Movimiento")]
@@ -9,82 +10,74 @@ public class EnemyMovementTowardsPlayer : MonoBehaviour
     [SerializeField] private float minDistance = 1.8f;
     [SerializeField] private float maxDistance = 8f;
 
-    // Componentes
-    private EnemyPatrol patrol;
-    private EnemyAttack enemyAttack;        
-    private EnemyHealth enemyHealth;
-    private PlayerStats playerHealth;
+    [Header("Ataque")]
+    [SerializeField] private float attackCooldown = 2f;
 
-    private bool isDead = false;
+    private EnemyWeapon enemyWeapon;
+    private float lastAttackTime = -999f;
 
     void Start()
     {
-        patrol = GetComponent<EnemyPatrol>();
-        enemyAttack = GetComponent<EnemyAttack>();           
-        enemyHealth = GetComponent<EnemyHealth>();
+        // Buscar el EnemyWeapon en este objeto o en sus hijos
+        enemyWeapon = GetComponentInChildren<EnemyWeapon>();
 
-        if (enemyHealth == null)
-            enemyHealth = GetComponentInChildren<EnemyHealth>();
-
-        if (player != null)
-            playerHealth = player.GetComponent<PlayerStats>();
+        if (enemyWeapon == null)
+        {
+            Debug.LogError($"NO SE ENCONTRO EnemyWeapon en {gameObject.name} ni en sus hijos");
+        }
         else
-            Debug.LogWarning("Player no asignado en " + gameObject.name, this);
+        {
+            Debug.Log($"EnemyWeapon encontrado en: {enemyWeapon.gameObject.name}");
+        }
 
-        // Inicializar el sistema de ataque
-        if (enemyAttack != null && player != null)
-            enemyAttack.Initialize(player);
+        if (player == null)
+        {
+            Debug.LogError($"PLAYER NO ASIGNADO en {gameObject.name}");
+        }
     }
 
     void Update()
     {
-        if (IsEnemyDead())
-            return;
-
-        if (playerHealth != null && playerHealth.playerHealth <= 0)
-        {
-            patrol.playerDetected = false;
-            return;
-        }
-
         if (player == null) return;
 
-        float currentDistance = Vector3.Distance(transform.position, player.position);
+        float distance = Vector3.Distance(transform.position, player.position);
 
-        patrol.playerDetected = currentDistance < maxDistance;
-
-        if (patrol.playerDetected)
+        // Si esta cerca
+        if (distance < maxDistance)
         {
-            if (currentDistance > minDistance)
+            // Si esta muy cerca, atacar
+            if (distance <= minDistance)
             {
-                // Solo movimiento
-                transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                // Mirar al player
                 transform.LookAt(player.position);
+
+                // Intentar atacar si paso el cooldown
+                if (Time.time - lastAttackTime >= attackCooldown)
+                {
+                    Attack();
+                }
             }
             else
             {
-                // Solo pedir que ataque (el cooldown y lógica están en EnemyAttack)
-                enemyAttack?.TryAttack();
+                // Moverse hacia el player
+                transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                transform.LookAt(player.position);
             }
-        }
-        else
-        {
-            // Fuera de rango
         }
     }
 
-    private bool IsEnemyDead()
+    private void Attack()
     {
-        if (isDead) return true;
+        Debug.Log($">>> ATACANDO desde {gameObject.name}");
 
-        if (enemyHealth != null && enemyHealth.GetCurrentHealth() <= 0)
+        if (enemyWeapon != null)
         {
-            isDead = true;
-            patrol.playerDetected = false;
-            if (enemyAttack != null)
-                enemyAttack.StopAttacking();
-            return true;
+            lastAttackTime = Time.time;
+            enemyWeapon.StartAttack();
         }
-        return false;
+        else
+        {
+            Debug.LogError("No se puede atacar: enemyWeapon es null");
+        }
     }
 }

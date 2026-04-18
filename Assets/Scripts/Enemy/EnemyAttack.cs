@@ -16,28 +16,49 @@ public class EnemyAttack : MonoBehaviour
     private void Awake()
     {
         enemyWeapon = GetComponentInChildren<EnemyWeapon>(true);
+
+        Debug.Log($"=== EnemyAttack Awake en {gameObject.name} ===");
+        Debug.Log($"EnemyWeapon encontrado: {enemyWeapon != null}");
+        if (enemyWeapon != null)
+        {
+            Debug.Log($"EnemyWeapon esta en: {enemyWeapon.gameObject.name}");
+        }
     }
 
-    /// <summary>
-    /// Inicializa el sistema de ataque con la referencia al player
-    /// </summary>
     public void Initialize(Transform playerTransform)
     {
         player = playerTransform;
+        Debug.Log($"Player asignado en EnemyAttack: {player != null}");
+        if (player != null)
+        {
+            Debug.Log($"Player es: {player.name}");
+        }
     }
 
-    /// <summary>
-    /// Llamado por el movimiento cuando el enemigo está en rango de ataque
-    /// </summary>
     public void TryAttack()
     {
-        if (player == null) return;
+        Debug.Log($"TryAttack llamado en {gameObject.name}");
+
+        if (player == null)
+        {
+            Debug.LogWarning("Player es NULL - no se puede atacar");
+            return;
+        }
 
         float distance = Vector3.Distance(transform.position, player.position);
+        Debug.Log($"Distancia al player: {distance} | Attack Range: {attackRange}");
 
-        if (distance <= attackRange && Time.time - lastAttackTime >= attackCooldown)
+        float timeSinceLastAttack = Time.time - lastAttackTime;
+        Debug.Log($"Tiempo desde ultimo ataque: {timeSinceLastAttack} | Cooldown: {attackCooldown}");
+
+        if (distance <= attackRange && timeSinceLastAttack >= attackCooldown)
         {
+            Debug.Log("CONDICIONES CUMPLIDAS - Ejecutando ataque");
             PerformAttack();
+        }
+        else
+        {
+            Debug.Log("Condiciones NO cumplidas para atacar");
         }
     }
 
@@ -46,38 +67,44 @@ public class EnemyAttack : MonoBehaviour
         lastAttackTime = Time.time;
         IsAttacking = true;
 
-        Debug.Log($"[{gameObject.name}] ¡Ataque ejecutado!");
+        Debug.Log($"========== PERFORM ATTACK ==========");
+        Debug.Log($"Enemigo: {gameObject.name}");
 
         if (enemyWeapon != null)
         {
+            Debug.Log("Iniciando ActivateWeaponAttack coroutine");
             StartCoroutine(ActivateWeaponAttack());
         }
         else
         {
-            Debug.LogWarning("No se encontró EnemyWeapon en el enemigo", this);
+            Debug.LogError("EnemyWeapon es NULL - No se puede atacar");
             IsAttacking = false;
         }
     }
 
     private IEnumerator ActivateWeaponAttack()
     {
-        // Aquí podrías agregar lógica extra antes de activar el arma (animaciones, etc.)
+        Debug.Log("ActivateWeaponAttack coroutine iniciada");
+
+        if (enemyWeapon == null)
+        {
+            Debug.LogError("enemyWeapon es NULL en la coroutine");
+            yield break;
+        }
+
         yield return StartCoroutine(enemyWeapon.ActivateAttack());
 
-        // Cuando termina el ataque del arma, terminamos el estado de attacking
         IsAttacking = false;
+        Debug.Log("ActivateWeaponAttack coroutine completada");
+        Debug.Log($"====================================");
     }
 
-    /// <summary>
-    /// Llamado cuando el enemigo muere o se desactiva
-    /// </summary>
     public void StopAttacking()
     {
         IsAttacking = false;
-        StopAllCoroutines(); // por si había un ataque en curso
+        StopAllCoroutines();
     }
 
-    // Opcional: Método para cambiar el cooldown desde afuera si lo necesitás
     public void SetAttackCooldown(float newCooldown)
     {
         if (newCooldown > 0)

@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Gun
   - Stone
+  - enemyWeapon
+  - EnemyWeapon
   layers:
   - Default
   - TransparentFX

@@ -55,7 +55,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   player: {fileID: 0}
-  speed: 1
+  speed: 2
   minDistance: 1.8
   maxDistance: 8
 --- !u!114 &1123367378882448013
@@ -179,8 +179,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   maxHealth: 2
   destroyOnDeath: 1
-  destroyDelay: 0.15
   OnDamageTaken:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
   OnDeath:
@@ -198,8 +200,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3110ca3cff021842b2acbbbd0ca0738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyWeapon
-  damage: 0
+  weaponCollider: {fileID: 2140363373340796940}
+  damage: 30
   attackDuration: 0.5
+  showDebugLogs: 1
 --- !u!114 &1056448127116414691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +252,6 @@ GameObject:
   - component: {fileID: 7838155648736082411}
   - component: {fileID: 277615885261232502}
   - component: {fileID: 2140363373340796940}
-  - component: {fileID: 2457057016975997659}
   m_Layer: 0
   m_Name: arma
   m_TagString: Untagged
@@ -265,7 +268,7 @@ Transform:
   m_GameObject: {fileID: 9004887754009592635}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.013, y: 1.061, z: 0.722}
+  m_LocalPosition: {x: -0.013, y: 1.061, z: 0.458}
   m_LocalScale: {x: 0.28405, y: 0.24750786, z: 0.11102094}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -302,16 +305,3 @@ CapsuleCollider:
   m_Height: 3.8007202
   m_Direction: 1
   m_Center: {x: 0.000000052459644, y: 0.90035963, z: -0.90805715}
---- !u!114 &2457057016975997659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9004887754009592635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ba04206c7180a44a96db9a04bd8f721, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SimpleHitbox
-  damage: 50
