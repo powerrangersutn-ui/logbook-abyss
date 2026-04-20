@@ -3,8 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    [Header("Configuración")]
-    [SerializeField] private string primeraEscena = "1day";
 
     public void StartNewGame(string firstSceneName)
     {

@@ -5,7 +5,6 @@ public class HealthSystem : MonoBehaviour
 {
     [Header("Configuración de Vida")]
     [SerializeField] private int maxHealth = 100;
-    [SerializeField] private bool destroyOnDeath = false;
 
     [Header("Eventos")]
     public UnityEvent OnDamageTaken;
@@ -13,7 +12,7 @@ public class HealthSystem : MonoBehaviour
     public UnityEvent OnDeath;
 
     private int currentHealth;
-    private bool isDead = false;                    // ← Nueva variable de control
+    private bool isDead = false;                    //Nueva variable de control
 
     // Propiedades públicas
     public int CurrentHealth => currentHealth;
