@@ -129,13 +129,20 @@ public class Harpoon : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (isEmbedded || currentState != HarpoonState.Flying) return;
+        Debug.Log($"COLISION DETECTADA con: {collision.gameObject.name} | Tag: {collision.gameObject.tag} | Layer: {LayerMask.LayerToName(collision.gameObject.layer)}");
+
+        if (isEmbedded || currentState != HarpoonState.Flying)
+        {
+            Debug.Log($"Colision IGNORADA - isEmbedded: {isEmbedded}, Estado: {currentState}");
+            return;
+        }
 
         string hitTag = collision.gameObject.tag;
 
         // Se rompe contra piedra/metal
         if (IsBreakTag(hitTag))
         {
+            Debug.Log("Rompiendo contra piedra/metal");
             BreakHarpoon();
             return;
         }
@@ -143,6 +150,7 @@ public class Harpoon : MonoBehaviour
         // Golpea a un enemigo
         if (hitTag == enemyTag)
         {
+            Debug.Log("Golpeando enemigo");
             HandleEnemyHit(collision.gameObject, collision.contacts[0]);
             return;
         }
@@ -150,11 +158,12 @@ public class Harpoon : MonoBehaviour
         // Golpea el terreno
         if (IsGroundLayer(collision.gameObject.layer))
         {
+            Debug.Log($"Golpeando terreno - Velocidad: {rb.linearVelocity.magnitude}");
             HandleGroundHit(collision.contacts[0].point, collision.contacts[0].normal);
             return;
         }
 
-        // Cualquier otra cosa → volver al pool
+        Debug.Log("No matcheo ninguna condicion, volviendo al pool");
         ReturnToPool();
     }
 
@@ -435,9 +444,8 @@ public class Harpoon : MonoBehaviour
 
     private void BreakHarpoon()
     {
-        // Aquí puedes agregar efectos de ruptura (partículas, sonido)
         Debug.Log($"Arpón destruido contra {breakTags[0]}");
-        ReturnToPool();
+        Destroy(gameObject);
     }
 
     private void ReturnToPool()
