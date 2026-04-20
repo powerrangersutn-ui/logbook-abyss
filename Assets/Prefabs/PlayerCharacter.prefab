@@ -241,8 +241,11 @@ GameObject:
   - component: {fileID: 52046800797705997}
   - component: {fileID: 3432283343255469974}
   - component: {fileID: 4901672327882763457}
+  - component: {fileID: 777427417527660245}
   - component: {fileID: 2830788842391265695}
+  - component: {fileID: 4506894224714675786}
   - component: {fileID: 3786779706432571100}
+  - component: {fileID: 9060295027405205302}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -366,6 +369,21 @@ MonoBehaviour:
   sprintStepInterval: 0.5
   velocityTreshold: 2
   PlayerContorls: {fileID: -944628639613478452, guid: 2ffa3be9b11a03f46b425b6a25c51556, type: 3}
+  pausePanel: {fileID: 0}
+  victoryPanel: {fileID: 0}
+  deathPanel: {fileID: 0}
+--- !u!114 &777427417527660245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5260229298217460630}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d9372391b66b714ea66f1aaa0a02ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCollision
 --- !u!114 &2830788842391265695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,8 +396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3ff0317956a37438c100d830af1aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxLives: 3
-  damageCooldown: 1
+  maxLives: 1
+  damageCooldown: 0
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -389,6 +407,19 @@ MonoBehaviour:
   OnPlayerDeath:
     m_PersistentCalls:
       m_Calls: []
+  healthBarController: {fileID: 0}
+--- !u!114 &4506894224714675786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5260229298217460630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6550affc889e8354cb203f2da20a0718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDeathHandler
 --- !u!82 &3786779706432571100
 AudioSource:
   m_ObjectHideFlags: 0
@@ -486,6 +517,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &9060295027405205302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5260229298217460630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 2ffa3be9b11a03f46b425b6a25c51556, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &930204479788339496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -534,6 +595,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6404876157903131556, guid: e2d09acf41252fd4e9b3016f04ac7f8b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.182
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404876157903131556, guid: e2d09acf41252fd4e9b3016f04ac7f8b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.176
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404876157903131556, guid: e2d09acf41252fd4e9b3016f04ac7f8b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.429
+      objectReference: {fileID: 0}
     - target: {fileID: 8300642600907475829, guid: e2d09acf41252fd4e9b3016f04ac7f8b, type: 3}
       propertyPath: referenceProyectile
       value: 
@@ -544,6 +617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8300642600907475829, guid: e2d09acf41252fd4e9b3016f04ac7f8b, type: 3}
+    - {fileID: 6544534084150508370, guid: e2d09acf41252fd4e9b3016f04ac7f8b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
