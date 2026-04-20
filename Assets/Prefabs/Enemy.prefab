@@ -58,6 +58,10 @@ MonoBehaviour:
   speed: 2
   minDistance: 1.8
   maxDistance: 8
+  fleeTriggerDistance: 500
+  fleeSpeedMultiplier: 15
+  destroyDistance: 500
+  attackCooldown: 2
 --- !u!114 &1123367378882448013
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using TMPro;                    // Si usas TextMeshPro (recomendado)
-using UnityEngine.UI;           // Si usas texto UI normal de Unity
+using TMPro;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -17,7 +17,10 @@ public class GameManager : MonoBehaviour
 
     [Header("Estado del Juego")]
     public bool hasLogbook = false;
-    private bool gameEnded = false;
+    public bool gameEnded = false;
+
+    [Header("Referencia al Jugador")]
+    [SerializeField] private PlayerControl playerControl; 
 
     private void Awake()
     {
@@ -26,7 +29,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
     }
 
@@ -35,71 +37,87 @@ public class GameManager : MonoBehaviour
         // Asegurarnos que los paneles empiecen desactivados
         if (victoryPanel != null) victoryPanel.SetActive(false);
         if (gameOverPanel != null) gameOverPanel.SetActive(false);
+
+        if (playerControl == null)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                playerControl = player.GetComponent<PlayerControl>();
+            }
+        }
     }
 
     // ====================== VICTORIA ======================
     public void PlayerReachedExit()
     {
         if (gameEnded) return;
-
         if (hasLogbook)
         {
             ShowVictoryScreen();
         }
         else
         {
-            Debug.LogWarning("�Necesitas recoger la Vit�cora para escapar!");
+            Debug.LogWarning("¡Necesitas recoger la Vitácora para escapar!");
         }
     }
 
     private void ShowVictoryScreen()
     {
         gameEnded = true;
-        Time.timeScale = 0f;                    // Pausa el juego
-        Cursor.lockState = CursorLockMode.Confined;
+        Time.timeScale = 0f;
+
+        if (playerControl != null)
+        {
+            playerControl.enabled = false;
+        }
+
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         if (victoryPanel != null)
         {
             victoryPanel.SetActive(true);
         }
-
         if (victoryText != null)
         {
-            victoryText.text = "�VICTORIA!\nEscapaste con la Vit�cora";
+            victoryText.text = "¡VICTORIA!\nEscapaste con la Vitácora";
         }
-
-        Debug.Log("�Victoria!");
+        Debug.Log("¡Victoria!");
     }
 
     // ====================== DERROTA ======================
     public void PlayerDied()
     {
-        //if (gameEnded) return;
-
+        if (gameEnded) return;
         gameEnded = true;
-        Time.timeScale = 0f;                    // Pausa el juego
-        Cursor.lockState = CursorLockMode.Confined;
+        Time.timeScale = 0f;
+
+       
+        if (playerControl != null)
+        {
+            playerControl.enabled = false;
+        }
+
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(true);
         }
-
         if (gameOverText != null)
         {
             gameOverText.text = "PERDISTE";
         }
-
         Debug.Log("Game Over - Te quedaste sin vidas");
     }
 
-    // ====================== VIT�CORA ======================
+    // ====================== VITÁCORA ======================
     public void CollectLogbook()
     {
         hasLogbook = true;
-        Debug.Log("�Vit�cora recogida!");
+        Debug.Log("¡Vitácora recogida!");
     }
 
     // ====================== REINICIO (opcional) ======================

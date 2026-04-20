@@ -10,50 +10,57 @@ public class EnemyMovementTowardsPlayer : MonoBehaviour
     [SerializeField] private float minDistance = 1.8f;
     [SerializeField] private float maxDistance = 8f;
 
+    [Header("Huir con Vitácora")]
+    [SerializeField] private float fleeDistance = 10f;        // Distancia a la que empiezan a huir
+    [SerializeField] private float fleeSpeedMultiplier = 2f;  // 2 = doble de velocidad
+    [SerializeField] private float fleeDirection = 180f;      // Ángulo de huida (180 = opuesto al jugador, 0-360)
+    [SerializeField] private float maxFleeDistance = 20f;     // Distancia máxima de huida antes de destruirse
+
     [Header("Ataque")]
     [SerializeField] private float attackCooldown = 2f;
 
     private EnemyWeapon enemyWeapon;
     private float lastAttackTime = -999f;
+    private bool isFleeing = false;
+    private Vector3 fleeStartPosition;
 
-    void Start()
+    private void Start()
     {
-        // Buscar el EnemyWeapon en este objeto o en sus hijos
         enemyWeapon = GetComponentInChildren<EnemyWeapon>();
-
         if (enemyWeapon == null)
-        {
-            Debug.LogError($"NO SE ENCONTRO EnemyWeapon en {gameObject.name} ni en sus hijos");
-        }
-        else
-        {
-            Debug.Log($"EnemyWeapon encontrado en: {enemyWeapon.gameObject.name}");
-        }
-
+            Debug.LogError($"NO SE ENCONTRO EnemyWeapon en {gameObject.name}");
         if (player == null)
-        {
             Debug.LogError($"PLAYER NO ASIGNADO en {gameObject.name}");
-        }
     }
 
-    void Update()
+    private void Update()
     {
         if (player == null) return;
-        
+
+        // Si ya está huyendo, solo verificar distancia recorrida
+        if (isFleeing)
+        {
+            ContinueFleeing();
+            return;
+        }
+
         float distance = Vector3.Distance(transform.position, player.position);
 
-        // Si esta cerca
+        // ====================== NUEVA LÓGICA: HUIR CON VITÁCORA ======================
+        if (GameManager.Instance.hasLogbook && distance < fleeDistance)
+        {
+            StartFleeing();
+            return;
+        }
+
+        // ====================== LÓGICA NORMAL (sin vitácora o fuera de rango) ======================
         if (distance < maxDistance)
         {
             GetComponent<EnemyPatrol>().playerDetected = true;
-            // Si esta muy cerca, atacar
             if (distance <= minDistance)
             {
-                // Mirar al player
-                
+                // Atacar
                 transform.LookAt(player.position);
-
-                // Intentar atacar si paso el cooldown
                 if (Time.time - lastAttackTime >= attackCooldown)
                 {
                     Attack();
@@ -61,27 +68,68 @@ public class EnemyMovementTowardsPlayer : MonoBehaviour
             }
             else
             {
-                // Moverse hacia el player
+                // Perseguir
                 transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
                 transform.LookAt(player.position);
             }
             return;
         }
+
         GetComponent<EnemyPatrol>().playerDetected = false;
+    }
+
+    // ====================== NUEVO MÉTODO: INICIAR HUIDA ======================
+    private void StartFleeing()
+    {
+        isFleeing = true;
+        fleeStartPosition = transform.position;
+        Debug.Log($"{gameObject.name} está huyendo con la vitácora!");
+    }
+
+    // ====================== NUEVO MÉTODO: CONTINUAR HUIDA ======================
+    private void ContinueFleeing()
+    {
+        // Calcular dirección de huida basada en el ángulo configurado
+        Vector3 directionAway;
+
+        if (fleeDirection == 180f)
+        {
+            // Huir en dirección opuesta al jugador (comportamiento original)
+            directionAway = (transform.position - player.position).normalized;
+        }
+        else
+        {
+            // Huir en una dirección específica (en grados)
+            float radians = fleeDirection * Mathf.Deg2Rad;
+            directionAway = new Vector3(Mathf.Cos(radians), 0, Mathf.Sin(radians)).normalized;
+        }
+
+        // Velocidad de huida
+        float currentFleeSpeed = speed * fleeSpeedMultiplier;
+
+        // Moverse en dirección de huida
+        transform.position += directionAway * currentFleeSpeed * Time.deltaTime;
+
+        // Mirar hacia donde está huyendo
+        transform.LookAt(transform.position + directionAway);
+
+        // Verificar si alcanzó la distancia máxima de huida
+        float distanceFled = Vector3.Distance(fleeStartPosition, transform.position);
+
+        if (distanceFled >= maxFleeDistance)
+        {
+            Debug.Log($"{gameObject.name} se destruye después de huir {distanceFled:F2} metros");
+            Destroy(gameObject);
+        }
     }
 
     private void Attack()
     {
         Debug.Log($">>> ATACANDO desde {gameObject.name}");
-
         if (enemyWeapon != null)
         {
             lastAttackTime = Time.time;
             enemyWeapon.StartAttack();
-        }
-        else
-        {
-            Debug.LogError("No se puede atacar: enemyWeapon es null");
         }
     }
 }

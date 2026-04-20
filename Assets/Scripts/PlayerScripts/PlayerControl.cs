@@ -83,7 +83,7 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
-        if (!pausePanel.activeInHierarchy && !victoryPanel.activeInHierarchy && !deathPanel.activeInHierarchy)
+        if (!pausePanel.activeInHierarchy && !victoryPanel.activeInHierarchy && !deathPanel.activeInHierarchy && !GameManager.Instance.gameEnded)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
