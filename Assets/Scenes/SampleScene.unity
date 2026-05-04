@@ -7763,6 +7763,10 @@ PrefabInstance:
       propertyPath: victoryPanel
       value: 
       objectReference: {fileID: 2082637337}
+    - target: {fileID: 4901672327882763457, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
+      propertyPath: PlayerContorls
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 2ffa3be9b11a03f46b425b6a25c51556, type: 3}
     - target: {fileID: 5260229298217460630, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
