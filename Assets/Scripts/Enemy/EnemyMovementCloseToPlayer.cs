@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemyMovementTowardsPlayer : MonoBehaviour
+public class EnemyMovementCloseToPlayer : MonoBehaviour
 {
     [Header("Referencias")]
     [SerializeField] private Transform player;
