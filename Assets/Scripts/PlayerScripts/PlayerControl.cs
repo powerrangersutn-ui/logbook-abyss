@@ -52,7 +52,7 @@ public class PlayerControl : MonoBehaviour
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
-        mainCamera=Camera.main;
+        mainCamera = Camera.main;
 
         moveAction = PlayerContorls.FindActionMap("Player").FindAction("Move");
         lookAction = PlayerContorls.FindActionMap("Player").FindAction("Look");
@@ -64,6 +64,7 @@ public class PlayerControl : MonoBehaviour
 
         lookAction.performed += context => lookInput = context.ReadValue<Vector2>();
         lookAction.canceled += context => lookInput = Vector2.zero;
+
     }
 
     private void OnEnable()
@@ -96,8 +97,7 @@ public class PlayerControl : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-        }
-        
+        }    
     }
 
     void HandleMovement()
