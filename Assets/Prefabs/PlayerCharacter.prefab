@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 4506894224714675786}
   - component: {fileID: 3786779706432571100}
   - component: {fileID: 9060295027405205302}
+  - component: {fileID: 7924234531194452758}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -547,6 +548,30 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &7924234531194452758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5260229298217460630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d63a0238519c594ca3d9e4fb8519018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OxygenSystem
+  maxOxygen: 100
+  currentOxygen: 100
+  oxygenDepletionRate: 1
+  sprintDepletionMultiplier: 2
+  jumpOxygenCost: 5
+  oxygenBar: {fileID: 0}
+  OnOxygenDepleted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnOxygenChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &930204479788339496
 PrefabInstance:
   m_ObjectHideFlags: 0
