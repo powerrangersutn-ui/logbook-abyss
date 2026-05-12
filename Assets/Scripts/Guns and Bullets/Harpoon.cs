@@ -414,19 +414,37 @@ public class Harpoon : MonoBehaviour
     }
 
     private void CollectHarpoon()
+{
+    CancelInvoke();
+    DisablePickup();
+ 
+    if (stuckParent != null)
     {
-        CancelInvoke();
-        DisablePickup();
-
-        if (stuckParent != null)
+        if (stuckEnemy != null)
+            stuckEnemy.OnHarpoonRemoved(this);
+ 
+        transform.SetParent(null);
+    }
+ 
+    PlayerInventory playerInventory = FindAnyObjectByType<PlayerInventory>();
+    if (playerInventory != null)
+    {
+        int added = playerInventory.AddHarpoons(1);
+        if (added > 0)
         {
-            if (stuckEnemy != null)
-                stuckEnemy.OnHarpoonRemoved(this);
-
-            transform.SetParent(null);
+            Debug.Log($"[Harpoon] ¡Arpón recogido del suelo! Munición: {playerInventory.CurrentHarpoons}/{playerInventory.MaxHarpoons}");
         }
-
-        ReturnToPool();
+        else
+        {
+            Debug.Log("[Harpoon] Munición llena (3/3), no se agregó");
+        }
+    }
+    else
+    {
+        Debug.LogWarning("[Harpoon] No se encontró PlayerInventory!");
+    }
+ 
+    ReturnToPool();
     }
 
     private void PulsePickupIndicator()

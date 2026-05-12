@@ -31,7 +31,7 @@ public class HarpoonPool : MonoBehaviour
         }
 
         if (showDebugInfo)
-            Debug.Log($"Pool creado con {poolSize} arpones");
+            Debug.Log($"[HarpoonPool] Pool creado con {poolSize} arpones");
     }
 
     public GameObject GetHarpoon()
@@ -43,13 +43,13 @@ public class HarpoonPool : MonoBehaviour
             activeHarpoons.Add(harpoonObj);
 
             if (showDebugInfo)
-                Debug.Log($"Arpón obtenido. Disponibles: {availableHarpoons.Count}/{poolSize}");
+                Debug.Log($"[HarpoonPool] Arpón obtenido. Disponibles: {availableHarpoons.Count}/{poolSize}");
 
             return harpoonObj;
         }
 
         if (showDebugInfo)
-            Debug.LogWarning("¡No hay arpones disponibles! Recoge los que disparaste.");
+            Debug.LogWarning("[HarpoonPool] ¡No hay arpones disponibles!");
 
         return null;
     }
@@ -75,11 +75,60 @@ public class HarpoonPool : MonoBehaviour
         availableHarpoons.Enqueue(harpoonObj);
 
         if (showDebugInfo)
-            Debug.Log($"Arpón recuperado. Disponibles: {availableHarpoons.Count}/{poolSize}");
+            Debug.Log($"[HarpoonPool] Arpón recuperado. Disponibles: {availableHarpoons.Count}/{poolSize}");
     }
 
     public int GetAvailableCount() => availableHarpoons.Count;
     public int GetActiveCount() => activeHarpoons.Count;
     public int GetTotalCount() => poolSize;
     public HarpoonGun GetHarpoonGun() => harpoonGun;
+
+    /// <summary>
+    /// Agrega arpones al pool (para pickups). Respeta el límite de poolSize.
+    /// Solo agrega si hay arpones "perdidos" (destruidos).
+    /// </summary>
+    public int AddHarpoonsToPool(int amount)
+    {
+        int currentTotal = availableHarpoons.Count + activeHarpoons.Count;
+        int lostHarpoons = poolSize - currentTotal;
+
+        if (lostHarpoons <= 0)
+        {
+            if (showDebugInfo)
+                Debug.Log("[HarpoonPool] No hay arpones perdidos, pool completo");
+            return 0;
+        }
+
+        int toAdd = Mathf.Min(amount, lostHarpoons);
+
+        for (int i = 0; i < toAdd; i++)
+        {
+            GameObject harpoon = Instantiate(harpoonPrefab);
+            harpoon.name = $"Harpoon_Pickup_{Time.time}";
+            harpoon.SetActive(false);
+            availableHarpoons.Enqueue(harpoon);
+        }
+
+        if (showDebugInfo)
+            Debug.Log($"[HarpoonPool] +{toAdd} arpones restaurados. Disponibles: {availableHarpoons.Count} | Total en pool: {availableHarpoons.Count + activeHarpoons.Count}/{poolSize}");
+
+        return toAdd;
+    }
+
+    /// <summary>
+    /// Obtiene cuántos arpones se han "perdido" (destruidos permanentemente)
+    /// </summary>
+    public int GetLostHarpoonsCount()
+    {
+        int currentTotal = availableHarpoons.Count + activeHarpoons.Count;
+        return poolSize - currentTotal;
+    }
+
+    /// <summary>
+    /// Verifica si hay espacio para recibir más arpones
+    /// </summary>
+    public bool CanReceiveHarpoons()
+    {
+        return GetLostHarpoonsCount() > 0;
+    }
 }
