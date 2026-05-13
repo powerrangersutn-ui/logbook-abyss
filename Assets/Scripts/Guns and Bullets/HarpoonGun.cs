@@ -1,17 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using System.Collections;
 
 public class HarpoonGun : MonoBehaviour
 {
     [Header("Referencias")]
     [SerializeField] private HarpoonPool harpoonPool;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private PlayerInventory playerInventory; // NUEVO
+    [SerializeField] private PlayerInventory playerInventory;
 
     [Header("Configuración")]
     [SerializeField] private float harpoonSpeed = 32f;
     [SerializeField] private float fireCooldown = 0.8f;
+
+    [Header("Burbujas")]
+    [SerializeField] private float bubbleDuration = 3f;
 
     [Header("Input")]
     [SerializeField] private InputActionReference fireAction;
@@ -24,7 +28,6 @@ public class HarpoonGun : MonoBehaviour
 
     private void Awake()
     {
-        // Auto-asignar PlayerInventory si no está configurado
         if (playerInventory == null)
             playerInventory = GetComponentInParent<PlayerInventory>();
     }
@@ -33,15 +36,13 @@ public class HarpoonGun : MonoBehaviour
     {
         if (fireAction == null || harpoonPool == null || playerInventory == null) return;
 
-        // Actualizar UI
         if (showAmmoCount)
             UpdateAmmoUI();
 
-        // Disparar - AHORA verifica munición en lugar de pool
         if (fireAction.action.WasPressedThisFrame() &&
             Time.time >= nextFireTime &&
-            playerInventory.HasAmmo() && // CAMBIADO: verifica munición
-            harpoonPool.GetAvailableCount() > 0) // Pool debe tener arpones físicos
+            playerInventory.HasAmmo() &&
+            harpoonPool.GetAvailableCount() > 0)
         {
             Shoot();
         }
@@ -51,7 +52,6 @@ public class HarpoonGun : MonoBehaviour
     {
         if (firePoint == null) return;
 
-        // Verificar munición
         if (!playerInventory.HasAmmo())
         {
             Debug.Log("¡Sin munición!");
@@ -65,10 +65,8 @@ public class HarpoonGun : MonoBehaviour
             return;
         }
 
-        // GASTAR MUNICIÓN
         if (!playerInventory.UseHarpoon())
         {
-            // Si falló, devolver el arpón al pool
             harpoonPool.ReturnToPool(harpoonObj);
             return;
         }
@@ -82,19 +80,58 @@ public class HarpoonGun : MonoBehaviour
             harpoon.Launch(firePoint.forward, harpoonSpeed);
         }
 
+        // === ACTIVAR BURBUJAS AL DISPARAR ===
+        ActivateBubbles(harpoonObj);
+
         nextFireTime = Time.time + fireCooldown;
     }
 
+    // ==================== BURBUJAS ====================
+    private void ActivateBubbles(GameObject harpoonObj)
+    {
+        if (harpoonObj == null)
+        {
+            Debug.LogError("HarpoonObj es null");
+            return;
+        }
+
+        // Buscamos todas las partículas hijas
+        ParticleSystem[] allBubbles = harpoonObj.GetComponentsInChildren<ParticleSystem>(true); // true = incluir inactivos
+
+        Debug.Log($"Se encontraron {allBubbles.Length} ParticleSystems en el arpón.");
+
+        if (allBubbles.Length > 0)
+        {
+            ParticleSystem bubbles = allBubbles[0];   // tomamos la primera
+            Debug.Log("Activando burbujas: " + bubbles.gameObject.name);
+
+            bubbles.gameObject.SetActive(true);   // Aseguramos que el GameObject esté activo
+            bubbles.Play();
+
+            StartCoroutine(StopBubblesAfterTime(bubbles, bubbleDuration));
+        }
+        else
+        {
+            Debug.LogError("¡NO SE ENCONTRARON BURBUJAS en el arpón! Revisa la jerarquía del prefab.");
+        }
+    }
+
+    private IEnumerator StopBubblesAfterTime(ParticleSystem ps, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (ps != null)
+            ps.Stop();
+    }
+
+    // ==================== Resto de tus métodos ====================
     private void UpdateAmmoUI()
     {
         if (ammoText != null && playerInventory != null)
         {
-            // CAMBIADO: muestra munición en lugar de pool disponible
             int current = playerInventory.CurrentHarpoons;
             int max = playerInventory.MaxHarpoons;
             ammoText.text = $"{current}/{max}";
 
-            // Cambiar color si quedan pocos
             if (current == 0)
                 ammoText.color = Color.red;
             else if (current == 1)
