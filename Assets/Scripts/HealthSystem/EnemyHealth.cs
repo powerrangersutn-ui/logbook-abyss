@@ -15,23 +15,18 @@ public class EnemyHealth : MonoBehaviour
 
     private void Awake()
     {
-        healthSystem = GetComponent<HealthSystem>();
-        if (healthSystem == null)
-            healthSystem = gameObject.AddComponent<HealthSystem>();
-
+        healthSystem = GetComponent<HealthSystem>() ?? gameObject.AddComponent<HealthSystem>();
         healthSystem.SetMaxHealth(maxHealth);
     }
 
     private void OnEnable()
     {
-        if (healthSystem != null)
-            healthSystem.OnDeath.AddListener(HandleDeath);
+        healthSystem.OnDeath += HandleDeath;
     }
 
     private void OnDisable()
     {
-        if (healthSystem != null)
-            healthSystem.OnDeath.RemoveListener(HandleDeath);
+        healthSystem.OnDeath -= HandleDeath;
     }
 
     public void TakeDamage(int damage)
