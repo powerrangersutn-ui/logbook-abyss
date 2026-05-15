@@ -1382,11 +1382,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
---- !u!4 &293876691 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2532821705718791699, guid: c5e22a2137f11514eb238da255827303, type: 3}
-  m_PrefabInstance: {fileID: 1353668366}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &297595850
 GameObject:
   m_ObjectHideFlags: 0
@@ -5887,7 +5882,6 @@ Transform:
   - {fileID: 1255650464}
   - {fileID: 2145604458}
   - {fileID: 126516883}
-  - {fileID: 293876691}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1112858006
@@ -6655,7 +6649,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1282204095}
-  m_Father: {fileID: 1780023}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8051,6 +8045,10 @@ PrefabInstance:
       propertyPath: fogController
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4901672327882763457, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
+      propertyPath: PlayerContorls
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: 4901672327882763457, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
       propertyPath: interactionRange
       value: 3
@@ -18289,21 +18287,6 @@ SceneRoots:
   - {fileID: 811981262}
   - {fileID: 288552145}
   - {fileID: 1594941228}
-  - {fileID: 1669615717}
-  - {fileID: 1951242226}
-  - {fileID: 1138361051}
-  - {fileID: 1052197909}
-  - {fileID: 430726963}
-  - {fileID: 127038195}
-  - {fileID: 1112858011}
-  - {fileID: 690097677}
-  - {fileID: 55546256}
-  - {fileID: 1384734457}
-  - {fileID: 1734674743}
-  - {fileID: 1088615194}
-  - {fileID: 851087264}
-  - {fileID: 349967661}
-  - {fileID: 1524292280}
   - {fileID: 417100750}
   - {fileID: 1197265069}
   - {fileID: 5645217969377840228}
@@ -18311,3 +18294,7 @@ SceneRoots:
   - {fileID: 467158447}
   - {fileID: 2009356186}
   - {fileID: 2107960022}
+  - {fileID: 981765135}
+  - {fileID: 743975107}
+  - {fileID: 1095358809}
+  - {fileID: 1166017606}
