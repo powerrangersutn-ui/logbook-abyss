@@ -1,40 +1,31 @@
 using UnityEngine;
 
+//Es el Mediador (de lógica). Separa la muerte del jugador de la lógica global que está en el GameManager
 public class PlayerDeathHandler : MonoBehaviour
 {
-    private PlayerHealth playerHealth;
-
-    private void Awake()
-    {
-        playerHealth = GetComponent<PlayerHealth>();
-
-        if (playerHealth == null)
-            Debug.LogError("PlayerHealth no encontrado en PlayerCharacter", this);
-    }
+    // Ya no necesitamos la referencia privada a PlayerHealth porque escuchamos el evento global.
 
     private void OnEnable()
     {
-        if (playerHealth != null)
-            playerHealth.OnPlayerDeath.AddListener(OnPlayerDied);
+        UIGameEvents.onPlayerDeath += OnPlayerDied;
     }
 
     private void OnDisable()
     {
-        if (playerHealth != null)
-            playerHealth.OnPlayerDeath.RemoveListener(OnPlayerDied);
+        UIGameEvents.onPlayerDeath -= OnPlayerDied;
     }
 
     private void OnPlayerDied()
     {
-        Debug.Log("=== JUGADOR HA MUERTO - Llamando a GameManager ===");
-        
+        Debug.Log("=== [DeathHandler] El evento de muerte fue captado ===");
+
         if (GameManager.Instance != null)
         {
             GameManager.Instance.PlayerDied();
         }
         else
         {
-            Debug.LogError("GameManager.Instance no encontrado!");
+            Debug.LogWarning("GameManager.Instance no encontrado. Asegúrate de que exista uno en la escena.");
         }
     }
 }

@@ -369,7 +369,7 @@ MonoBehaviour:
   walkStepInterval: 1
   sprintStepInterval: 0.5
   velocityTreshold: 2
-  PlayerContorls: {fileID: -944628639613478452, guid: 2ffa3be9b11a03f46b425b6a25c51556, type: 3}
+  PlayerControls: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   pausePanel: {fileID: 0}
   victoryPanel: {fileID: 0}
   deathPanel: {fileID: 0}
@@ -399,16 +399,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxLives: 1
   damageCooldown: 0
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  OnLifeLost:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPlayerDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  healthBarController: {fileID: 0}
 --- !u!114 &4506894224714675786
 MonoBehaviour:
   m_ObjectHideFlags: 0
