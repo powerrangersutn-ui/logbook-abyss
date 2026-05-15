@@ -27,7 +27,7 @@ public class HealthSystem : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            isDead = true;
+            Die();
         }
     }
 
@@ -52,5 +52,14 @@ public class HealthSystem : MonoBehaviour
             currentHealth = maxHealth;
 
         OnHealthChanged?.Invoke();
+    }
+
+    protected virtual void Die()
+    {
+        if (isDead) return;
+
+        isDead = true;
+        OnDeath?.Invoke();
+        Debug.Log($"[HealthSystem] {gameObject.name} ha muerto");
     }
 }
