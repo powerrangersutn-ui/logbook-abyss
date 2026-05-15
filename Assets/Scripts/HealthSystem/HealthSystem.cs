@@ -1,29 +1,22 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
+using System;
 
+//Es un Modelo. Solo sabe de números. Es reutilizable. (por ejemplo para Player y Enemy. Luego cada PlayerHealth y EnemyHealth se encarga de cómo usarlo)
 public class HealthSystem : MonoBehaviour
 {
-    [Header("Configuración de Vida")]
     [SerializeField] private int maxHealth = 100;
-
-    [Header("Eventos")]
-    public UnityEvent OnDamageTaken;
-    public UnityEvent OnHealthChanged;
-    public UnityEvent OnDeath;
-
     private int currentHealth;
-    private bool isDead = false;                    //Nueva variable de control
+    private bool isDead = false;
 
-    // Propiedades públicas
+    public Action OnHealthChanged;
+    public Action OnDeath;
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
-    public float HealthPercentage => (float)currentHealth / maxHealth;
     public bool IsAlive => currentHealth > 0 && !isDead;
 
     private void Awake()
     {
         currentHealth = maxHealth;
-        isDead = false;
     }
 
     public void TakeDamage(int damage)
@@ -32,48 +25,32 @@ public class HealthSystem : MonoBehaviour
 
         currentHealth = Mathf.Max(0, currentHealth - damage);
 
-        OnDamageTaken?.Invoke();
-        OnHealthChanged?.Invoke();
-
         if (currentHealth <= 0)
         {
-            Die();
+            isDead = true;
         }
     }
 
     public void Heal(int amount)
     {
         if (!IsAlive) return;
-
         currentHealth = Mathf.Min(maxHealth, currentHealth + amount);
-        OnHealthChanged?.Invoke();
     }
 
     public void ResetHealth()
     {
-        if (isDead) return;           // ← No permitir resetear si ya murió
-
+        isDead = false;
         currentHealth = maxHealth;
-        OnHealthChanged?.Invoke();
     }
 
     public void SetMaxHealth(int newMaxHealth)
     {
         if (newMaxHealth <= 0) return;
         maxHealth = newMaxHealth;
-        currentHealth = Mathf.Min(currentHealth, maxHealth);
+
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+
         OnHealthChanged?.Invoke();
     }
-
-    protected virtual void Die()
-    {
-        if (isDead) return;
-
-        isDead = true;
-        OnDeath?.Invoke();
-        Debug.Log($"[HealthSystem] {gameObject.name} ha muerto");
-    }
-
-    // Método útil para saber si está realmente muerto
-    public bool IsDead() => isDead;
 }
