@@ -27,7 +27,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float velocityTreshold = 2.0f;
 
     [Header ("Input Actions")]
-    [SerializeField] private InputActionAsset PlayerContorls;
+    [SerializeField] private InputActionAsset PlayerControls;
 
     [Header ("Check panels")]
     [SerializeField] private GameObject pausePanel;
@@ -54,10 +54,10 @@ public class PlayerControl : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         mainCamera=Camera.main;
 
-        moveAction = PlayerContorls.FindActionMap("Player").FindAction("Move");
-        lookAction = PlayerContorls.FindActionMap("Player").FindAction("Look");
-        //jumpAction = PlayerContorls.FindActionMap("Player").FindAction("Jump");
-        sprintAction = PlayerContorls.FindActionMap("Player").FindAction("Sprint");
+        moveAction = PlayerControls.FindActionMap("Player").FindAction("Move");
+        lookAction = PlayerControls.FindActionMap("Player").FindAction("Look");
+        //jumpAction = PlayerControls.FindActionMap("Player").FindAction("Jump");
+        sprintAction = PlayerControls.FindActionMap("Player").FindAction("Sprint");
 
         moveAction.performed += context => moveInput = context.ReadValue<Vector2>();
         moveAction.canceled += context => moveInput = Vector2.zero;

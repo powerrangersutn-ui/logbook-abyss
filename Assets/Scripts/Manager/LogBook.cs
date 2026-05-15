@@ -16,6 +16,10 @@ public class Logbook : MonoBehaviour
 
     private Transform playerTransform;
     private Camera mainCamera;
+
+    [Header("Input Actions")]
+    [SerializeField] private InputActionAsset PlayerControls;
+
     private InputAction useAction;
 
     private void Start()
@@ -31,31 +35,9 @@ public class Logbook : MonoBehaviour
         {
             playerTransform = playerObj.transform;
 
-            PlayerInput playerInput = playerObj.GetComponent<PlayerInput>();
-            if (playerInput != null)
+            if (PlayerControls != null)
             {
-                // Buscar la acción "Use" (compatible con todas las versiones)
-                useAction = playerInput.actions["Use"];
-
-                // Si no la encuentra con "Use", probamos otras variaciones comunes
-                if (useAction == null)
-                    useAction = playerInput.actions["use"];
-
-                if (useAction == null)
-                    useAction = playerInput.actions.FindAction("Use");
-
-                if (useAction != null)
-                {
-                    Debug.Log("<color=green>✓ Acción 'Use' encontrada correctamente!</color>");
-                }
-                else
-                {
-                    Debug.LogError("✗ No se encontró la acción 'Use'. Lista de acciones disponibles:");
-                    foreach (var action in playerInput.actions)
-                    {
-                        Debug.Log($"   → '{action.name}'");
-                    }
-                }
+                useAction = PlayerControls.FindActionMap("Player").FindAction("Use");
             }
             else
             {
