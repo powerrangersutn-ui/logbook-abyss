@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 5414423371377497158}
   - component: {fileID: 7624918329946320432}
   - component: {fileID: 974929358679583672}
-  - component: {fileID: 8125521670398486683}
   m_Layer: 0
   m_Name: Vitacora
   m_TagString: Untagged
@@ -184,31 +183,7 @@ MonoBehaviour:
   dialogID: hint_logbook
   dialogElevator: {fileID: 0}
   uiShowDistance: 3
-  interactionDistance: 3
   interactionCanvas: {fileID: 1635862858796813859}
-  PlayerControls: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
---- !u!64 &8125521670398486683
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731982524484427049}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8662859981825111210, guid: ddfd541073a5ead4896abdf803298924, type: 3}
 --- !u!1 &3296262575013340760
 GameObject:
   m_ObjectHideFlags: 0
