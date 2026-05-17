@@ -359,8 +359,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControl
   walkSpeed: 5
-  sprintMultiplier: 2
+  sprintMultiplier: 1.3
   gravity: 9
+  jumpForce: 3
   mouseSensitivity: 1
   upDownRange: 80
   footsteepSource: {fileID: 3786779706432571100}
@@ -369,7 +370,11 @@ MonoBehaviour:
   walkStepInterval: 1
   sprintStepInterval: 0.5
   velocityTreshold: 2
-  PlayerControls: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  interactionRange: 4
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  PlayerContorls: {fileID: 0}
   pausePanel: {fileID: 0}
   victoryPanel: {fileID: 0}
   deathPanel: {fileID: 0}
@@ -553,9 +558,8 @@ MonoBehaviour:
   maxOxygen: 100
   currentOxygen: 100
   oxygenDepletionRate: 1
-  sprintDepletionMultiplier: 2
+  sprintDepletionMultiplier: 0.5
   jumpOxygenCost: 5
-  oxygenBar: {fileID: 0}
   OnOxygenDepleted:
     m_PersistentCalls:
       m_Calls: []
@@ -669,8 +673,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HarpoonGun
   harpoonPool: {fileID: 0}
   firePoint: {fileID: 6055776780427297420}
+  playerInventory: {fileID: 0}
   harpoonSpeed: 40
   fireCooldown: 0.8
+  bubbleDuration: 3
   fireAction: {fileID: 0}
+  moveAction: {fileID: 0}
   ammoText: {fileID: 0}
   showAmmoCount: 1
+  weaponModel: {fileID: 0}
+  enableWalkBobbing: 1
+  bobbingSpeed: 6
+  bobbingAmountHorizontal: 0.08
+  bobbingTiltAngle: 2
+  bobbingLerpSpeed: 10
+  enableRecoil: 1
+  recoilRotation: 15
+  recoilDownSpeed: 8
+  recoilUpSpeed: 2
+  ammoLowThreshold: 1
