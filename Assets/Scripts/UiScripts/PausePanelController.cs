@@ -10,6 +10,11 @@ public class PausePanelController : MonoBehaviour
     [Header("Panel de Pausa")]
     [SerializeField] private GameObject pausePanelMenu;
 
+    [Header("Input Actions")]
+    [SerializeField] private InputActionAsset UIControls;
+
+    private InputAction pauseAction;
+
     public void GoToMenu(string mainMenuScene)
     {
         SceneManager.LoadScene(mainMenuScene);
@@ -26,9 +31,24 @@ public class PausePanelController : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        pauseAction = UIControls.FindActionMap("UI").FindAction("Pause");
+    }
+
+    private void OnEnable()
+    {
+        pauseAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        pauseAction.Disable();
+    }
+
     void Update()
     {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (pauseAction.triggered)
         {
             if (pausedGame)
             {

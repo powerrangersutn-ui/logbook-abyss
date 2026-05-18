@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+//Es la Vista. Solo muestra datos.
 public class HealthBarController : MonoBehaviour
 {
     [Header("UI Elements")]
@@ -13,10 +14,21 @@ public class HealthBarController : MonoBehaviour
     private Color lowHealthColor = Color.red;
 
 
-    public void UpdateHealthBar(float healthPercentage)
+    private void OnEnable(){
+        UIGameEvents.onPlayerHealthChanged += UpdateHealthBar;
+        UIGameEvents.onPlayerDeath += HandleDeathUI;
+    }
+
+    private void OnDestroy()
+    {
+        UIGameEvents.onPlayerHealthChanged -= UpdateHealthBar;
+        UIGameEvents.onPlayerDeath += HandleDeathUI;
+    }
+
+    private void UpdateHealthBar(int healthPercentage, int maxHealth)
     {
         //La barra necesita un valor entre 0 a 1 (siendo 0.5 el 50%)
-        float clampedPercentage = Mathf.Clamp01(healthPercentage);
+        float clampedPercentage = (float) healthPercentage / maxHealth;
 
         // El relleno de la imagen (Requiere Image Type: Filled)
         healthBarFill.fillAmount = clampedPercentage;
@@ -34,5 +46,10 @@ public class HealthBarController : MonoBehaviour
         {
             healthBarFill.color = fullHealthColor;
         }
+    }
+
+    private void HandleDeathUI()
+    {
+        healthBarFill.fillAmount = 0f;
     }
 }

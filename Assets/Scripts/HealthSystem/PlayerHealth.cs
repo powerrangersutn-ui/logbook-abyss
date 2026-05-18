@@ -1,122 +1,83 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
+
+//Es un Controlador. Decide cuándo se hace daño y utiliza HealthSystem para ejecutarlo.
+//Avisa a quienes estén suscriptos por medio de UIGameEvents.
 
 public class PlayerHealth : MonoBehaviour
 {
-    [Header("Sistema de Vidas")]
+    [Header("Configuración")]
     [SerializeField] private int maxLives = 3;
-
-    [Header("Configuración de Daño")]
     [SerializeField] private float damageCooldown = 0.5f;
-
-    [Header("Eventos")]
-    public UnityEvent OnTakeDamage;
-    public UnityEvent OnLifeLost;
-    public UnityEvent OnPlayerDeath;
-
-    [Header("Referencias UI")]
-    [SerializeField] private HealthBarController healthBarController;
 
     private HealthSystem healthSystem;
     private Rigidbody playerRb;
-
     private float lastDamageTime;
     private int currentLives;
-
-    // Propiedades
-    public int CurrentLives => currentLives;
-    public bool IsInvulnerable => Time.time - lastDamageTime < damageCooldown;
-    public float CurrentHealthPercentage => healthSystem != null ? healthSystem.HealthPercentage : 0f;
     public bool IsDead { get; private set; } = false;
+
+    private bool IsInvulnerable => Time.time - lastDamageTime < damageCooldown;
 
     private void Awake()
     {
-        InitializeComponents();
-        currentLives = maxLives;
-        lastDamageTime = -1f;
-    }
-
-    private void InitializeComponents()
-    {
         healthSystem = GetComponent<HealthSystem>() ?? gameObject.AddComponent<HealthSystem>();
         playerRb = GetComponent<Rigidbody>();
+        currentLives = maxLives;
     }
 
     private void Start()
     {
-        UpdateHealthBarUI();
+        // Notificamos la vida inicial al comenzar
+        UIGameEvents.OnPlayerHealthChanged(healthSystem.CurrentHealth, healthSystem.MaxHealth);
     }
 
     public void TakeDamage(int damage)
     {
-        if (IsDead || IsInvulnerable || healthSystem == null)
-        {
-            Debug.Log($"[PlayerHealth] Daño IGNORADO | IsDead: {IsDead} | Invulnerable: {IsInvulnerable}");
-            return;
-        }
+        if (IsDead || IsInvulnerable) return;
 
         lastDamageTime = Time.time;
-
-        int healthBefore = healthSystem.CurrentHealth;
         healthSystem.TakeDamage(damage);
-        int healthAfter = healthSystem.CurrentHealth;
 
-        Debug.Log($"[PlayerHealth] Daño: {damage} | Antes: {healthBefore} → Después: {healthAfter}");
+        UIGameEvents.OnPlayerHealthChanged(healthSystem.CurrentHealth, healthSystem.MaxHealth);
 
-        OnTakeDamage?.Invoke();
-        UpdateHealthBarUI();
-
-        if (healthAfter <= 0)
+        if (healthSystem.CurrentHealth <= 0)
         {
-            Debug.Log("→ ¡SALUD LLEGÓ A 0! → Llamando a LoseLife()");
-            LoseLife();
-        }
-    }
+            // LoseLife(); 
 
-    private void LoseLife()
-    {
-        currentLives--;
-        Debug.Log($"[LoseLife] Vidas restantes: {currentLives}");
-
-        OnLifeLost?.Invoke();
-
-        if (currentLives <= 0)
-        {
-            Debug.Log("=== SIN VIDAS → MUERTE DEFINITIVA ===");
+            // Por ahora, muere directo al llegar a 0 vida
             Die();
-        }
-        else
-        {
-            Debug.Log("→ Quedan vidas → Reseteando barra");
-            healthSystem.ResetHealth();
-            UpdateHealthBarUI();
         }
     }
 
     private void Die()
     {
+        if (IsDead) return;
         IsDead = true;
-        Debug.Log("=== JUGADOR HA MUERTO DEFINITIVAMENTE ===");
-
-        OnPlayerDeath?.Invoke();
 
         if (playerRb != null)
         {
             playerRb.linearVelocity = Vector3.zero;
             playerRb.isKinematic = true;
         }
+
+        UIGameEvents.onPlayerDeath();
     }
+
+    /* 
+    private void LoseLife() 
+    {
+        currentLives--;
+        if (currentLives <= 0) Die();
+        else {
+            healthSystem.ResetHealth();
+            UIGameEvents.SendHealthChanged(healthSystem.CurrentHealth, healthSystem.MaxHealth);
+        }
+    }
+    */
 
     public void Heal(int amount)
     {
-        if (IsDead || healthSystem == null) return;
+        if (IsDead) return;
         healthSystem.Heal(amount);
-        UpdateHealthBarUI();
-    }
-
-    private void UpdateHealthBarUI()
-    {
-        if (healthBarController != null)
-            healthBarController.UpdateHealthBar(healthSystem.HealthPercentage);
+        UIGameEvents.OnPlayerHealthChanged(healthSystem.CurrentHealth, healthSystem.MaxHealth);
     }
 }
