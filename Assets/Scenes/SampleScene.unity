@@ -6612,12 +6612,12 @@ GameObject:
   - component: {fileID: 1197265068}
   - component: {fileID: 1197265067}
   m_Layer: 0
-  m_Name: luz_Modificar_mapa
+  m_Name: ModifyLightMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1197265067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16260,7 +16260,7 @@ Light:
   m_Type: 0
   m_Color: {r: 0.9056604, g: 0.8268552, b: 0.49127805, a: 1}
   m_Intensity: 100
-  m_Range: 9
+  m_Range: 18
   m_SpotAngle: 64
   m_InnerSpotAngle: 14
   m_CookieSize2D: {x: 0.5, y: 0.5}
