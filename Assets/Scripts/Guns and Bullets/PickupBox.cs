@@ -58,7 +58,7 @@ public class PickupBox : MonoBehaviour
         int given = inventory.AddHarpoons(amount);
 
         if (given > 0)
-            Debug.Log($"[PickupBox] ✅ ÉXITO dando arpones: +{given}");
+            Debug.Log($"[PickupBox] dando arpones: +{given}");
         else
             Debug.LogWarning("[PickupBox] No se dieron arpones");
     }
