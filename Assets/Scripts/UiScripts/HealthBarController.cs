@@ -22,7 +22,7 @@ public class HealthBarController : MonoBehaviour
     private void OnDestroy()
     {
         UIGameEvents.onPlayerHealthChanged -= UpdateHealthBar;
-        UIGameEvents.onPlayerDeath += HandleDeathUI;
+        UIGameEvents.onPlayerDeath -= HandleDeathUI;
     }
 
     private void UpdateHealthBar(int healthPercentage, int maxHealth)

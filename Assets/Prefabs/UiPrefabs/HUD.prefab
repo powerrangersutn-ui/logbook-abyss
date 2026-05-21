@@ -3152,7 +3152,7 @@ GameObject:
   - component: {fileID: 6907439243461043913}
   - component: {fileID: 1938694637972357308}
   - component: {fileID: 6239145608709284138}
-  - component: {fileID: 5389260279782297518}
+  - component: {fileID: 370546052033803084}
   m_Layer: 5
   m_Name: Oxygen
   m_TagString: Untagged
@@ -3221,7 +3221,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5389260279782297518
+--- !u!114 &370546052033803084
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3230,11 +3230,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 2429316418027235866}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a22d30d6450a29142b1cb00c70bd8c98, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f159fbcd243f024c95358eb16ce4cde, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthBarController
-  healthBarFill: {fileID: 7487609079658106184}
+  m_EditorClassIdentifier: Assembly-CSharp::OxygenBar
+  oxygenSegments:
+  - {fileID: 7487609079658106184}
+  - {fileID: 3135281163328827207}
+  - {fileID: 7062863165199779814}
+  - {fileID: 6112075801041181758}
+  - {fileID: 5268945686944382294}
+  - {fileID: 8984385928961941215}
+  - {fileID: 4785158020414610566}
+  - {fileID: 429521168143914257}
+  - {fileID: 1126070069548646094}
+  - {fileID: 677350371013815907}
   percentageText: {fileID: 8745529840087378165}
+  oxygenColor: {r: 0.33333334, g: 0.5647059, b: 1, a: 1}
+  fullAlpha: 1
+  emptyAlpha: 0.2
+  animateTransition: 1
+  transitionSpeed: 5
+  blinkWhenLow: 1
+  blinkSpeed: 2
 --- !u!1 &2488825206306034710
 GameObject:
   m_ObjectHideFlags: 0
