@@ -88,8 +88,8 @@ public class MeleeAttackModule : EnemyModule
         var targetHealth = sharedData.currentTarget.GetComponent<PlayerHealth>();
         if (targetHealth != null)
         {
-            Vector3 hitDirection = directionToTarget;
-            targetHealth.TakeDamage(attackDamage, transform.position, hitDirection);
+           // Vector3 hitDirection = directionToTarget;
+           // targetHealth.TakeDamage(attackDamage, transform.position, hitDirection);
         }
 
         // Efectos visuales
