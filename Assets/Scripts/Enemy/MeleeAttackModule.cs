@@ -5,7 +5,7 @@ public class MeleeAttackModule : EnemyModule
 {
     [Header("Attack Settings")]
     [SerializeField] private float attackRange = 2f;
-    [SerializeField] private float attackDamage = 10f;
+    [SerializeField] private int attackDamage = 10;
     [SerializeField] private float attackCooldown = 1.5f;
     [SerializeField] private float attackAngle = 60f; // Ángulo del cono de ataque
 
