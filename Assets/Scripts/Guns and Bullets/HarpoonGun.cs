@@ -42,6 +42,10 @@ public class HarpoonGun : MonoBehaviour
     [Header("UI Ammo")]
     [SerializeField] private int ammoLowThreshold = 1;
 
+    [Header ("sounds")]
+    [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioSource source;
+
     private float nextFireTime;
 
     // Variables para el balanceo
@@ -89,6 +93,7 @@ public class HarpoonGun : MonoBehaviour
             harpoonPool.GetAvailableCount() > 0)
         {
             Shoot();
+
         }
     }
 
@@ -227,6 +232,7 @@ public class HarpoonGun : MonoBehaviour
         {
             harpoon.Initialize(harpoonPool);
             harpoon.Launch(firePoint.forward, harpoonSpeed);
+            source.PlayOneShot(shootSound);
         }
 
         ActivateBubbles(harpoonObj);
