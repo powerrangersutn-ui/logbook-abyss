@@ -170,23 +170,11 @@ private void OnDisable()
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactionRange, interactionLayer))
         {
-            // Caja de suministros (Oxígeno / Arpones)
-            if (hit.collider.TryGetComponent<PickupBox>(out PickupBox box))
+            if (hit.collider.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
                 if (interactAction.triggered)
                 {
-                    box.OnPickup(inventory);
-                    return;
-                }
-            }
-
-            // Vitácora / Logbook
-            if (hit.collider.TryGetComponent<Logbook>(out Logbook logbook))
-            {
-                if (interactAction.triggered)
-                {
-                    logbook.Interact();
-                    return;
+                    interactable.OnInteract(inventory);
                 }
             }
         }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PickupBox : MonoBehaviour
+public class BoxPickup : MonoBehaviour, IInteractable
 {
     [Header("Cantidades de Oxígeno")]
     [SerializeField] private float minOxygen = 18f;
@@ -16,7 +16,7 @@ public class PickupBox : MonoBehaviour
 
     private bool wasPickedUp = false;
 
-    public void OnPickup(PlayerInventory inventory)
+    public void OnInteract(PlayerInventory inventory)
     {
         if (wasPickedUp) return;
         wasPickedUp = true;
