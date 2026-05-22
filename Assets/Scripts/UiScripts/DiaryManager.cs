@@ -53,12 +53,22 @@ public class DiaryManager : MonoBehaviour
     }
 
     /// Llamado por los botones desde el Inspector (OnClick).
+
     public void ShowMessage(int bottleNumber)
     {
         if (bottleMessages.ContainsKey(bottleNumber))
         {
             messagePanel.SetActive(true);
-            messageText.text = bottleMessages[bottleNumber];
+
+            TextMeshProUGUI actualText = messagePanel.GetComponentInChildren<TextMeshProUGUI>(true);
+
+            if (actualText != null)
+            {
+                actualText.gameObject.SetActive(true);
+                actualText.text = bottleMessages[bottleNumber];
+                actualText.ForceMeshUpdate();
+            }
+
         }
     }
 }

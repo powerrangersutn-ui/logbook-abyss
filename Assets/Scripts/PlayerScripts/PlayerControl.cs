@@ -170,12 +170,19 @@ private void OnDisable()
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactionRange, interactionLayer))
         {
+            Debug.Log("Raycast golpeó: " + hit.collider.name);
+
             if (hit.collider.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
                 if (interactAction.triggered)
                 {
+                    Debug.Log("Interactuando con: " + hit.collider.name);
                     interactable.OnInteract(inventory);
                 }
+            }
+            else
+            {
+                Debug.Log("El objeto golpeado NO tiene IInteractable");
             }
         }
     }
