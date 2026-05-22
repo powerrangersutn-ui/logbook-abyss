@@ -14,6 +14,9 @@ public class DiaryManager : MonoBehaviour
     [Tooltip("Arrastrar los GameObjects de los botones Bottle(1) al (8) EN ORDEN")]
     [SerializeField] private GameObject[] bottleButtons;
 
+    [Header("Feedback UI")]
+    [SerializeField] private GameObject bottleInteractionFeedback;
+
     private int bottlesFound = 0;
 
     // Diccionario con los comunicados. La clave (int) es el número de botella.
@@ -41,15 +44,28 @@ public class DiaryManager : MonoBehaviour
         messagePanel.SetActive(false);
     }
 
-    /// Llamado por las botellas del mapa al ser agarradas.
+    /// Llamado por las botellas del mapa al ser agarradas
+
     public void UnlockNextBottle()
     {
         bottlesFound++;
 
         if (bottlesFound <= bottleButtons.Length)
         {
-            bottleButtons[bottlesFound - 1].SetActive(true); //-1 ya que los array arrancan en 0
+            bottleButtons[bottlesFound - 1].SetActive(true);
+
+            if (bottleInteractionFeedback != null)
+            {
+                bottleInteractionFeedback.SetActive(true);
+                StartCoroutine(HideFeedbackAfterDelay(3f));
+            }
         }
+    }
+
+    private System.Collections.IEnumerator HideFeedbackAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        bottleInteractionFeedback.SetActive(false);
     }
 
     /// Llamado por los botones desde el Inspector (OnClick).
