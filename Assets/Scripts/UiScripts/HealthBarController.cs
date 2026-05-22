@@ -9,10 +9,20 @@ public class HealthBarController : MonoBehaviour
     [SerializeField] private Image healthBarFill;
     [SerializeField] private TextMeshProUGUI percentageText;
 
+
     [Header("Settings")]
     private Color fullHealthColor = Color.green;
     private Color lowHealthColor = Color.red;
 
+    [Header("Broken Glass Effects")]
+    [SerializeField] private GameObject brokenGlass25; // Panel 25%
+    [SerializeField] private GameObject brokenGlass10; // Panel 10%
+
+    private void Awake()
+    {
+        if (brokenGlass25 != null) brokenGlass25.SetActive(false);
+        if (brokenGlass10 != null) brokenGlass10.SetActive(false);
+    }
 
     private void OnEnable(){
         UIGameEvents.onPlayerHealthChanged += UpdateHealthBar;
@@ -37,6 +47,12 @@ public class HealthBarController : MonoBehaviour
 
         //Esta opción sería para que el color sea gradual (verde, amarillo, naranja, rojo)
         //healthBarFill.color = Color.Lerp(lowHealthColor, fullHealthColor, clampedPercentage);
+
+        if (brokenGlass25 != null)
+            brokenGlass25.SetActive(clampedPercentage <= 0.25f);
+
+        if (brokenGlass10 != null)
+            brokenGlass10.SetActive(clampedPercentage <= 0.10f);
 
         if (clampedPercentage <= 0.2f)
         {

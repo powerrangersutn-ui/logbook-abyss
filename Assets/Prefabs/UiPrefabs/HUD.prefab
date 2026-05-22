@@ -8556,6 +8556,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthBarController
   healthBarFill: {fileID: 6019454025707940406}
   percentageText: {fileID: 1811027896851912197}
+  brokenGlass25: {fileID: 1921072775439796299}
+  brokenGlass10: {fileID: 5033413889472604312}
 --- !u!1 &8373791713920594164
 GameObject:
   m_ObjectHideFlags: 0
