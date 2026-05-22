@@ -14746,7 +14746,6 @@ MonoBehaviour:
   hasLogbook: 0
   gameEnded: 0
   playerControl: {fileID: 0}
-  LightEditor: {fileID: 1197265068}
 --- !u!1001 &1841343139
 PrefabInstance:
   m_ObjectHideFlags: 0

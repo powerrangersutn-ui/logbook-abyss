@@ -1,0 +1,24 @@
+# Blender 3.6.23 MTL File: 'None'
+# www.blender.org
+
+newmtl Doors
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Doors_color_1.png
+map_Ns Doors_roughness_1.png
+map_refl Doors_metalness_1.png
+
+newmtl Tube_split
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Tube_split_color.png
+map_Ns Tube_split_roughness.png
+map_refl Tube_split_metalness.png
