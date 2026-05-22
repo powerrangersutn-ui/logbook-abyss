@@ -19,7 +19,11 @@ public class GameManager : MonoBehaviour
     public bool gameEnded = false;
 
     [Header("Referencia al Jugador")]
-    [SerializeField] private PlayerControl playerControl; 
+    [SerializeField] private PlayerControl playerControl;
+
+    [Header("Luz de edicion")]
+    [SerializeField] private Light LightEditor;
+
 
     private void Awake()
     {
@@ -28,7 +32,14 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         Instance = this;
+
+        if (LightEditor!= null)
+        {
+            LightEditor.enabled = false;
+        }
+
     }
 
     private void Start()
