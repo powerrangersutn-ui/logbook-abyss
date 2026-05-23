@@ -177,7 +177,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.048415814, g: 0.6037736, b: 0.048415814, a: 1}
     m_PressedColor: {r: 0.032707367, g: 0.46226418, b: 0.032707367, a: 1}
     m_SelectedColor: {r: 0.03137255, g: 0.46274513, b: 0.03137255, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5385908506347862009}
+      - m_Target: {fileID: 5683116938846005449}
         m_TargetAssemblyTypeName: DiaryManager, Assembly-CSharp
         m_MethodName: ShowMessage
         m_Mode: 3
@@ -884,7 +884,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.048415814, g: 0.6037736, b: 0.048415814, a: 1}
     m_PressedColor: {r: 0.032707367, g: 0.46226418, b: 0.032707367, a: 1}
     m_SelectedColor: {r: 0.03137255, g: 0.46274513, b: 0.03137255, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -903,7 +903,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5385908506347862009}
+      - m_Target: {fileID: 5683116938846005449}
         m_TargetAssemblyTypeName: DiaryManager, Assembly-CSharp
         m_MethodName: ShowMessage
         m_Mode: 3
@@ -1177,7 +1177,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Comunicado 7
+  m_text: Comunicado 6
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 29edd244858a7c8448897eae9b70920a, type: 2}
   m_sharedMaterial: {fileID: -8786780430814128147, guid: 29edd244858a7c8448897eae9b70920a, type: 2}
@@ -1496,7 +1496,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.048415814, g: 0.6037736, b: 0.048415814, a: 1}
     m_PressedColor: {r: 0.032707367, g: 0.46226418, b: 0.032707367, a: 1}
     m_SelectedColor: {r: 0.03137255, g: 0.46274513, b: 0.03137255, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1515,7 +1515,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5385908506347862009}
+      - m_Target: {fileID: 5683116938846005449}
         m_TargetAssemblyTypeName: DiaryManager, Assembly-CSharp
         m_MethodName: ShowMessage
         m_Mode: 3
@@ -2106,7 +2106,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.048415814, g: 0.6037736, b: 0.048415814, a: 1}
     m_PressedColor: {r: 0.032707367, g: 0.46226418, b: 0.032707367, a: 1}
     m_SelectedColor: {r: 0.03137255, g: 0.46274513, b: 0.03137255, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2125,7 +2125,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5385908506347862009}
+      - m_Target: {fileID: 5683116938846005449}
         m_TargetAssemblyTypeName: DiaryManager, Assembly-CSharp
         m_MethodName: ShowMessage
         m_Mode: 3
@@ -3993,7 +3993,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.048415814, g: 0.6037736, b: 0.048415814, a: 1}
     m_PressedColor: {r: 0.032707367, g: 0.46226418, b: 0.032707367, a: 1}
     m_SelectedColor: {r: 0.03137255, g: 0.46274513, b: 0.03137255, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4012,7 +4012,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5385908506347862009}
+      - m_Target: {fileID: 5683116938846005449}
         m_TargetAssemblyTypeName: DiaryManager, Assembly-CSharp
         m_MethodName: ShowMessage
         m_Mode: 3
@@ -4024,6 +4024,127 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &3096383511337432423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4708604349476616952}
+  - component: {fileID: 611493292443809357}
+  - component: {fileID: 6731644316092876281}
+  - component: {fileID: 2145611162218297296}
+  m_Layer: 5
+  m_Name: Logbook
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4708604349476616952
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3096383511337432423}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4884977986126450374}
+  m_Father: {fileID: 7039462593797550800}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 145.2928, y: -596.4246}
+  m_SizeDelta: {x: 290.5856, y: 65.6105}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &611493292443809357
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3096383511337432423}
+  m_CullTransparentMesh: 1
+--- !u!114 &6731644316092876281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3096383511337432423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2145611162218297296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3096383511337432423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 0.0127269495, g: 0.24528301, b: 0.0127269495, a: 0}
+    m_HighlightedColor: {r: 0.048415814, g: 0.6037736, b: 0.048415814, a: 1}
+    m_PressedColor: {r: 0.032707367, g: 0.46226418, b: 0.032707367, a: 1}
+    m_SelectedColor: {r: 0.03137255, g: 0.46274513, b: 0.03137255, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 6731644316092876281}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3468250185435603679
 GameObject:
   m_ObjectHideFlags: 0
@@ -4412,6 +4533,7 @@ RectTransform:
   - {fileID: 4871910410046487860}
   - {fileID: 2991093525000075894}
   - {fileID: 1440542499863071956}
+  - {fileID: 4708604349476616952}
   m_Father: {fileID: 1932111034954163969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
@@ -4585,7 +4707,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Bit\xE1cora"
+  m_text: Comunicado 8
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 29edd244858a7c8448897eae9b70920a, type: 2}
   m_sharedMaterial: {fileID: -8786780430814128147, guid: 29edd244858a7c8448897eae9b70920a, type: 2}
@@ -5580,7 +5702,7 @@ GameObject:
   - component: {fileID: 5011796388763776624}
   - component: {fileID: 8446933641262730014}
   - component: {fileID: 6337552761181585814}
-  - component: {fileID: 5385908506347862009}
+  - component: {fileID: 5683116938846005449}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -5698,7 +5820,7 @@ MonoBehaviour:
   dialogPanel: {fileID: 6132809021200565593}
   textDialog: {fileID: 630186074289054320}
   timeBetweenLines: 4
---- !u!114 &5385908506347862009
+--- !u!114 &5683116938846005449
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5713,14 +5835,15 @@ MonoBehaviour:
   messagePanel: {fileID: 4957348363244497250}
   messageText: {fileID: 9109952751777683559}
   bottleButtons:
-  - {fileID: 8677380946254480946}
-  - {fileID: 492255843761040262}
-  - {fileID: 243129271648540144}
-  - {fileID: 5264004952042419128}
-  - {fileID: 1274747880713490051}
-  - {fileID: 8206991419687014256}
-  - {fileID: 976112931466816299}
-  - {fileID: 2972137323886815798}
+  - {fileID: 7740803429605985826}
+  - {fileID: 6549185562894814724}
+  - {fileID: 2612019810020198906}
+  - {fileID: 7347825038139229274}
+  - {fileID: 8775691819830992704}
+  - {fileID: 6483210934658225869}
+  - {fileID: 5940474306229403899}
+  - {fileID: 4405507756958069281}
+  - {fileID: 2145611162218297296}
   bottleInteractionFeedback: {fileID: 8456987405688237418}
 --- !u!1 &4781110539427712783
 GameObject:
@@ -6031,7 +6154,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Comunicado 8
+  m_text: Comunicado 7
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 29edd244858a7c8448897eae9b70920a, type: 2}
   m_sharedMaterial: {fileID: -8786780430814128147, guid: 29edd244858a7c8448897eae9b70920a, type: 2}
@@ -6280,7 +6403,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.048415814, g: 0.6037736, b: 0.048415814, a: 1}
     m_PressedColor: {r: 0.032707367, g: 0.46226418, b: 0.032707367, a: 1}
     m_SelectedColor: {r: 0.03137255, g: 0.46274513, b: 0.03137255, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -6299,7 +6422,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5385908506347862009}
+      - m_Target: {fileID: 5683116938846005449}
         m_TargetAssemblyTypeName: DiaryManager, Assembly-CSharp
         m_MethodName: ShowMessage
         m_Mode: 3
@@ -8254,6 +8377,143 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &8007116362194070655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4884977986126450374}
+  - component: {fileID: 2793029215822032309}
+  - component: {fileID: 355401791632951278}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4884977986126450374
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8007116362194070655}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4708604349476616952}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -2.1610107}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2793029215822032309
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8007116362194070655}
+  m_CullTransparentMesh: 1
+--- !u!114 &355401791632951278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8007116362194070655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "Bit\xE1cora"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 29edd244858a7c8448897eae9b70920a, type: 2}
+  m_sharedMaterial: {fileID: -8786780430814128147, guid: 29edd244858a7c8448897eae9b70920a, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 30
+  m_fontSizeBase: 30
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &8183089129938546132
 GameObject:
   m_ObjectHideFlags: 0
@@ -8431,7 +8691,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.048415814, g: 0.6037736, b: 0.048415814, a: 1}
     m_PressedColor: {r: 0.032707367, g: 0.46226418, b: 0.032707367, a: 1}
     m_SelectedColor: {r: 0.03137255, g: 0.46274513, b: 0.03137255, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -8450,7 +8710,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5385908506347862009}
+      - m_Target: {fileID: 5683116938846005449}
         m_TargetAssemblyTypeName: DiaryManager, Assembly-CSharp
         m_MethodName: ShowMessage
         m_Mode: 3
@@ -8948,7 +9208,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.048415814, g: 0.6037736, b: 0.048415814, a: 1}
     m_PressedColor: {r: 0.032707367, g: 0.46226418, b: 0.032707367, a: 1}
     m_SelectedColor: {r: 0.03137255, g: 0.46274513, b: 0.03137255, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -8967,7 +9227,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5385908506347862009}
+      - m_Target: {fileID: 5683116938846005449}
         m_TargetAssemblyTypeName: DiaryManager, Assembly-CSharp
         m_MethodName: ShowMessage
         m_Mode: 3
