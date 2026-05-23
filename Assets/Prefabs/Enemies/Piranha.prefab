@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6093499606135340402}
   - component: {fileID: 6228153250258541678}
-  - component: {fileID: 1297114919448264024}
+  - component: {fileID: 9189661891976050501}
   - component: {fileID: 3900058042866649377}
   - component: {fileID: 8705900517100521563}
   - component: {fileID: 3723372724953019729}
@@ -66,7 +66,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &1297114919448264024
+--- !u!114 &9189661891976050501
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,12 +75,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7074436024843249244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3e9d09aab0faf745b29edbc8e852197, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d033fec39f8d0f41aa02a7b2b14b959, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyBrain
+  m_EditorClassIdentifier: Assembly-CSharp::PiranhaAI
   sensors: {fileID: 3900058042866649377}
   locomotion: {fileID: 3723372724953019729}
-  currentState: 0
+  detectionRange: 8
+  chaseSpeed: 12
+  attackDistance: 1.5
+  attackCooldown: 0.5
+  jumpscareScreamDuration: 0.3
+  jumpscareSound: {fileID: 0}
 --- !u!114 &3900058042866649377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySensors
   target: {fileID: 0}
-  detectionRange: 20
+  detectionRange: 10
   visionAngle: 360
   obstacleMask:
     serializedVersion: 2
@@ -129,9 +134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afe777c7d2a5ed44b71599a6871885e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AquaticLocomotion
-  moveSpeed: 0
-  acceleration: 0
-  rotationSpeed: 0
+  moveSpeed: 5
+  acceleration: 13
+  rotationSpeed: 3
   avoidance: {fileID: 8705900517100521563}
 --- !u!65 &7567461490995933962
 BoxCollider:

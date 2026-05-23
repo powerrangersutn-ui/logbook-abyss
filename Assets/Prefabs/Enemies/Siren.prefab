@@ -9,16 +9,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5389804904809842159}
-  - component: {fileID: 8612929574818989850}
-  - component: {fileID: 1123367378882448013}
-  - component: {fileID: 3452214490583145017}
   - component: {fileID: 7534516721660693559}
   - component: {fileID: 470447585068573869}
   - component: {fileID: 5707872238682201445}
-  - component: {fileID: 4405063856203522415}
-  - component: {fileID: 1978666435150504461}
-  - component: {fileID: 1056448127116414691}
+  - component: {fileID: 4092937891475810697}
   - component: {fileID: 113068958926841487}
+  - component: {fileID: 8987163813665814204}
+  - component: {fileID: 800702882632720716}
+  - component: {fileID: 3744865705930019089}
+  - component: {fileID: 6569221565693453341}
   m_Layer: 6
   m_Name: Siren
   m_TagString: Enemy
@@ -42,62 +41,6 @@ Transform:
   - {fileID: 7838155648736082411}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8612929574818989850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3989338585170645242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4b45ccccb5552d4e9cc1dc336cdbe12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  player: {fileID: 0}
-  speed: 2
-  minDistance: 1.8
-  maxDistance: 8
-  fleeTriggerDistance: 500
-  fleeSpeedMultiplier: 15
-  destroyDistance: 500
-  attackCooldown: 2
---- !u!114 &1123367378882448013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3989338585170645242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb8776da51a781c49889aabacf398187, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyPatrol
-  speed: 4
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  waitTime: 1.5
-  rotationSpeed: 4
-  playerDetected: 0
---- !u!114 &3452214490583145017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3989338585170645242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b08c02ba536a81245b6f1ed9eafbda67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  distanciaSeguir: 8
-  distanciaAtacar: 0
-  distanciaEscapar: 0
 --- !u!33 &7534516721660693559
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -169,59 +112,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   maxHealth: 2
   showStuckHarpoons: 1
---- !u!114 &4405063856203522415
-MonoBehaviour:
+--- !u!54 &4092937891475810697
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3989338585170645242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25cb76d948874c047ae0ff028bc571da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
-  maxHealth: 2
-  destroyOnDeath: 1
-  OnDamageTaken:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1978666435150504461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3989338585170645242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3110ca3cff021842b2acbbbd0ca0738, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyWeapon
-  weaponCollider: {fileID: 2140363373340796940}
-  damage: 30
-  attackDuration: 0.5
-  showDebugLogs: 1
---- !u!114 &1056448127116414691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3989338585170645242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf0e29b3ca170524eac828709dc3ace2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
-  attackCooldown: 2
-  attackRange: 2
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 2
+  m_AngularDamping: 4
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!136 &113068958926841487
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -245,6 +162,88 @@ CapsuleCollider:
   m_Height: 3.0659823
   m_Direction: 1
   m_Center: {x: 0.000018715858, y: 1.5061011, z: -0.10669926}
+--- !u!114 &8987163813665814204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989338585170645242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e9d09aab0faf745b29edbc8e852197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBrain
+  sensors: {fileID: 800702882632720716}
+  locomotion: {fileID: 6569221565693453341}
+  patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  patrolReachDistance: 1
+  patrolSpeed: 3
+  chaseSpeed: 12
+  attackChaseSpeed: 5
+  screamSpeed: 0
+  screamDuration: 2
+  alertDuration: 5
+  patrolTurnThreshold: 360
+  patrolStopTime: 1
+  attackDistance: 2
+  attackCooldown: 1.5
+  currentState: 0
+--- !u!114 &800702882632720716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989338585170645242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ead29833af2191840aa880ffa137c71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySensors
+  target: {fileID: 0}
+  detectionRange: 10
+  visionAngle: 360
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &3744865705930019089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989338585170645242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c91d75108b187b47b5413d4e58b01c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleAvoidance
+  detectionDistance: 3
+  sphereRadius: 0.5
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 128
+  avoidanceStrength: 5
+--- !u!114 &6569221565693453341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989338585170645242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4afe777c7d2a5ed44b71599a6871885e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AquaticLocomotion
+  moveSpeed: 3
+  acceleration: 9
+  rotationSpeed: 1.5
+  avoidance: {fileID: 3744865705930019089}
 --- !u!1 &9004887754009592635
 GameObject:
   m_ObjectHideFlags: 0

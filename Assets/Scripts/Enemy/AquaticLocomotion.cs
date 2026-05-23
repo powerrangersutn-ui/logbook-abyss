@@ -14,13 +14,11 @@ public class AquaticLocomotion : MonoBehaviour
     [SerializeField] private ObstacleAvoidance avoidance;
 
     private Rigidbody rb;
-
     private Vector3 desiredDirection;
     private float currentMoveSpeed;
-
     private bool overrideRotation;
-
     private Vector3 forcedLookDirection;
+    private bool movementLocked;
 
     private void Awake()
     {
@@ -56,9 +54,14 @@ public class AquaticLocomotion : MonoBehaviour
         Move();
         Rotate();
     }
-
+    public void SetMovementLocked(bool locked)
+    {
+        movementLocked = locked;
+    }
     private void Move()
     {
+        if (movementLocked)
+            return;
         Vector3 avoidanceDirection = Vector3.zero;
 
         if (avoidance != null)

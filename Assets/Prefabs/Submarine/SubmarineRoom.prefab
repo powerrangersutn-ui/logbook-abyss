@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3169993024900560147}
   - component: {fileID: 5110018419272494265}
   - component: {fileID: 9172472452131346575}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SubmarineRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 9210795306661245650}
   - component: {fileID: 4483609360599149320}
   - component: {fileID: 3970723116027168241}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

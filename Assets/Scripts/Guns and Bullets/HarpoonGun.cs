@@ -39,8 +39,6 @@ public class HarpoonGun : MonoBehaviour
     [SerializeField] private bool enableRecoil = true;
     [SerializeField] private float recoilRotation = 15f;
     [SerializeField] private float recoilDownSpeed = 8f;
-    [Header("UI Ammo")]
-    [SerializeField] private int ammoLowThreshold = 1;
 
     [Header ("sounds")]
     [SerializeField] private AudioClip shootSound;

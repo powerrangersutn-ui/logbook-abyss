@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 5414423371377497158}
   - component: {fileID: 7624918329946320432}
   - component: {fileID: 974929358679583672}
+  - component: {fileID: 8827124942648124116}
   m_Layer: 0
   m_Name: Vitacora
   m_TagString: Untagged
@@ -183,6 +184,27 @@ MonoBehaviour:
   dialogElevator: {fileID: 0}
   uiShowDistance: 3
   interactionCanvas: {fileID: 1635862858796813859}
+--- !u!65 &8827124942648124116
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731982524484427049}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6161712, y: 0.8907901, z: 1.5546561}
+  m_Center: {x: -0.13428521, y: -0.20972966, z: 0.3211404}
 --- !u!1 &8287244552850339848
 GameObject:
   m_ObjectHideFlags: 0

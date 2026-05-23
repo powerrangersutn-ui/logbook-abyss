@@ -4,19 +4,16 @@ public class EnemyBrain : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private EnemySensors sensors;
-
     [SerializeField] private AquaticLocomotion locomotion;
 
     [Header("Patrol")]
     [SerializeField] private PatrolPoint[] patrolPoints;
-
     [SerializeField] private float patrolReachDistance = 2f;
 
     [Header("Movement Speeds")]
     [SerializeField] private float patrolSpeed = 3f;
-
     [SerializeField] private float chaseSpeed = 9f;
-
+    [SerializeField] private float attackChaseSpeed = 6f; // Velocidad después del primer golpe
     [SerializeField] private float screamSpeed = 0f;
 
     [Header("Scream")]
@@ -25,36 +22,33 @@ public class EnemyBrain : MonoBehaviour
     [Header("Memory")]
     [SerializeField] private float alertDuration = 5f;
 
+    [Header("Patrol Turning")]
+    [SerializeField] private float patrolTurnThreshold = 15f;
+    [SerializeField] private float patrolStopTime = 1f; // Tiempo que se queda quieta en el punto
+
+    [Header("Attack")]
+    [SerializeField] private float attackDistance = 2f;
+    [SerializeField] private float attackCooldown = 1.5f; // Tiempo entre ataques
+
     [Header("State")]
     [SerializeField] private EnemyState currentState;
-
-    [Header("Advanced Chase")]
-    [SerializeField] private float orbitDistance = 4f;
-
-    [SerializeField] private float orbitHeightVariation = 2f;
-
-    [SerializeField] private float orbitChangeInterval = 3f;
-
-    private float orbitTimer;
-
-    private Vector3 orbitOffset;
 
     public EnemyState CurrentState => currentState;
 
     private int patrolIndex;
-
     private float alertTimer;
-
     private float screamTimer;
-
-    private bool screamTriggered;
-
     private Vector3 lastKnownTargetPosition;
+    private float patrolStopTimer;
+    private bool hasHitOnce; // Controla si ya pegó el primer golpe
+    private float attackCooldownTimer;
+
+    public bool IsDead => currentState == EnemyState.Dead;
 
     private void Start()
     {
         ChangeState(EnemyState.Patrol);
-        GenerateOrbitOffset();
+        patrolStopTimer = patrolStopTime;
     }
 
     private void Update()
@@ -62,122 +56,109 @@ public class EnemyBrain : MonoBehaviour
         EvaluateState();
         ExecuteState();
     }
-    private void GenerateOrbitOffset()
+
+    public void Kill()
     {
-        Vector3 side =
-            Random.value > 0.5f
-            ? sensors.Target.right
-            : -sensors.Target.right;
-
-        float height =
-            Random.Range(
-                -orbitHeightVariation,
-                orbitHeightVariation);
-
-        orbitOffset =
-            side * orbitDistance +
-            Vector3.up * height;
-
-        orbitTimer = orbitChangeInterval;
+        ChangeState(EnemyState.Dead);
     }
+
     private void EvaluateState()
     {
+        if (currentState == EnemyState.Dead)
+            return;
+
         switch (currentState)
         {
             case EnemyState.Patrol:
-
                 if (sensors.CanSeeTarget)
                 {
-                    lastKnownTargetPosition =
-                        sensors.Target.position;
-
+                    lastKnownTargetPosition = sensors.Target.position;
                     ChangeState(EnemyState.Scream);
                 }
-
                 break;
 
             case EnemyState.Scream:
-
                 screamTimer -= Time.deltaTime;
-
                 if (screamTimer <= 0f)
                 {
                     ChangeState(EnemyState.Chase);
                 }
-
                 break;
 
             case EnemyState.Chase:
-                
-                orbitTimer -= Time.deltaTime;
-
-
-                if (orbitTimer <= 0f)
-                {
-                    GenerateOrbitOffset();
-                }
-
                 if (sensors.CanSeeTarget)
                 {
-                    lastKnownTargetPosition =
-                        sensors.Target.position;
-
+                    lastKnownTargetPosition = sensors.Target.position;
                     alertTimer = alertDuration;
+
+                    float distance = Vector3.Distance(transform.position, sensors.Target.position);
+
+                    // Cuando llega a distancia de ataque
+                    if (distance <= attackDistance && attackCooldownTimer <= 0f)
+                    {
+                        ChangeState(EnemyState.Attack);
+                    }
                 }
                 else
                 {
                     ChangeState(EnemyState.Alert);
                 }
+                break;
 
+            case EnemyState.Attack:
+                attackCooldownTimer -= Time.deltaTime;
+
+                // Después de atacar, vuelve a perseguir
+                if (attackCooldownTimer <= 0f)
+                {
+                    ChangeState(EnemyState.Chase);
+                }
                 break;
 
             case EnemyState.Alert:
-
                 alertTimer -= Time.deltaTime;
-
                 if (alertTimer <= 0f)
                 {
                     ChangeState(EnemyState.Patrol);
                 }
-
                 break;
         }
     }
 
     private void ExecuteState()
     {
+        Debug.Log($"Estado actual: {currentState}");
+
         switch (currentState)
         {
             case EnemyState.Patrol:
-
+                Debug.Log($"Patrullando hacia punto {patrolIndex}");
                 locomotion.SetMoveSpeed(patrolSpeed);
-
                 HandlePatrol();
-
                 break;
 
             case EnemyState.Scream:
-
                 locomotion.SetMoveSpeed(screamSpeed);
-
                 HandleScream();
-
                 break;
 
             case EnemyState.Chase:
-
-                locomotion.SetMoveSpeed(chaseSpeed);
-
-                MoveTo(lastKnownTargetPosition);
-
+                // Si ya pegó una vez, va más lento
+                locomotion.SetMoveSpeed(hasHitOnce ? attackChaseSpeed : chaseSpeed);
+                MoveTo(sensors.Target.position); // Persecución DIRECTA
                 break;
 
             case EnemyState.Alert:
-
                 locomotion.SetMoveSpeed(patrolSpeed);
-
                 MoveTo(lastKnownTargetPosition);
+                break;
 
+            case EnemyState.Attack:
+                HandleAttack();
+                break;
+
+            case EnemyState.Dead:
+                HandleDead();
                 break;
         }
     }
@@ -190,25 +171,50 @@ public class EnemyBrain : MonoBehaviour
             return;
         }
 
-        PatrolPoint point =
-            patrolPoints[patrolIndex];
+        PatrolPoint point = patrolPoints[patrolIndex];
+        Vector3 direction = point.transform.position - transform.position;
+        float distance = direction.magnitude;
 
-        Vector3 targetPosition =
-            point.transform.position;
+        Debug.Log($"Distancia al punto {patrolIndex}: {distance} | Timer: {patrolStopTimer}");
 
-        MoveTo(targetPosition);
+        Vector3 flatDirection = direction.normalized;
+        float angle = Vector3.Angle(transform.forward, flatDirection);
 
-        float distance =
-            Vector3.Distance(
-                transform.position,
-                targetPosition);
-
+        // Llegó al punto: se queda quieta
         if (distance <= patrolReachDistance)
         {
-            patrolIndex++;
+            locomotion.SetDesiredDirection(Vector3.zero);
+            locomotion.SetMovementLocked(true);
 
-            if (patrolIndex >= patrolPoints.Length)
-                patrolIndex = 0;
+            patrolStopTimer -= Time.deltaTime;
+
+            // Después del tiempo de espera, avanza al siguiente punto
+            if (patrolStopTimer <= 0f)
+            {
+                Debug.Log("En el punto, esperando...");
+                patrolIndex++;
+                if (patrolIndex >= patrolPoints.Length)
+                    patrolIndex = 0;
+
+                patrolStopTimer = patrolStopTime;
+                locomotion.SetMovementLocked(false); // IMPORTANTE: destraba
+            }
+            return;
+        }
+
+        // Si el ángulo es grande, solo gira
+        if (angle > patrolTurnThreshold)
+        {
+            Debug.Log($"Ángulo muy grande ({angle}°), solo girando");
+            locomotion.SetMovementLocked(true);
+            locomotion.SetDesiredDirection(flatDirection);
+        }
+        else
+        {
+            Debug.Log($"Ángulo OK ({angle}°), moviéndose hacia el punto");
+            // Ya está mirando bien, ahora sí se mueve
+            locomotion.SetMovementLocked(false);
+            MoveTo(point.transform.position);
         }
     }
 
@@ -217,59 +223,72 @@ public class EnemyBrain : MonoBehaviour
         if (sensors.Target == null)
             return;
 
-        Vector3 lookDirection =
-            sensors.Target.position - transform.position;
-
+        Vector3 lookDirection = sensors.Target.position - transform.position;
         locomotion.SetDesiredDirection(Vector3.zero);
-
         locomotion.SetForcedLookDirection(lookDirection);
     }
 
     private void MoveTo(Vector3 targetPosition)
     {
-        Vector3 direction =
-            targetPosition - transform.position;
-
+        Vector3 direction = targetPosition - transform.position;
         locomotion.SetDesiredDirection(direction);
     }
 
     private void ChangeState(EnemyState newState)
     {
         currentState = newState;
-
         locomotion.ClearForcedLookDirection();
+        locomotion.SetMovementLocked(false); // Siempre destraba al cambiar de estado
 
         switch (newState)
         {
             case EnemyState.Scream:
-
                 screamTimer = screamDuration;
-
-                screamTriggered = false;
-
                 TriggerScream();
+                break;
 
+            case EnemyState.Patrol:
+                hasHitOnce = false; // Resetea el flag si vuelve a patrullar
+                patrolStopTimer = patrolStopTime;
+                break;
+
+            case EnemyState.Attack:
+                attackCooldownTimer = attackCooldown;
                 break;
         }
-    }
-    private void HandleAdvancedChase()
-    {
-        if (sensors.Target == null)
-            return;
-
-        Vector3 targetPosition =
-            sensors.Target.position + orbitOffset;
-
-        MoveTo(targetPosition);
     }
 
     private void TriggerScream()
     {
-        if (screamTriggered)
+        Debug.Log("SIREN SCREAM");
+        // Acá podés agregar tu audio/animación del grito
+    }
+
+    private void HandleAttack()
+    {
+        if (sensors.Target == null)
             return;
 
-        screamTriggered = true;
+        Vector3 direction = sensors.Target.position - transform.position;
 
-        Debug.Log("SIREN SCREAM");
+        locomotion.SetMoveSpeed(0f); // Se queda quieta durante el ataque
+        locomotion.SetDesiredDirection(Vector3.zero);
+        locomotion.SetForcedLookDirection(direction);
+
+        // AQUÍ ejecutás el daño al jugador
+        DealDamageToPlayer();
+        hasHitOnce = true; // Marca que ya pegó una vez
+    }
+
+    private void DealDamageToPlayer()
+    {
+        // Llamá acá a tu sistema de daño del jugador
+        Debug.Log("SIRENA ATACA!");
+    }
+
+    private void HandleDead()
+    {
+        locomotion.SetDesiredDirection(Vector3.zero);
+        locomotion.SetMovementLocked(true);
     }
 }

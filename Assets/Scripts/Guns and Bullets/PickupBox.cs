@@ -9,7 +9,6 @@ public class PickupBox : MonoBehaviour
     [Header("Probabilidades de Arpones")]
     [Range(0, 100)][SerializeField] private float chance1Harpoon = 40f;
     [Range(0, 100)][SerializeField] private float chance2Harpoons = 35f;
-    [Range(0, 100)][SerializeField] private float chance3Harpoons = 25f;
 
     [Header("Probabilidad general")]
     [Range(0, 100)][SerializeField] private float harpoonChanceWhenNormal = 80f;

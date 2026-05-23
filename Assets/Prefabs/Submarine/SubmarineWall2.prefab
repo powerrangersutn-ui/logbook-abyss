@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1286618776668907108}
   - component: {fileID: 6961069316584961411}
   - component: {fileID: 4112230524056863519}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3910638194643178244}
   - component: {fileID: 14350388469354851}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SubmarineWall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
