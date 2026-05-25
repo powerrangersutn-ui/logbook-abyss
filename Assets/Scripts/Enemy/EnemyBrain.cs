@@ -5,6 +5,7 @@ public class EnemyBrain : MonoBehaviour
     [Header("References")]
     [SerializeField] private EnemySensors sensors;
     [SerializeField] private AquaticLocomotion locomotion;
+    [SerializeField] private EnemyAttack attack;
 
     [Header("Patrol")]
     [SerializeField] private PatrolPoint[] patrolPoints;
@@ -269,21 +270,16 @@ public class EnemyBrain : MonoBehaviour
         if (sensors.Target == null)
             return;
 
-        Vector3 direction = sensors.Target.position - transform.position;
+        Vector3 direction =
+            sensors.Target.position - transform.position;
 
-        locomotion.SetMoveSpeed(0f); // Se queda quieta durante el ataque
+        locomotion.SetMoveSpeed(0f);
+
         locomotion.SetDesiredDirection(Vector3.zero);
+
         locomotion.SetForcedLookDirection(direction);
 
-        // AQUÍ ejecutás el daño al jugador
-        DealDamageToPlayer();
-        hasHitOnce = true; // Marca que ya pegó una vez
-    }
-
-    private void DealDamageToPlayer()
-    {
-        // Llamá acá a tu sistema de daño del jugador
-        Debug.Log("SIRENA ATACA!");
+        attack.TryAttack();
     }
 
     private void HandleDead()

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3722095719384006058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5777806368354544444}
+  m_Layer: 6
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5777806368354544444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722095719384006058}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.25120974, y: 0.28801727, z: 1.6600666}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6093499606135340402}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7074436024843249244
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,6 +47,7 @@ GameObject:
   - component: {fileID: 3723372724953019729}
   - component: {fileID: 7567461490995933962}
   - component: {fileID: 1559277043155750061}
+  - component: {fileID: 2599940317644617705}
   m_Layer: 6
   m_Name: Piranha
   m_TagString: Enemy
@@ -37,6 +69,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1041729010502720981}
+  - {fileID: 5777806368354544444}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6228153250258541678
@@ -80,10 +113,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PiranhaAI
   sensors: {fileID: 3900058042866649377}
   locomotion: {fileID: 3723372724953019729}
+  attack: {fileID: 2599940317644617705}
   detectionRange: 8
   chaseSpeed: 12
   attackDistance: 1.5
-  attackCooldown: 0.5
+  desiredCombatDistance: 3
+  attackCooldown: 2
   jumpscareScreamDuration: 0.3
   jumpscareSound: {fileID: 0}
 --- !u!114 &3900058042866649377
@@ -120,7 +155,7 @@ MonoBehaviour:
   sphereRadius: 3
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
   avoidanceStrength: 5
 --- !u!114 &3723372724953019729
 MonoBehaviour:
@@ -157,8 +192,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.62789917, y: 0.92063123, z: 1}
-  m_Center: {x: 0.22175598, y: 0.1603156, z: 0}
+  m_Size: {x: 0.616745, y: 0.92063123, z: 1}
+  m_Center: {x: 0.22733307, y: 0.1603156, z: 0}
 --- !u!114 &1559277043155750061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +208,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   maxHealth: 1
   showStuckHarpoons: 1
+--- !u!114 &2599940317644617705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074436024843249244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1b3c316db036734b9eed932942600ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
+  damage: 5
+  attackRange: 2
+  attackCooldown: 2
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  attackPoint: {fileID: 5777806368354544444}
 --- !u!1 &8005595187543764241
 GameObject:
   m_ObjectHideFlags: 0

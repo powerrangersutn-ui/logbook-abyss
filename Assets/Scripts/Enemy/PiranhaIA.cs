@@ -5,11 +5,13 @@ public class PiranhaAI : MonoBehaviour
     [Header("References")]
     [SerializeField] private EnemySensors sensors;
     [SerializeField] private AquaticLocomotion locomotion;
+    [SerializeField] private EnemyAttack attack;
 
     [Header("Behavior")]
     [SerializeField] private float detectionRange = 8f; // Rango para activarse
     [SerializeField] private float chaseSpeed = 12f;
     [SerializeField] private float attackDistance = 1.5f;
+    [SerializeField] private float desiredCombatDistance = 1.2f;
     [SerializeField] private float attackCooldown = 0.5f;
 
     [Header("Jumpscare")]
@@ -106,13 +108,27 @@ public class PiranhaAI : MonoBehaviour
         if (sensors.Target == null)
             return;
 
-        Vector3 direction = sensors.Target.position - transform.position;
+        Vector3 direction =
+            sensors.Target.position - transform.position;
+
+        float distance =
+            direction.magnitude;
+
         locomotion.SetForcedLookDirection(direction);
-        locomotion.SetDesiredDirection(Vector3.zero);
+
+        if (distance > desiredCombatDistance)
+        {
+            locomotion.SetDesiredDirection(direction);
+        }
+        else
+        {
+            locomotion.SetDesiredDirection(Vector3.zero);
+        }
 
         if (attackTimer <= 0f)
         {
-            DealDamage();
+            attack.TryAttack();
+
             ChangeState(State.Chase);
         }
     }
@@ -143,13 +159,5 @@ public class PiranhaAI : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(jumpscareSound, transform.position, 1f);
         }
-
-        // Aca podes agregar mas cosas
-    }
-
-    private void DealDamage()
-    {
-        Debug.Log("PIRAÑA MUERDE");
-        // Tu sistema de daño aca
     }
 }
