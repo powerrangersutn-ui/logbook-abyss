@@ -168,42 +168,21 @@ private void OnDisable()
     {
         Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
 
-        Debug.DrawRay(ray.origin, ray.direction * interactionRange, Color.red, 0.5f); // Para ver el rayo
-
         if (Physics.Raycast(ray, out RaycastHit hit, interactionRange, interactionLayer))
         {
-            Debug.Log($"[Interaction] Golpeó: {hit.collider.name} | Layer: {hit.collider.gameObject.layer}");
-            // Caja de suministros (Oxígeno / Arpones)
+            Debug.Log("Raycast golpeó: " + hit.collider.name);
 
-            if (hit.collider.TryGetComponent<PickupBox>(out PickupBox box))
+            if (hit.collider.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
-                Debug.Log("[Interaction] PickupBox detectada!");
                 if (interactAction.triggered)
                 {
-                    Debug.Log("[Interaction] ¡Tecla Interact presionada! Llamando Interact()");
-                    box.Interact();
-                    return;
+                    Debug.Log("Interactuando con: " + hit.collider.name);
+                    interactable.OnInteract(inventory);
                 }
-                else
-                {
-                    Debug.Log("[Interaction] PickupBox detectada pero NO se presionó la tecla");
-                }
-
             }
             else
             {
-                // Esto te dirá si el raycast no está pegando nada
-                if (interactAction.triggered)
-                    Debug.LogWarning("[Interaction] Se presionó Interact pero el Raycast no pegó nada");
-            }
-            // Vitácora / Logbook
-            if (hit.collider.TryGetComponent<Logbook>(out Logbook logbook))
-            {
-                if (interactAction.triggered)
-                {
-                    logbook.Interact();
-                    return;
-                }
+                Debug.Log("El objeto golpeado NO tiene IInteractable");
             }
         }
     }
