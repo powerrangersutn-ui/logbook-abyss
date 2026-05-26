@@ -33,7 +33,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1389624213657624804}
-  - {fileID: 7966908526594972508}
   - {fileID: 1879713416990978785}
   m_Father: {fileID: 8306854143979857976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -151,7 +150,7 @@ GameObject:
   - component: {fileID: 5781484773895695800}
   - component: {fileID: 8880714584081939430}
   - component: {fileID: 4057713597200126872}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,133 +260,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8306854143979857976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2746796008310862224
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7966908526594972508}
-  - component: {fileID: 9175564469281259982}
-  - component: {fileID: 3090547509167589678}
-  m_Layer: 0
-  m_Name: Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7966908526594972508
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2746796008310862224}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.171, y: 0.156, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5401094430856146449}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!108 &9175564469281259982
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2746796008310862224}
-  m_Enabled: 1
-  serializedVersion: 12
-  m_Type: 0
-  m_Color: {r: 0.9056604, g: 0.8268552, b: 0.49127805, a: 1}
-  m_Intensity: 100
-  m_Range: 18
-  m_SpotAngle: 64
-  m_InnerSpotAngle: 14
-  m_CookieSize2D: {x: 0.5, y: 0.5}
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
-  m_ForceVisible: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
-  m_LightUnit: 1
-  m_LuxAtDistance: 1
-  m_EnableSpotReflector: 1
---- !u!114 &3090547509167589678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2746796008310862224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_CustomShadowLayers: 0
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
-  m_RenderingLayersMask:
-    serializedVersion: 0
-    m_Bits: 1
-  m_ShadowRenderingLayersMask:
-    serializedVersion: 0
-    m_Bits: 1
-  m_Version: 4
-  m_LightLayerMask: 1
-  m_ShadowLayerMask: 1
-  m_RenderingLayers: 1
-  m_ShadowRenderingLayers: 1
 --- !u!1 &2749030952957155399
 GameObject:
   m_ObjectHideFlags: 0
@@ -5268,14 +5140,13 @@ GameObject:
   - component: {fileID: 52046800797705997}
   - component: {fileID: 3432283343255469974}
   - component: {fileID: 4901672327882763457}
-  - component: {fileID: 777427417527660245}
   - component: {fileID: 2830788842391265695}
   - component: {fileID: 4506894224714675786}
   - component: {fileID: 3786779706432571100}
   - component: {fileID: 9060295027405205302}
   - component: {fileID: 7924234531194452758}
   - component: {fileID: 6707342840728547615}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlayerCharacter
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -5397,7 +5268,10 @@ MonoBehaviour:
   upDownRange: 80
   footsteepSource: {fileID: 3786779706432571100}
   footsteepSounds:
-  - {fileID: 8300000, guid: 51ed91b8838f7c849b35cb6c716ceeb2, type: 3}
+  - {fileID: 8300000, guid: 219e4637dc157564399026b861a8456f, type: 3}
+  - {fileID: 8300000, guid: 8773a5b96aa10ed45b5c720f70ee067e, type: 3}
+  - {fileID: 8300000, guid: 67edceeb90d41e744a81a48d33cd090b, type: 3}
+  - {fileID: 8300000, guid: d887818854902b54a80c61a43798156f, type: 3}
   walkStepInterval: 1
   sprintStepInterval: 0.5
   velocityTreshold: 2
@@ -5409,18 +5283,6 @@ MonoBehaviour:
   pausePanel: {fileID: 0}
   victoryPanel: {fileID: 0}
   deathPanel: {fileID: 0}
---- !u!114 &777427417527660245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5260229298217460630}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d9372391b66b714ea66f1aaa0a02ed8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerCollision
 --- !u!114 &2830788842391265695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5460,7 +5322,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.55
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5586,8 +5448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d63a0238519c594ca3d9e4fb8519018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OxygenSystem
-  maxOxygen: 100
-  currentOxygen: 100
+  maxOxygen: 5000
+  currentOxygen: 5000
   oxygenDepletionRate: 1
   sprintDepletionMultiplier: 0.5
   jumpOxygenCost: 5
@@ -5898,7 +5760,7 @@ MonoBehaviour:
   enableRecoil: 1
   recoilRotation: 15
   recoilDownSpeed: 6
-  shootSound: {fileID: 8300000, guid: 29db4bc38d2f45c4582cc40e1311edfd, type: 3}
+  shootSound: {fileID: 8300000, guid: 311ee47f9a6d9fe45b09ae54ae3b4f99, type: 3}
   source: {fileID: 271750659150100623}
 --- !u!82 &271750659150100623
 AudioSource:
@@ -5913,7 +5775,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 29db4bc38d2f45c4582cc40e1311edfd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.61
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
