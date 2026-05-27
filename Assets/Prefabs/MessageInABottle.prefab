@@ -285,6 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BottlePickup
   uiShowDistance: 3
   interactionCanvas: {fileID: 9003633108538527789}
+  pickupSound: {fileID: 8300000, guid: ab93349bc7f16ad47ad4e53dfe265556, type: 3}
 --- !u!82 &6490986844675418586
 AudioSource:
   m_ObjectHideFlags: 0
