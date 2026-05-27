@@ -14,7 +14,16 @@ public class BoxPickup : MonoBehaviour, IInteractable
     [Header("Probabilidad general")]
     [Range(0, 100)][SerializeField] private float harpoonChanceWhenNormal = 80f;
 
+    [Header("Ruidos")]
+    private AudioSource m_audiosource;
+    [SerializeField] private AudioClip pickupSound;
+
     private bool wasPickedUp = false;
+
+    private void Start()
+    {
+        m_audiosource = GetComponent<AudioSource>();
+    }
 
     public void OnInteract(PlayerInventory inventory)
     {
@@ -40,8 +49,9 @@ public class BoxPickup : MonoBehaviour, IInteractable
                 GiveOxygen(inventory);
             }
         }
+        m_audiosource.PlayOneShot(pickupSound);
 
-        Destroy(gameObject, 0.3f);
+        Destroy(gameObject, 1f);
     }
 
     private void GiveOxygen(PlayerInventory inventory)
