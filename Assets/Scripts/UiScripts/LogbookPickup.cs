@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LogbookPickup : MonoBehaviour
 {
-    [SerializeField] private float uiShowDistance = 4f;
+    [SerializeField] private float uiShowDistance = 3f;
     [SerializeField] private GameObject interactionCanvas;
 
     private Transform playerTransform;

@@ -3835,26 +3835,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 691217537}
     m_Modifications:
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.95605505
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.29318744
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.008670196
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.5000017
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 34.098
-      objectReference: {fileID: 0}
     - target: {fileID: 5591129402118195260, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
       propertyPath: m_Name
       value: Caja_Suministro (3)
@@ -7869,19 +7849,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99890983
+      value: 0.9725462
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.2259426
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.03222082
       objectReference: {fileID: 0}
     - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.046681996
+      value: -0.045449946
       objectReference: {fileID: 0}
     - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.008663796
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.49999675
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -9921,10 +9909,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
-    - target: {fileID: 5549618354261525337, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: d5d0bd3f41ba0154fa667a16789d0e98, type: 3}
     - target: {fileID: 5802506556641973081, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -10977,46 +10961,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 691217537}
     m_Modifications:
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.032455206
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.96239996
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.2320674
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.033094257
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.13724402
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.008667493
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.5000028
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -25.951
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -8.145
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 18.112
-      objectReference: {fileID: 0}
     - target: {fileID: 5591129402118195260, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
       propertyPath: m_Name
       value: Caja_Suministro (4)
@@ -11199,26 +11143,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 691217537}
     m_Modifications:
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9542563
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.29899007
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.008666545
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.49999642
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 34.794
-      objectReference: {fileID: 0}
     - target: {fileID: 5591129402118195260, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
       propertyPath: m_Name
       value: Caja_Suministro (8)
@@ -11347,18 +11271,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 691217537}
     m_Modifications:
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99512124
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.098659866
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 11.324
-      objectReference: {fileID: 0}
     - target: {fileID: 5591129402118195260, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
       propertyPath: m_Name
       value: Caja_Suministro (9)
@@ -12808,26 +12720,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 691217537}
     m_Modifications:
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.032452688
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9755847
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.2196235
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.49999958
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675478658623025038, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -25.374
-      objectReference: {fileID: 0}
     - target: {fileID: 5591129402118195260, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
       propertyPath: m_Name
       value: Caja_Suministro (10)

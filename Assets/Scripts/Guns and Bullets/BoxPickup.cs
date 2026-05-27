@@ -20,9 +20,35 @@ public class BoxPickup : MonoBehaviour, IInteractable
 
     private bool wasPickedUp = false;
 
+    [SerializeField] private float uiShowDistance = 3f;
+    [SerializeField] private GameObject interactionCanvas;
+
+    private Transform playerTransform;
+
     private void Start()
     {
         m_audiosource = GetComponent<AudioSource>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null) playerTransform = player.transform;
+    }
+
+    private void Update()
+    {
+        if (wasPickedUp || interactionCanvas == null)
+        {
+            if (interactionCanvas != null) interactionCanvas.SetActive(false);
+            return;
+        }
+
+        if (playerTransform == null)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null) playerTransform = player.transform;
+            return;
+        }
+
+        float distance = Vector3.Distance(transform.position, playerTransform.position);
+        interactionCanvas.SetActive(distance <= uiShowDistance);
     }
 
     public void OnInteract(PlayerInventory inventory)
@@ -49,6 +75,9 @@ public class BoxPickup : MonoBehaviour, IInteractable
                 GiveOxygen(inventory);
             }
         }
+
+        if (interactionCanvas != null) interactionCanvas.SetActive(false);
+
         m_audiosource.PlayOneShot(pickupSound);
 
         Destroy(gameObject, 1f);
@@ -82,5 +111,11 @@ public class BoxPickup : MonoBehaviour, IInteractable
         cumulative += chance2Harpoons;
         if (roll <= cumulative) return 2;
         return 3;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, uiShowDistance);
     }
 }
