@@ -5448,8 +5448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d63a0238519c594ca3d9e4fb8519018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OxygenSystem
-  maxOxygen: 5000
-  currentOxygen: 5000
+  maxOxygen: 200
+  currentOxygen: 200
   oxygenDepletionRate: 1
   sprintDepletionMultiplier: 0.5
   jumpOxygenCost: 5
