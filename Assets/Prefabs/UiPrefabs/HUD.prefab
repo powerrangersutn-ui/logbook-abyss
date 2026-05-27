@@ -195,16 +195,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5683116938846005449}
+      - m_Target: {fileID: 1966419383260583445}
         m_TargetAssemblyTypeName: DiaryManager, Assembly-CSharp
         m_MethodName: ShowMessage
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 3
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &325545063919604896
@@ -764,16 +764,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5683116938846005449}
+      - m_Target: {fileID: 1966419383260583445}
         m_TargetAssemblyTypeName: DiaryManager, Assembly-CSharp
         m_MethodName: ShowMessage
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &526798120675031732
@@ -1238,16 +1238,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5683116938846005449}
+      - m_Target: {fileID: 1966419383260583445}
         m_TargetAssemblyTypeName: DiaryManager, Assembly-CSharp
         m_MethodName: ShowMessage
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 7
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1032118030321461171
@@ -1847,16 +1847,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5683116938846005449}
+      - m_Target: {fileID: 1966419383260583445}
         m_TargetAssemblyTypeName: DiaryManager, Assembly-CSharp
         m_MethodName: ShowMessage
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 5
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1513331749619381374
@@ -3595,7 +3595,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6731644316092876281}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1966419383260583445}
+        m_TargetAssemblyTypeName: DiaryManager, Assembly-CSharp
+        m_MethodName: ShowMessage
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: logbook
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3468250185435603679
 GameObject:
   m_ObjectHideFlags: 0
@@ -4741,7 +4753,7 @@ GameObject:
   - component: {fileID: 5011796388763776624}
   - component: {fileID: 8446933641262730014}
   - component: {fileID: 6337552761181585814}
-  - component: {fileID: 5683116938846005449}
+  - component: {fileID: 1966419383260583445}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -4859,7 +4871,7 @@ MonoBehaviour:
   dialogPanel: {fileID: 6132809021200565593}
   textDialog: {fileID: 630186074289054320}
   timeBetweenLines: 4
---- !u!114 &5683116938846005449
+--- !u!114 &1966419383260583445
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4882,6 +4894,7 @@ MonoBehaviour:
   - {fileID: 6483210934658225869}
   - {fileID: 5940474306229403899}
   - {fileID: 2145611162218297296}
+  logbookButton: {fileID: 2145611162218297296}
   bottleInteractionFeedback: {fileID: 8456987405688237418}
 --- !u!1 &4781110539427712783
 GameObject:
@@ -5051,6 +5064,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1966419383260583445}
+        m_TargetAssemblyTypeName: DiaryManager, Assembly-CSharp
+        m_MethodName: HideMessagePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &4957348363244497250
 GameObject:
   m_ObjectHideFlags: 0
@@ -5068,7 +5093,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2647754679155721978
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5322,16 +5347,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5683116938846005449}
+      - m_Target: {fileID: 1966419383260583445}
         m_TargetAssemblyTypeName: DiaryManager, Assembly-CSharp
         m_MethodName: ShowMessage
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &5362175370399545991
@@ -7472,16 +7497,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5683116938846005449}
+      - m_Target: {fileID: 1966419383260583445}
         m_TargetAssemblyTypeName: DiaryManager, Assembly-CSharp
         m_MethodName: ShowMessage
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 6
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 6
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &8279180296814999567
@@ -7851,16 +7876,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5683116938846005449}
+      - m_Target: {fileID: 1966419383260583445}
         m_TargetAssemblyTypeName: DiaryManager, Assembly-CSharp
         m_MethodName: ShowMessage
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &8738974360285033650
