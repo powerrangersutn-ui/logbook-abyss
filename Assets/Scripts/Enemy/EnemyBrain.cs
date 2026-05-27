@@ -128,12 +128,11 @@ public class EnemyBrain : MonoBehaviour
 
     private void ExecuteState()
     {
-        Debug.Log($"Estado actual: {currentState}");
-
+      
         switch (currentState)
         {
             case EnemyState.Patrol:
-                Debug.Log($"Patrullando hacia punto {patrolIndex}");
+                
                 locomotion.SetMoveSpeed(patrolSpeed);
                 HandlePatrol();
                 break;
@@ -174,9 +173,7 @@ public class EnemyBrain : MonoBehaviour
 
         PatrolPoint point = patrolPoints[patrolIndex];
         Vector3 direction = point.transform.position - transform.position;
-        float distance = direction.magnitude;
-
-        Debug.Log($"Distancia al punto {patrolIndex}: {distance} | Timer: {patrolStopTimer}");
+        float distance = direction.magnitude; 
 
         Vector3 flatDirection = direction.normalized;
         float angle = Vector3.Angle(transform.forward, flatDirection);
@@ -192,7 +189,6 @@ public class EnemyBrain : MonoBehaviour
             // Después del tiempo de espera, avanza al siguiente punto
             if (patrolStopTimer <= 0f)
             {
-                Debug.Log("En el punto, esperando...");
                 patrolIndex++;
                 if (patrolIndex >= patrolPoints.Length)
                     patrolIndex = 0;
@@ -206,13 +202,11 @@ public class EnemyBrain : MonoBehaviour
         // Si el ángulo es grande, solo gira
         if (angle > patrolTurnThreshold)
         {
-            Debug.Log($"Ángulo muy grande ({angle}°), solo girando");
             locomotion.SetMovementLocked(true);
             locomotion.SetDesiredDirection(flatDirection);
         }
         else
         {
-            Debug.Log($"Ángulo OK ({angle}°), moviéndose hacia el punto");
             // Ya está mirando bien, ahora sí se mueve
             locomotion.SetMovementLocked(false);
             MoveTo(point.transform.position);
@@ -261,7 +255,6 @@ public class EnemyBrain : MonoBehaviour
 
     private void TriggerScream()
     {
-        Debug.Log("SIREN SCREAM");
         // Acá podés agregar tu audio/animación del grito
     }
 
