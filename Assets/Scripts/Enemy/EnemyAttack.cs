@@ -36,19 +36,16 @@ public class EnemyAttack : MonoBehaviour
 
         foreach (Collider hit in hits)
         {
-            PlayerHealth player =
-                hit.GetComponent<PlayerHealth>();
-
-            if (player == null)
+            if (!hit.TryGetComponent(out PlayerHealth player))
                 continue;
 
             if (player.IsDead)
                 continue;
-            Debug.Log("HIT PLAYER");
+
             player.TakeDamage(damage);
-
+            
             cooldownTimer = attackCooldown;
-
+            
             return true;
         }
 

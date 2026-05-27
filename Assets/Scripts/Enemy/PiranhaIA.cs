@@ -153,8 +153,6 @@ public class PiranhaAI : MonoBehaviour
 
     private void TriggerJumpscare()
     {
-        Debug.Log("PIRAÑA JUMPSCARE");
-
         if (jumpscareSound != null)
         {
             AudioSource.PlayClipAtPoint(jumpscareSound, transform.position, 1f);
