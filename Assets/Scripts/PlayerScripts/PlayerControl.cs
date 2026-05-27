@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
@@ -55,6 +54,7 @@ public class PlayerControl : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1f;
         characterController = GetComponent<CharacterController>();
         mainCamera = Camera.main;
         inventory = GetComponent<PlayerInventory>();
