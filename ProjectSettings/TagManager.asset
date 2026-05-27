@@ -21,8 +21,8 @@ TagManager:
   - Enemy
   - Stone
   - interactionLayer
-  - 
-  - 
+  - Environment
+  - Player
   - 
   - 
   - 

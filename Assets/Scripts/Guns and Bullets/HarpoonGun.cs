@@ -39,9 +39,10 @@ public class HarpoonGun : MonoBehaviour
     [SerializeField] private bool enableRecoil = true;
     [SerializeField] private float recoilRotation = 15f;
     [SerializeField] private float recoilDownSpeed = 8f;
-    [SerializeField] private float recoilUpSpeed = 2f;
-    [Header("UI Ammo")]
-    [SerializeField] private int ammoLowThreshold = 1;
+
+    [Header ("sounds")]
+    [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioSource source;
 
     private float nextFireTime;
 
@@ -90,6 +91,7 @@ public class HarpoonGun : MonoBehaviour
             harpoonPool.GetAvailableCount() > 0)
         {
             Shoot();
+
         }
     }
 
@@ -228,6 +230,7 @@ public class HarpoonGun : MonoBehaviour
         {
             harpoon.Initialize(harpoonPool);
             harpoon.Launch(firePoint.forward, harpoonSpeed);
+            source.PlayOneShot(shootSound);
         }
 
         ActivateBubbles(harpoonObj);

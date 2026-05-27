@@ -29,8 +29,8 @@ public class OxygenSystem : MonoBehaviour
     // Propiedades públicas
     public float CurrentOxygen => currentOxygen;
     public float MaxOxygen => maxOxygen;
-    public float OxygenPercentage => (currentOxygen / maxOxygen) * 100f;
-    public bool IsLowOxygen => OxygenPercentage <= 15f;
+    public float oxygenPercentage => (currentOxygen / maxOxygen) * 100f;
+    public bool IsLowOxygen => oxygenPercentage <= 15f;
 
     private void Awake()
     {
@@ -84,7 +84,8 @@ public class OxygenSystem : MonoBehaviour
         currentOxygen -= amount;
         currentOxygen = Mathf.Max(0, currentOxygen);
 
-        OnOxygenChanged?.Invoke(OxygenPercentage);
+        OnOxygenChanged?.Invoke(oxygenPercentage);
+        UIGameEvents.OnPlayerOxygenChanged(oxygenPercentage);
 
         if (currentOxygen <= 0)
         {
@@ -100,13 +101,15 @@ public class OxygenSystem : MonoBehaviour
         currentOxygen += amount;
         currentOxygen = Mathf.Min(currentOxygen, maxOxygen);
 
-        OnOxygenChanged?.Invoke(OxygenPercentage);
+        OnOxygenChanged?.Invoke(oxygenPercentage);
+        UIGameEvents.OnPlayerOxygenChanged(oxygenPercentage);
     }
 
     public void RefillOxygen()
     {
         currentOxygen = maxOxygen;
-        OnOxygenChanged?.Invoke(OxygenPercentage);
+        OnOxygenChanged?.Invoke(oxygenPercentage);
+        UIGameEvents.OnPlayerOxygenChanged(oxygenPercentage);
     }
 
     private void OxygenDepleted()

@@ -158,7 +158,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   breakTags:
-  - Stone
+  - interactionLayer
   enemyTag: Enemy
   playerTag: Player
   minimumSpeedToStick: 4

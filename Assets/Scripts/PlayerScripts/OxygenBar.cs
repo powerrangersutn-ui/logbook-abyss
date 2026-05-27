@@ -2,28 +2,24 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-/// <summary>
 /// Componente simple para controlar la barra de oxígeno en la UI.
-/// Tu equipo de UI solo necesita arrastrarlo a un GameObject con una Image (barra de fill).
-/// </summary>
 public class OxygenBar : MonoBehaviour
 {
     [Header("Referencias UI")]
-    [Tooltip("La imagen que se llenará (Image con Type: Filled)")]
-    [SerializeField] private Image fillImage;
-
-    [Tooltip("Texto opcional que muestra el porcentaje (ej: '75%')")]
+    [Tooltip("Arrastrst las 10 imágenes que conforman la barra")]
+    [SerializeField] private Image[] oxygenSegments;
     [SerializeField] private TextMeshProUGUI percentageText;
 
     [Header("Configuración Visual")]
-    [Tooltip("Color cuando el oxígeno está alto (>50%)")]
-    [SerializeField] private Color highOxygenColor = new Color(0.2f, 0.8f, 1f); // Celeste
+    [Tooltip("El color fijo de la barra (Celeste).")]
+    [SerializeField] private Color oxygenColor = new Color(0.2f, 0.8f, 1f); // Celeste
 
-    [Tooltip("Color cuando el oxígeno está medio (15-50%)")]
-    [SerializeField] private Color mediumOxygenColor = Color.yellow;
+    [Header("Configuración de Opacidad")]
+    [Tooltip("Opacidad cuando el segmento está lleno")]
+    [Range(0f, 1f)][SerializeField] private float fullAlpha = 1f;
 
-    [Tooltip("Color cuando el oxígeno está bajo (<=15%)")]
-    [SerializeField] private Color lowOxygenColor = Color.red;
+    [Tooltip("Opacidad cuando el segmento está vacío")]
+    [Range(0f, 1f)][SerializeField] private float emptyAlpha = 0.2f;
 
     [Header("Animación (Opcional)")]
     [SerializeField] private bool animateTransition = true;
@@ -36,43 +32,27 @@ public class OxygenBar : MonoBehaviour
     private float targetFillAmount = 1f;
     private float currentFillAmount = 1f;
 
-    private void Awake()
+    private void OnEnable()
     {
-        // Auto-asignar si no está configurado
-        if (fillImage == null)
-        {
-            fillImage = GetComponent<Image>();
-        }
-
-        // Configurar valores iniciales
-        if (fillImage != null)
-        {
-            fillImage.fillAmount = 1f;
-            fillImage.color = highOxygenColor;
-        }
+        UIGameEvents.onPlayerOxygenChanged += UpdateOxygenBarData;
     }
 
-    /// <summary>
-    /// Actualiza la barra de oxígeno con el porcentaje actual (0-100)
-    /// </summary>
-    public void UpdateOxygenBar(float oxygenPercentage)
+    private void OnDestroy()
     {
-        if (fillImage == null) return;
+        UIGameEvents.onPlayerOxygenChanged -= UpdateOxygenBarData;
+    }
 
-        // Convertir porcentaje a fill amount (0-1)
+
+    /// Actualiza la barra de oxígeno con el porcentaje actual (0-100)
+    private void UpdateOxygenBarData(float oxygenPercentage)
+    {
         targetFillAmount = Mathf.Clamp01(oxygenPercentage / 100f);
 
-        // Actualizar inmediatamente si no hay animación
         if (!animateTransition)
         {
             currentFillAmount = targetFillAmount;
-            fillImage.fillAmount = currentFillAmount;
         }
 
-        // Actualizar color según el nivel
-        UpdateBarColor(oxygenPercentage);
-
-        // Actualizar texto si existe
         if (percentageText != null)
         {
             percentageText.text = $"{Mathf.RoundToInt(oxygenPercentage)}%";
@@ -81,70 +61,50 @@ public class OxygenBar : MonoBehaviour
 
     private void Update()
     {
-        // Animar la transición de la barra
-        if (animateTransition && fillImage != null)
+        if (animateTransition)
         {
             currentFillAmount = Mathf.Lerp(currentFillAmount, targetFillAmount, Time.deltaTime * transitionSpeed);
-            fillImage.fillAmount = currentFillAmount;
-        }
-
-        // Parpadeo cuando está bajo
-        if (blinkWhenLow && fillImage != null && targetFillAmount <= 0.15f)
-        {
-            float alpha = (Mathf.Sin(Time.time * blinkSpeed * Mathf.PI) + 1f) / 2f;
-            alpha = Mathf.Lerp(0.5f, 1f, alpha); // Rango de 0.5 a 1
-
-            Color currentColor = fillImage.color;
-            currentColor.a = alpha;
-            fillImage.color = currentColor;
-        }
-    }
-
-    private void UpdateBarColor(float percentage)
-    {
-        if (fillImage == null) return;
-
-        Color targetColor;
-
-        if (percentage <= 15f)
-        {
-            targetColor = lowOxygenColor;
-        }
-        else if (percentage <= 50f)
-        {
-            // Interpolar entre bajo y medio
-            float t = (percentage - 15f) / 35f; // Normalizar 15-50 a 0-1
-            targetColor = Color.Lerp(lowOxygenColor, mediumOxygenColor, t);
         }
         else
         {
-            // Interpolar entre medio y alto
-            float t = (percentage - 50f) / 50f; // Normalizar 50-100 a 0-1
-            targetColor = Color.Lerp(mediumOxygenColor, highOxygenColor, t);
+            currentFillAmount = targetFillAmount;
         }
 
-        // Mantener el alpha actual si está parpadeando
-        if (blinkWhenLow && percentage <= 15f)
-        {
-            targetColor.a = fillImage.color.a;
-        }
-
-        fillImage.color = targetColor;
+        UpdateSegmentsVisuals();
     }
 
-    /// <summary>
-    /// Resetea la barra al máximo (útil al reiniciar nivel)
-    /// </summary>
+    /// Calcula y aplica la opacidad a cada segmento de la lista
+    private void UpdateSegmentsVisuals()
+    {
+        if (oxygenSegments == null || oxygenSegments.Length == 0) return;
+
+        float totalFill = currentFillAmount * oxygenSegments.Length;
+
+        for (int i = 0; i < oxygenSegments.Length; i++)
+        {
+            if (oxygenSegments[i] == null) continue;
+
+            float segmentFill = Mathf.Clamp01(totalFill - i);
+
+            float currentAlpha = Mathf.Lerp(emptyAlpha, fullAlpha, segmentFill);
+
+            if (blinkWhenLow && targetFillAmount <= 0.15f && segmentFill > 0)
+            {
+                float blinkFactor = (Mathf.Sin(Time.time * blinkSpeed * Mathf.PI) + 1f) / 2f;
+                currentAlpha *= Mathf.Lerp(0.5f, 1f, blinkFactor);
+            }
+
+            Color appliedColor = oxygenColor;
+            appliedColor.a = currentAlpha;
+            oxygenSegments[i].color = appliedColor;
+        }
+    }
+
     public void ResetBar()
     {
         targetFillAmount = 1f;
         currentFillAmount = 1f;
-
-        if (fillImage != null)
-        {
-            fillImage.fillAmount = 1f;
-            fillImage.color = highOxygenColor;
-        }
+        UpdateSegmentsVisuals();
 
         if (percentageText != null)
         {

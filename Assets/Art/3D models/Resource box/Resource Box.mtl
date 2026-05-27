@@ -1,0 +1,35 @@
+# Blender 3.6.23 MTL File: 'None'
+# www.blender.org
+
+newmtl Box_body.002
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Box_body_color_3.png
+map_Ns Box_body_roughness_3.png
+map_refl Box_body_metalness_3.png
+
+newmtl Box_top.002
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Box_top_color_3.png
+map_Ns Box_top_roughness_3.png
+map_refl Box_top_metalness_3.png
+
+newmtl Lock.002
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Lock_color_2.png
+map_Ns Lock_roughness_2.png
+map_refl Lock_metalness_2.png

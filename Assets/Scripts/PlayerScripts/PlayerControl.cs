@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
@@ -55,6 +54,7 @@ public class PlayerControl : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1f;
         characterController = GetComponent<CharacterController>();
         mainCamera = Camera.main;
         inventory = GetComponent<PlayerInventory>();
@@ -170,24 +170,19 @@ private void OnDisable()
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactionRange, interactionLayer))
         {
-            // Caja de suministros (Oxígeno / Arpones)
-            if (hit.collider.TryGetComponent<PickupBox>(out PickupBox box))
+            Debug.Log("Raycast golpeó: " + hit.collider.name);
+
+            if (hit.collider.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
                 if (interactAction.triggered)
                 {
-                    box.OnPickup(inventory);
-                    return;
+                    Debug.Log("Interactuando con: " + hit.collider.name);
+                    interactable.OnInteract(inventory);
                 }
             }
-
-            // Vitácora / Logbook
-            if (hit.collider.TryGetComponent<Logbook>(out Logbook logbook))
+            else
             {
-                if (interactAction.triggered)
-                {
-                    logbook.Interact();
-                    return;
-                }
+                Debug.Log("El objeto golpeado NO tiene IInteractable");
             }
         }
     }

@@ -51,9 +51,7 @@ public class PlayerInventory : MonoBehaviour
         return toAdd;
     }
 
-    /// <summary>
     /// Verifica si puede recibir más munición
-    /// </summary>
     public bool CanReceiveHarpoons()
     {
         bool can = currentHarpoons < maxHarpoons;
@@ -61,9 +59,7 @@ public class PlayerInventory : MonoBehaviour
         return can;
     }
 
-    /// <summary>
     /// Usa un arpón al disparar. Llama esto desde HarpoonGun.
-    /// </summary>
     public bool UseHarpoon()
     {
         if (currentHarpoons <= 0)

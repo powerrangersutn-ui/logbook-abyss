@@ -1,113 +1,69 @@
-using System.Collections;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    [Header("Configuración de Ataque")]
-    [SerializeField] private float attackCooldown = 2f;
-    [SerializeField] private float attackRange = 2.0f;
+    [Header("Attack")]
+    [SerializeField] private int damage = 1;
 
-    private Transform player;
-    private EnemyWeapon enemyWeapon;
-    private float lastAttackTime;
+    [SerializeField] private float attackRange = 2f;
 
-    public bool IsAttacking { get; private set; }
+    [SerializeField] private float attackCooldown = 1.5f;
 
-    private void Awake()
+    [SerializeField] private LayerMask playerMask;
+
+    [Header("References")]
+    [SerializeField] private Transform attackPoint;
+
+    private float cooldownTimer;
+
+    public bool CanAttack => cooldownTimer <= 0f;
+
+    private void Update()
     {
-        enemyWeapon = GetComponentInChildren<EnemyWeapon>(true);
-
-        Debug.Log($"=== EnemyAttack Awake en {gameObject.name} ===");
-        Debug.Log($"EnemyWeapon encontrado: {enemyWeapon != null}");
-        if (enemyWeapon != null)
-        {
-            Debug.Log($"EnemyWeapon esta en: {enemyWeapon.gameObject.name}");
-        }
+        cooldownTimer -= Time.deltaTime;
     }
 
-    public void Initialize(Transform playerTransform)
+    public bool TryAttack()
     {
-        player = playerTransform;
-        Debug.Log($"Player asignado en EnemyAttack: {player != null}");
-        if (player != null)
+        if (!CanAttack)
+            return false;
+
+        Collider[] hits =
+            Physics.OverlapSphere(
+                attackPoint.position,
+                attackRange,
+                playerMask);
+
+        foreach (Collider hit in hits)
         {
-            Debug.Log($"Player es: {player.name}");
+            PlayerHealth player =
+                hit.GetComponent<PlayerHealth>();
+
+            if (player == null)
+                continue;
+
+            if (player.IsDead)
+                continue;
+            Debug.Log("HIT PLAYER");
+            player.TakeDamage(damage);
+
+            cooldownTimer = attackCooldown;
+
+            return true;
         }
+
+        return false;
     }
 
-    public void TryAttack()
+    private void OnDrawGizmosSelected()
     {
-        Debug.Log($"TryAttack llamado en {gameObject.name}");
-
-        if (player == null)
-        {
-            Debug.LogWarning("Player es NULL - no se puede atacar");
+        if (attackPoint == null)
             return;
-        }
 
-        float distance = Vector3.Distance(transform.position, player.position);
-        Debug.Log($"Distancia al player: {distance} | Attack Range: {attackRange}");
+        Gizmos.color = Color.red;
 
-        float timeSinceLastAttack = Time.time - lastAttackTime;
-        Debug.Log($"Tiempo desde ultimo ataque: {timeSinceLastAttack} | Cooldown: {attackCooldown}");
-
-        if (distance <= attackRange && timeSinceLastAttack >= attackCooldown)
-        {
-            Debug.Log("CONDICIONES CUMPLIDAS - Ejecutando ataque");
-            PerformAttack();
-        }
-        else
-        {
-            Debug.Log("Condiciones NO cumplidas para atacar");
-        }
-    }
-
-    private void PerformAttack()
-    {
-        lastAttackTime = Time.time;
-        IsAttacking = true;
-
-        Debug.Log($"========== PERFORM ATTACK ==========");
-        Debug.Log($"Enemigo: {gameObject.name}");
-
-        if (enemyWeapon != null)
-        {
-            Debug.Log("Iniciando ActivateWeaponAttack coroutine");
-            StartCoroutine(ActivateWeaponAttack());
-        }
-        else
-        {
-            Debug.LogError("EnemyWeapon es NULL - No se puede atacar");
-            IsAttacking = false;
-        }
-    }
-
-    private IEnumerator ActivateWeaponAttack()
-    {
-        Debug.Log("ActivateWeaponAttack coroutine iniciada");
-
-        if (enemyWeapon == null)
-        {
-            Debug.LogError("enemyWeapon es NULL en la coroutine");
-            yield break;
-        }
-
-        yield return StartCoroutine(enemyWeapon.ActivateAttack());
-
-        IsAttacking = false;
-        Debug.Log("ActivateWeaponAttack coroutine completada");
-        Debug.Log($"====================================");
-    }
-
-    public void StopAttacking()
-    {
-        IsAttacking = false;
-        StopAllCoroutines();
-    }
-
-    public void SetAttackCooldown(float newCooldown)
-    {
-        if (newCooldown > 0)
-            attackCooldown = newCooldown;
+        Gizmos.DrawWireSphere(
+            attackPoint.position,
+            attackRange);
     }
 }

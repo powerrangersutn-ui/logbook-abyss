@@ -5,15 +5,21 @@ public static class UIGameEvents
 {
     public static Action<int, int> onPlayerHealthChanged;
     public static Action onPlayerDeath;
+    public static Action<float> onPlayerOxygenChanged;
 
     //Llamada
     public static void OnPlayerHealthChanged(int currentHealth, int maxHealth)
     {
-        onPlayerHealthChanged.Invoke(currentHealth, maxHealth);
+        onPlayerHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
     public static void OnPlayerDeath()
     {
         onPlayerDeath?.Invoke();
+    }
+
+    public static void OnPlayerOxygenChanged(float oxygenPercentage)
+    {
+        onPlayerOxygenChanged?.Invoke(oxygenPercentage);
     }
 }
