@@ -16,6 +16,9 @@ public class LogbookManager : MonoBehaviour, IInteractable
 
         DiaryManager.RaiseLogbookFound();
 
+        //Muestra mensaje de que se encontró la bitácora
+        DialogManager.Instance.ShowDialog(dialogID);
+
         if (dialogElevator != null)
             dialogElevator.SetActive(true);
 

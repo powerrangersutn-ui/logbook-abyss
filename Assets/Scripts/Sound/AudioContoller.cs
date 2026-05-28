@@ -4,13 +4,24 @@ using UnityEngine.Audio;
 public class AudioContoller : MonoBehaviour
 {
     [SerializeField] private AudioMixer mixer;
-    [SerializeField] private Transform player, enemy;
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform[] enemies;
 
     void Update()
     {
-        float d = Vector3.Distance(player.position, enemy.position);
-        float t = Mathf.InverseLerp(25f, 5f, d);
+        float minDistance = Mathf.Infinity;
+
+        foreach (Transform enemy in enemies)
+        {
+            float d = Vector3.Distance(player.position, enemy.position);
+
+            if (d < minDistance)
+                minDistance = d;
+        }
+
+        float t = Mathf.InverseLerp(25f, 5f, minDistance);
         float cutoff = Mathf.Lerp(22000f, 800f, t);
+
         mixer.SetFloat("MusicCutoff", cutoff);
     }
 }
