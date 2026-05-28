@@ -1,11 +1,13 @@
+using System;
 using UnityEngine;
 
-public class PiranhaAI : MonoBehaviour
+public class PiranhaIA : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private EnemySensors sensors;
     [SerializeField] private AquaticLocomotion locomotion;
     [SerializeField] private EnemyAttack attack;
+    [SerializeField] private PiranhaAnimator piranhaAnimator;
 
     [Header("Behavior")]
     [SerializeField] private float detectionRange = 8f; // Rango para activarse
@@ -25,8 +27,15 @@ public class PiranhaAI : MonoBehaviour
     private float screamTimer;
     private bool hasScreamed;
 
+    //Animations
+    public event Action OnJumpscare;
+    public event Action OnAttack;
+
+
     private void Update()
     {
+        piranhaAnimator.UpdateSpeed(locomotion.currentSpeed);
+
         switch (currentState)
         {
             case State.Idle:
@@ -143,10 +152,12 @@ public class PiranhaAI : MonoBehaviour
             case State.Jumpscare:
                 screamTimer = jumpscareScreamDuration;
                 hasScreamed = false;
+                OnJumpscare?.Invoke();
                 break;
 
             case State.Attack:
                 attackTimer = attackCooldown;
+                OnAttack?.Invoke();
                 break;
         }
     }

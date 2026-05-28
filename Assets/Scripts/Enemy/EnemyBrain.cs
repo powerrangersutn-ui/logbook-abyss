@@ -46,6 +46,9 @@ public class EnemyBrain : MonoBehaviour
 
     public bool IsDead => currentState == EnemyState.Dead;
 
+    [Header("Animations")]
+    public System.Action OnAttackTriggered;
+
     private void Start()
     {
         ChangeState(EnemyState.Patrol);
@@ -249,6 +252,7 @@ public class EnemyBrain : MonoBehaviour
 
             case EnemyState.Attack:
                 attackCooldownTimer = attackCooldown;
+                OnAttackTriggered?.Invoke();
                 break;
         }
     }

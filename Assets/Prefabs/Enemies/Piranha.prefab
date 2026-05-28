@@ -48,6 +48,9 @@ GameObject:
   - component: {fileID: 7567461490995933962}
   - component: {fileID: 1559277043155750061}
   - component: {fileID: 2599940317644617705}
+  - component: {fileID: 7555066595489393958}
+  - component: {fileID: 5103722545025348244}
+  - component: {fileID: 2855898051771777264}
   m_Layer: 6
   m_Name: Piranha
   m_TagString: Enemy
@@ -227,6 +230,54 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   attackPoint: {fileID: 5777806368354544444}
+--- !u!114 &7555066595489393958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074436024843249244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25377013f2b10654f88982f13ed69b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationEvents
+  piranhaAI: {fileID: 9189661891976050501}
+  piranhaAnimator: {fileID: 5103722545025348244}
+--- !u!114 &5103722545025348244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074436024843249244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8adee4792c49b7e48bc04da7d56de213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PiranhaAnimator
+--- !u!95 &2855898051771777264
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074436024843249244}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8e3a1a5afdd41af4a8587574ccd1e954, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8005595187543764241
 GameObject:
   m_ObjectHideFlags: 0
