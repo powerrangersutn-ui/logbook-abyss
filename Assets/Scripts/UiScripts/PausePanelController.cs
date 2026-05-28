@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.Audio;
+
 public class PausePanelController : MonoBehaviour
 {
 
@@ -12,6 +14,11 @@ public class PausePanelController : MonoBehaviour
 
     [Header("Input Actions")]
     [SerializeField] private InputActionAsset UIControls;
+
+    [Header("AudioMixer Snapshots")]
+    [SerializeField] private AudioMixerSnapshot snapshotDefault;
+    [SerializeField] private AudioMixerSnapshot snapshotPause;
+
 
     private InputAction pauseAction;
 
@@ -58,6 +65,7 @@ public class PausePanelController : MonoBehaviour
             {
                 Pause();
             }
+            ChangePausedAudio(pausedGame);
         }
     }
 
@@ -67,6 +75,7 @@ public class PausePanelController : MonoBehaviour
         if (pausePanelMenu != null) pausePanelMenu.SetActive(true);
         Time.timeScale = 0f;
         pausedGame = true;
+
     }
 
 
@@ -82,4 +91,22 @@ public class PausePanelController : MonoBehaviour
         }
     }
 
+    public void ChangePausedAudio(bool isPaused)
+    {
+        // El número adentro de TransitionTo es el tiempo en segundos que dura el "fade"
+        float transitionTime = 0f;
+
+        if (isPaused)
+        {
+            // Activa el efecto de pausa (ej: volumen bajo, filtro de ecualizador)
+            snapshotPause.TransitionTo(transitionTime);
+        }
+        else
+        {
+            // Vuelve a la mezcla de sonido normal
+            snapshotDefault.TransitionTo(transitionTime);
+        }
+    }
+
 }
+

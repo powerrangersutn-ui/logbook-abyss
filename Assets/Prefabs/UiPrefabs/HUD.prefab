@@ -7026,6 +7026,8 @@ MonoBehaviour:
   mainMenuScene: Lobby
   pausePanelMenu: {fileID: 382156595000877926}
   UIControls: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  snapshotDefault: {fileID: 24500006, guid: bec69c627300e92478ef09f4fd96c93a, type: 2}
+  snapshotPause: {fileID: -743641450752932432, guid: bec69c627300e92478ef09f4fd96c93a, type: 2}
 --- !u!1 &6781949018606520555
 GameObject:
   m_ObjectHideFlags: 0
