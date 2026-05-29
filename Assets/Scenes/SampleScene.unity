@@ -6064,38 +6064,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1924584831}
     m_Modifications:
-    - target: {fileID: 1297114919448264024, guid: 2fb23c93b5b5d4847abf2f6ed819bc88, type: 3}
-      propertyPath: attackDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1297114919448264024, guid: 2fb23c93b5b5d4847abf2f6ed819bc88, type: 3}
-      propertyPath: screamDuration
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1297114919448264024, guid: 2fb23c93b5b5d4847abf2f6ed819bc88, type: 3}
-      propertyPath: patrolTurnThreshold
-      value: 360
-      objectReference: {fileID: 0}
-    - target: {fileID: 2599940317644617705, guid: 2fb23c93b5b5d4847abf2f6ed819bc88, type: 3}
-      propertyPath: attackRange
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2599940317644617705, guid: 2fb23c93b5b5d4847abf2f6ed819bc88, type: 3}
-      propertyPath: attackCooldown
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3900058042866649377, guid: 2fb23c93b5b5d4847abf2f6ed819bc88, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1180643904}
-    - target: {fileID: 5777806368354544444, guid: 2fb23c93b5b5d4847abf2f6ed819bc88, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.25121668
-      objectReference: {fileID: 0}
-    - target: {fileID: 5777806368354544444, guid: 2fb23c93b5b5d4847abf2f6ed819bc88, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.84977984
-      objectReference: {fileID: 0}
     - target: {fileID: 6093499606135340402, guid: 2fb23c93b5b5d4847abf2f6ed819bc88, type: 3}
       propertyPath: m_LocalPosition.x
       value: 198.37723
@@ -6139,14 +6111,6 @@ PrefabInstance:
     - target: {fileID: 7074436024843249244, guid: 2fb23c93b5b5d4847abf2f6ed819bc88, type: 3}
       propertyPath: m_Name
       value: Piranha
-      objectReference: {fileID: 0}
-    - target: {fileID: 9189661891976050501, guid: 2fb23c93b5b5d4847abf2f6ed819bc88, type: 3}
-      propertyPath: attackCooldown
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9189661891976050501, guid: 2fb23c93b5b5d4847abf2f6ed819bc88, type: 3}
-      propertyPath: desiredCombatDistance
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

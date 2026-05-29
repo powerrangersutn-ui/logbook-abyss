@@ -20,6 +20,8 @@ public class AquaticLocomotion : MonoBehaviour
     private Vector3 forcedLookDirection;
     private bool movementLocked;
 
+    public float currentSpeed => currentMoveSpeed;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
