@@ -144,6 +144,7 @@ public class PiranhaIA : MonoBehaviour
 
     private void ChangeState(State newState)
     {
+        Debug.Log("Cambiando estado a: " + newState);
         currentState = newState;
         locomotion.ClearForcedLookDirection();
 
