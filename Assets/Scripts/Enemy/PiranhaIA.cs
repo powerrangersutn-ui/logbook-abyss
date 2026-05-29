@@ -34,7 +34,7 @@ public class PiranhaIA : MonoBehaviour
 
     private void Update()
     {
-        piranhaAnimator.UpdateSpeed(locomotion.currentSpeed);
+        piranhaAnimator.UpdateSpeed(locomotion.currentSpeed, chaseSpeed);
 
         switch (currentState)
         {
