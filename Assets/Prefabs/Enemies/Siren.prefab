@@ -442,7 +442,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Siren
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5866666021909216657, guid: fa17b757aeb5088439f336a041c38571, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 65fe8fafd93af1246ad88cea2f9791bd, type: 2}
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: fa17b757aeb5088439f336a041c38571, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
