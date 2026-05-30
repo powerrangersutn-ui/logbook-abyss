@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
     public void PlayerDied()
     {
         if (gameEnded) return;
+        
         gameEnded = true;
         Time.timeScale = 0f;
 
