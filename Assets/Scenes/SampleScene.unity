@@ -9906,6 +9906,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 184284507735885463, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.05199948
+      objectReference: {fileID: 0}
+    - target: {fileID: 184284507735885463, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1438482
+      objectReference: {fileID: 0}
+    - target: {fileID: 184284507735885463, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.602543
+      objectReference: {fileID: 0}
     - target: {fileID: 271750659150100623, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
@@ -9946,6 +9958,18 @@ PrefabInstance:
       propertyPath: harpoonPool
       value: 
       objectReference: {fileID: 1191218619}
+    - target: {fileID: 7321286028112911552, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.051995974
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321286028112911552, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.70510817
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321286028112911552, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.53777736
+      objectReference: {fileID: 0}
     - target: {fileID: 8306854143979857976, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 191.41414

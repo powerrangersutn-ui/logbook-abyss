@@ -122,7 +122,7 @@ MonoBehaviour:
   chaseSpeed: 12
   attackDistance: 1.5
   desiredCombatDistance: 3
-  attackCooldown: 2
+  attackCooldown: 1.05
   jumpscareScreamDuration: 0.3
   jumpscareSound: {fileID: 0}
 --- !u!114 &3900058042866649377
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
   damage: 5
   attackRange: 2
-  attackCooldown: 2
+  attackCooldown: 1.05
   playerMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -346,7 +346,8 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 8e3a1a5afdd41af4a8587574ccd1e954, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: cd57aaacc683dc84e8021e147046605a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -138,8 +138,6 @@ public class PiranhaIA : MonoBehaviour
 
         if (attackTimer <= 0f)
         {
-            attack.TryAttack();
-
             ChangeState(State.Chase);
         }
     }
@@ -171,5 +169,9 @@ public class PiranhaIA : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(jumpscareSound, transform.position, 1f);
         }
+    }
+    public void OnAttackHit()
+    {
+        attack.TryAttack();
     }
 }
