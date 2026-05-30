@@ -159,14 +159,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab02d45cf0e5e1344b2c8607211174b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupBox
-  minOxygen: 5
-  maxOxygen: 33
+  minOxygen: 15
+  maxOxygen: 28
   chance1Harpoon: 90
   chance2Harpoons: 50
   chance3Harpoons: 15
   harpoonChanceWhenNormal: 74
   pickupSound: {fileID: 8300000, guid: 69eee6593d24b3846b0f9e52d8f98bd0, type: 3}
-  uiShowDistance: 3
+  uiShowDistance: 4
   interactionCanvas: {fileID: 9197895439608968267}
 --- !u!82 &9187210818467371396
 AudioSource:
