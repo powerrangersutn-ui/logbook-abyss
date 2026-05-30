@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour
     public void StartNewGame(string firstSceneName)
     {
         SceneManager.LoadScene(firstSceneName);
+        Time.timeScale = 0f;
     }
 
     public void OnSalirClick()
