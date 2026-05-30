@@ -11575,6 +11575,14 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1180643904}
+    - target: {fileID: 5777806368354544444, guid: 2fb23c93b5b5d4847abf2f6ed819bc88, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777806368354544444, guid: 2fb23c93b5b5d4847abf2f6ed819bc88, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.81
+      objectReference: {fileID: 0}
     - target: {fileID: 6093499606135340402, guid: 2fb23c93b5b5d4847abf2f6ed819bc88, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.08
@@ -11818,6 +11826,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Siren
       objectReference: {fileID: 0}
+    - target: {fileID: 4092937891475810697, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5389804904809842159, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.04284668
@@ -11857,6 +11869,14 @@ PrefabInstance:
     - target: {fileID: 5389804904809842159, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838155648736082411, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.515483
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838155648736082411, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.8153336
       objectReference: {fileID: 0}
     - target: {fileID: 8987163813665814204, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'
