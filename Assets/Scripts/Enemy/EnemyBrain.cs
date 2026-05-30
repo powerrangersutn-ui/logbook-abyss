@@ -7,6 +7,7 @@ public class EnemyBrain : MonoBehaviour
     [SerializeField] private EnemySensors sensors;
     [SerializeField] private AquaticLocomotion locomotion;
     [SerializeField] private EnemyAttack attack;
+    [SerializeField] private EnemyAnimator enemyAnimator;
 
     [Header("Patrol")]
     [SerializeField] private PatrolPoint[] patrolPoints;
@@ -61,6 +62,9 @@ public class EnemyBrain : MonoBehaviour
     {
         EvaluateState();
         ExecuteState();
+
+        enemyAnimator.UpdateSpeed(locomotion.currentSpeed, chaseSpeed);
+
     }
 
     public void Kill()
