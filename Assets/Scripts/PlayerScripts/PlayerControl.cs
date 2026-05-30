@@ -10,6 +10,8 @@ public class PlayerControl : MonoBehaviour
     [Header("Fall Parameters")]
     [SerializeField] private float gravity = 4.0f;
     [SerializeField] private float jumpForce = 5.0f;
+    [SerializeField] private float coyoteTime = 0.15f;
+    private float coyoteTimer;
 
     [Header("Look Sensitivity")]
     [SerializeField] private float mouseSensitivity = 2.0f;
@@ -136,20 +138,26 @@ private void OnDisable()
     {
         if (characterController.isGrounded)
         {
-            currentMovement.y = -0.5f;
+            if (currentMovement.y < 0)
+                currentMovement.y = -0.5f;
 
-            if (jumpAction.triggered)
-            {
-                currentMovement.y = jumpForce;
-
-                OxygenSystem oxygen = GetComponent<OxygenSystem>();
-                oxygen?.OnJump();
-            }
+            coyoteTimer = coyoteTime;
         }
         else
         {
-            currentMovement.y -= gravity * Time.deltaTime;
+            coyoteTimer -= Time.deltaTime;
         }
+
+        if (jumpAction.triggered && coyoteTimer > 0f)
+        {
+            currentMovement.y = jumpForce;
+            coyoteTimer = 0f;
+
+            OxygenSystem oxygen = GetComponent<OxygenSystem>();
+            oxygen?.OnJump();
+        }
+
+        currentMovement.y -= gravity * Time.deltaTime;
 
         characterController.Move(currentMovement * Time.deltaTime);
     }
