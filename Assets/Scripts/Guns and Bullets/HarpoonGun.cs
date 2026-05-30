@@ -93,6 +93,7 @@ public class HarpoonGun : MonoBehaviour
             Shoot();
 
         }
+        Debug.Log($"isWalking: {isWalking} | isRecoiling: {isRecoiling} | enableWalkBobbing: {enableWalkBobbing}");
     }
 
     // ==================== BALANCEO AL CAMINAR (VERSIÓN SUBMARINA) ====================

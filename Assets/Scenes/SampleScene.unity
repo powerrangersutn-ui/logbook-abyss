@@ -3231,6 +3231,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3118656919686391510, guid: a0d6f447d1aa6c14e9a9888624f7f3fe, type: 3}
   m_PrefabInstance: {fileID: 1033225593}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &359815950 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4529546785986102922, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
+  m_PrefabInstance: {fileID: 1315945915}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &384095634 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6093499606135340402, guid: 2fb23c93b5b5d4847abf2f6ed819bc88, type: 3}
@@ -9032,6 +9037,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolPoint
   waitTime: 2
+--- !u!114 &1204101142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Player/Move
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ActionId: fbcf9e03-6195-4c10-a53c-46e6214b9ae1
 --- !u!1 &1204843011
 GameObject:
   m_ObjectHideFlags: 0
@@ -9995,9 +10014,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1019332600}
     - target: {fileID: 3646132069775439863, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
+      propertyPath: moveAction
+      value: 
+      objectReference: {fileID: 1204101142}
+    - target: {fileID: 3646132069775439863, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
       propertyPath: harpoonPool
       value: 
       objectReference: {fileID: 1191218619}
+    - target: {fileID: 3646132069775439863, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
+      propertyPath: weaponModel
+      value: 
+      objectReference: {fileID: 359815950}
+    - target: {fileID: 3646132069775439863, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
+      propertyPath: enableWalkBobbing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4901672327882763457, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
       propertyPath: deathPanel
       value: 
