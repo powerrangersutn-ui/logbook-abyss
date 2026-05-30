@@ -48,8 +48,8 @@ GameObject:
   - component: {fileID: 7567461490995933962}
   - component: {fileID: 1559277043155750061}
   - component: {fileID: 2599940317644617705}
-  - component: {fileID: 7555066595489393958}
-  - component: {fileID: 5103722545025348244}
+  - component: {fileID: 6947407420896624589}
+  - component: {fileID: 2366129569692377886}
   - component: {fileID: 2855898051771777264}
   m_Layer: 6
   m_Name: Piranha
@@ -117,7 +117,7 @@ MonoBehaviour:
   sensors: {fileID: 3900058042866649377}
   locomotion: {fileID: 3723372724953019729}
   attack: {fileID: 2599940317644617705}
-  piranhaAnimator: {fileID: 5103722545025348244}
+  enemyAnimator: {fileID: 2366129569692377886}
   detectionRange: 8
   chaseSpeed: 12
   attackDistance: 1.5
@@ -231,7 +231,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   attackPoint: {fileID: 5777806368354544444}
---- !u!114 &7555066595489393958
+--- !u!114 &6947407420896624589
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,12 +240,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7074436024843249244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25377013f2b10654f88982f13ed69b19, type: 3}
+  m_Script: {fileID: 11500000, guid: d5ac4bb811b88624b8c2a59faf21cf01, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationEvents
-  piranhaAI: {fileID: 9189661891976050501}
-  piranhaAnimator: {fileID: 5103722545025348244}
---- !u!114 &5103722545025348244
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationHandler
+  animator: {fileID: 2366129569692377886}
+--- !u!114 &2366129569692377886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -254,9 +253,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7074436024843249244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8adee4792c49b7e48bc04da7d56de213, type: 3}
+  m_Script: {fileID: 11500000, guid: d7335784cfadc2e47b2ef90e6a2abbcd, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PiranhaAnimator
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimator
 --- !u!95 &2855898051771777264
 Animator:
   serializedVersion: 7

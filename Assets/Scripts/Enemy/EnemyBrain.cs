@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyBrain : MonoBehaviour
@@ -46,8 +47,9 @@ public class EnemyBrain : MonoBehaviour
 
     public bool IsDead => currentState == EnemyState.Dead;
 
-    [Header("Animations")]
-    public System.Action OnAttackTriggered;
+    //Animations
+    public event Action OnAttackTriggered;
+    public event Action OnScream;
 
     private void Start()
     {
@@ -243,6 +245,7 @@ public class EnemyBrain : MonoBehaviour
             case EnemyState.Scream:
                 screamTimer = screamDuration;
                 TriggerScream();
+                OnScream?.Invoke();
                 break;
 
             case EnemyState.Patrol:
@@ -259,7 +262,7 @@ public class EnemyBrain : MonoBehaviour
 
     private void TriggerScream()
     {
-        // Acá podés agregar tu audio/animación del grito
+        // Acá agregar tu audio/animación del grito
     }
 
     private void HandleAttack()

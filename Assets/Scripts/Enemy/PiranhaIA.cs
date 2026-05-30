@@ -7,7 +7,7 @@ public class PiranhaIA : MonoBehaviour
     [SerializeField] private EnemySensors sensors;
     [SerializeField] private AquaticLocomotion locomotion;
     [SerializeField] private EnemyAttack attack;
-    [SerializeField] private PiranhaAnimator piranhaAnimator;
+    [SerializeField] private EnemyAnimator enemyAnimator;
 
     [Header("Behavior")]
     [SerializeField] private float detectionRange = 8f; // Rango para activarse
@@ -34,7 +34,9 @@ public class PiranhaIA : MonoBehaviour
 
     private void Update()
     {
-        piranhaAnimator.UpdateSpeed(locomotion.currentSpeed, chaseSpeed);
+        if (this == null || !gameObject.activeInHierarchy) return;
+
+        enemyAnimator.UpdateSpeed(locomotion.currentSpeed, chaseSpeed);
 
         switch (currentState)
         {

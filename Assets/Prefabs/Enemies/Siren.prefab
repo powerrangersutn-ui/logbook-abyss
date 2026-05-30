@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 3744865705930019089}
   - component: {fileID: 6569221565693453341}
   - component: {fileID: 864943042973049537}
+  - component: {fileID: 2351403135655798417}
+  - component: {fileID: 1737592942828393293}
   - component: {fileID: 2419330514345718350}
   - component: {fileID: 2226660495569461395}
   m_Layer: 6
@@ -209,6 +211,31 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   attackPoint: {fileID: 7838155648736082411}
+--- !u!114 &2351403135655798417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989338585170645242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ac4bb811b88624b8c2a59faf21cf01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationHandler
+  animator: {fileID: 1737592942828393293}
+--- !u!114 &1737592942828393293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989338585170645242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7335784cfadc2e47b2ef90e6a2abbcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimator
 --- !u!82 &2419330514345718350
 AudioSource:
   m_ObjectHideFlags: 0
