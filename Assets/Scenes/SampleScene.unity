@@ -1301,7 +1301,7 @@ PrefabInstance:
     - target: {fileID: 2226660495569461395, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
       propertyPath: m_Avatar
       value: 
-      objectReference: {fileID: 9000000, guid: fa17b757aeb5088439f336a041c38571, type: 3}
+      objectReference: {fileID: 9000000, guid: 4a64fc5a3fa492646a715741dca65990, type: 3}
     - target: {fileID: 2226660495569461395, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -5546,6 +5546,35 @@ Transform:
   - {fileID: 1204843012}
   m_Father: {fileID: 835711506}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &799035908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3989338585170645242, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
+  m_PrefabInstance: {fileID: 1573304327}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &799035913 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 864943042973049537, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
+  m_PrefabInstance: {fileID: 1573304327}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799035908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1b3c316db036734b9eed932942600ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
+--- !u!114 &799035921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799035908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05df935b75a113746b9195803bf1f9aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SirenaAttackEvent
+  enemyAttack: {fileID: 799035913}
 --- !u!1 &809459466
 GameObject:
   m_ObjectHideFlags: 0
@@ -11818,6 +11847,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 625610765}
+    - target: {fileID: 864943042973049537, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
+      propertyPath: attackCooldown
+      value: 1.35
+      objectReference: {fileID: 0}
     - target: {fileID: 3989338585170645242, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
       propertyPath: m_Name
       value: Siren
@@ -11863,6 +11896,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8987163813665814204, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
+      propertyPath: attackCooldown
+      value: 1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8987163813665814204, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'
       value: 
       objectReference: {fileID: 206020796}
@@ -11877,7 +11914,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3989338585170645242, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 799035921}
   m_SourcePrefab: {fileID: 100100000, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
 --- !u!1001 &1578343745
 PrefabInstance:

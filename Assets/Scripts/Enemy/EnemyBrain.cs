@@ -280,7 +280,6 @@ public class EnemyBrain : MonoBehaviour
 
             case EnemyState.Attack:
                 attackCooldownTimer = attackCooldown;
-                OnAttackTriggered?.Invoke();
                 break;
         }
     }
@@ -304,7 +303,6 @@ public class EnemyBrain : MonoBehaviour
 
         locomotion.SetForcedLookDirection(direction);
 
-        attack.TryAttack();
     }
 
     private void HandleDead()
