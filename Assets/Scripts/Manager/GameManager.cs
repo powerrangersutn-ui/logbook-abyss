@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
     public void PlayerDied()
     {
         if (gameEnded) return;
+        
         gameEnded = true;
         Time.timeScale = 0f;
 
@@ -117,7 +118,6 @@ public class GameManager : MonoBehaviour
     // ====================== REINICIO (opcional) ======================
     public void RestartLevel()
     {
-        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

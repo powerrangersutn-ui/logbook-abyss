@@ -70,7 +70,7 @@ public class HarpoonGun : MonoBehaviour
 
     private void Update()
     {
-        if (fireAction == null || harpoonPool == null || playerInventory == null) return;
+        if (fireAction == null || harpoonPool == null || playerInventory == null || Time.timeScale!=1) return;
 
         if (showAmmoCount)
             UpdateAmmoUI();
