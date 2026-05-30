@@ -120,20 +120,38 @@ public class EnemyBrain : MonoBehaviour
 
                 if (attackCooldownTimer <= 0f)
                 {
+                    if (sensors.Target == null || !sensors.CanSeeTarget)
+                    {
+                        ChangeState(EnemyState.Chase);
+                        break;
+                    }
+
                     float distance = Vector3.Distance(transform.position, sensors.Target.position);
 
-                    if (distance <= attackDistance && sensors.CanSeeTarget)
+                    if (distance <= attackDistance)
                     {
-                        // Sigue atacando desde el lugar
                         attackCooldownTimer = attackCooldown;
                         OnAttackTriggered?.Invoke();
                     }
                     else
                     {
-                        // El jugador se alejó, vuelve a perseguir
                         ChangeState(EnemyState.Chase);
                     }
                 }
+                break;
+
+            case EnemyState.Alert:
+                alertTimer -= Time.deltaTime;
+
+                if (sensors.CanSeeTarget)
+                {
+                    lastKnownTargetPosition = sensors.Target.position;
+                    ChangeState(EnemyState.Chase);
+                }
+                else if (alertTimer <= 0f)
+                {
+                    ChangeState(EnemyState.Patrol);
+                }                
                 break;
         }
     }

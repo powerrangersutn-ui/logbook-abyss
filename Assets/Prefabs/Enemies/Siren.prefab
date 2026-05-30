@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySensors
   target: {fileID: 0}
-  detectionRange: 10
+  detectionRange: 12
   visionAngle: 360
   obstacleMask:
     serializedVersion: 2
