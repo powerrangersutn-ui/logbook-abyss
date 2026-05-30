@@ -123,10 +123,6 @@ public class Harpoon : MonoBehaviour
         ResetState();
     }
 
-    #endregion
-
-    #region Colisiones
-
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log($"COLISION DETECTADA con: {collision.gameObject.name} | Tag: {collision.gameObject.tag} | Layer: {LayerMask.LayerToName(collision.gameObject.layer)}");
@@ -183,13 +179,13 @@ public class Harpoon : MonoBehaviour
 
             if (willKillEnemy)
             {
-                // ← El enemigo va a morir, NO nos pegamos
+                //  El enemigo va a morir, NO nos pegamos
                 Debug.Log($"Arpón mata al enemigo. Rebotando para ser recogible.");
                 BounceOffEnemy(contact.normal);
             }
             else
             {
-                // ← El enemigo sobrevive, nos pegamos normalmente
+                //  El enemigo sobrevive, nos pegamos normalmente
                 StickToEnemy(enemy, contact.point, contact.normal);
             }
         }
@@ -219,6 +215,7 @@ public class Harpoon : MonoBehaviour
         // Hacer recogible inmediatamente
         if (canPickupFromGround)
         {
+            PlayerInventory inv = GameObject.FindWithTag(playerTag)?.GetComponent<PlayerInventory>();            
             EnablePickup();
         }
     }
@@ -277,22 +274,19 @@ public class Harpoon : MonoBehaviour
 
     public void ReleaseFromEnemy()
     {
-        if (stuckParent == null) return;
+        // Cambiamos la condición — permitir si hay estado válido aunque stuckParent ya sea null
+        if (currentState == HarpoonState.InPool) return;
 
         currentState = HarpoonState.Falling;
 
-        //guardar referencia antes de limpiar
         EnemyHealth tempEnemy = stuckEnemy;
-        Transform tempParent = stuckParent;
-
-        //limpiar referencias ANTES de cambiar el parent
         stuckEnemy = null;
         stuckParent = null;
 
-        //separar del padre
-        transform.SetParent(null);
+        // Solo hacer SetParent si todavía tiene padre (puede que EnemyHealth ya lo hizo)
+        if (transform.parent != null)
+            transform.SetParent(null);
 
-        //fisica de caida
         rb.isKinematic = false;
         rb.useGravity = true;
         rb.linearVelocity = Vector3.down * 2f;
@@ -300,17 +294,14 @@ public class Harpoon : MonoBehaviour
         isEmbedded = false;
         mainCollider.isTrigger = false;
 
-        // hacer recogible inmediatamente
         if (canPickupFromGround)
         {
+            PlayerInventory inv = GameObject.FindWithTag(playerTag)?.GetComponent<PlayerInventory>();
             EnablePickup();
         }
 
-        //OPCIONAL: Notificar al enemigo (si todavía existe)
         if (tempEnemy != null)
-        {
             tempEnemy.OnHarpoonRemoved(this);
-        }
     }
 
     #endregion
@@ -326,15 +317,14 @@ public class Harpoon : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         rb.isKinematic = true;
 
-        // Posicionar correctamente
         transform.position = embedPoint;
         transform.rotation = Quaternion.LookRotation(-embedNormal);
 
         mainCollider.isTrigger = true;
 
-        // Hacer recogible
         if (canPickupFromGround)
         {
+            PlayerInventory inv = GameObject.FindWithTag(playerTag)?.GetComponent<PlayerInventory>();
             EnablePickup();
         }
     }
@@ -355,6 +345,7 @@ public class Harpoon : MonoBehaviour
 
         if (canPickupFromGround)
         {
+            PlayerInventory inv = GameObject.FindWithTag(playerTag)?.GetComponent<PlayerInventory>();
             EnablePickup();
         }
     }
@@ -414,37 +405,26 @@ public class Harpoon : MonoBehaviour
     }
 
     private void CollectHarpoon()
-{
-    CancelInvoke();
-    DisablePickup();
- 
-    if (stuckParent != null)
     {
-        if (stuckEnemy != null)
-            stuckEnemy.OnHarpoonRemoved(this);
- 
-        transform.SetParent(null);
-    }
- 
-    PlayerInventory playerInventory = FindAnyObjectByType<PlayerInventory>();
-    if (playerInventory != null)
-    {
-        int added = playerInventory.AddHarpoons(1);
-        if (added > 0)
+        CancelInvoke();
+
+        PlayerInventory playerInventory = FindAnyObjectByType<PlayerInventory>();
+        if (playerInventory != null)
         {
-            Debug.Log($"[Harpoon] ¡Arpón recogido del suelo! Munición: {playerInventory.CurrentHarpoons}/{playerInventory.MaxHarpoons}");
+            int added = playerInventory.AddHarpoons(1);
+            if (added == 0) return; // Inventario lleno, el arpón queda en el piso
         }
-        else
+
+        DisablePickup();
+
+        if (stuckParent != null)
         {
-            Debug.Log("[Harpoon] Munición llena (3/3), no se agregó");
+            if (stuckEnemy != null)
+                stuckEnemy.OnHarpoonRemoved(this);
+            transform.SetParent(null);
         }
-    }
-    else
-    {
-        Debug.LogWarning("[Harpoon] No se encontró PlayerInventory!");
-    }
- 
-    ReturnToPool();
+
+        ReturnToPool();
     }
 
     private void PulsePickupIndicator()
