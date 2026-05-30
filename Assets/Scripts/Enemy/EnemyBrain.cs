@@ -118,18 +118,21 @@ public class EnemyBrain : MonoBehaviour
             case EnemyState.Attack:
                 attackCooldownTimer -= Time.deltaTime;
 
-                // Después de atacar, vuelve a perseguir
                 if (attackCooldownTimer <= 0f)
                 {
-                    ChangeState(EnemyState.Chase);
-                }
-                break;
+                    float distance = Vector3.Distance(transform.position, sensors.Target.position);
 
-            case EnemyState.Alert:
-                alertTimer -= Time.deltaTime;
-                if (alertTimer <= 0f)
-                {
-                    ChangeState(EnemyState.Patrol);
+                    if (distance <= attackDistance && sensors.CanSeeTarget)
+                    {
+                        // Sigue atacando desde el lugar
+                        attackCooldownTimer = attackCooldown;
+                        OnAttackTriggered?.Invoke();
+                    }
+                    else
+                    {
+                        // El jugador se alejó, vuelve a perseguir
+                        ChangeState(EnemyState.Chase);
+                    }
                 }
                 break;
         }

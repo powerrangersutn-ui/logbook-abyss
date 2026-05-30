@@ -106,9 +106,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.4
-  m_Height: 3.0659823
+  m_Height: 2.765982
   m_Direction: 1
-  m_Center: {x: 0.000018715858, y: 1.5061011, z: -0.10669926}
+  m_Center: {x: 0.000018715858, y: 0.54, z: -0.10669926}
 --- !u!114 &8987163813665814204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,12 +171,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c91d75108b187b47b5413d4e58b01c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleAvoidance
-  detectionDistance: 3
+  detectionDistance: 1
   sphereRadius: 0.5
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 384
-  avoidanceStrength: 5
+    m_Bits: 1416
+  avoidanceStrength: 2
 --- !u!114 &6569221565693453341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
   damage: 10
-  attackRange: 2
+  attackRange: 1
   attackCooldown: 2
   playerMask:
     serializedVersion: 2
@@ -381,7 +381,7 @@ Transform:
   m_GameObject: {fileID: 9004887754009592635}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.013, y: 0.515483, z: 1.8153336}
+  m_LocalPosition: {x: -0.013, y: 0.5420867, z: 1.1453049}
   m_LocalScale: {x: 0.28405, y: 0.24750786, z: 0.11102094}
   m_ConstrainProportionsScale: 0
   m_Children: []
