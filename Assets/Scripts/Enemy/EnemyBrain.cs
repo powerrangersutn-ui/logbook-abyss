@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyBrain : MonoBehaviour
@@ -6,6 +7,7 @@ public class EnemyBrain : MonoBehaviour
     [SerializeField] private EnemySensors sensors;
     [SerializeField] private AquaticLocomotion locomotion;
     [SerializeField] private EnemyAttack attack;
+    [SerializeField] private EnemyAnimator enemyAnimator;
 
     [Header("Patrol")]
     [SerializeField] private PatrolPoint[] patrolPoints;
@@ -46,8 +48,9 @@ public class EnemyBrain : MonoBehaviour
 
     public bool IsDead => currentState == EnemyState.Dead;
 
-    [Header("Animations")]
-    public System.Action OnAttackTriggered;
+    //Animations
+    public event Action OnAttackTriggered;
+    public event Action OnScream;
 
     private void Start()
     {
@@ -59,6 +62,9 @@ public class EnemyBrain : MonoBehaviour
     {
         EvaluateState();
         ExecuteState();
+
+        enemyAnimator.UpdateSpeed(locomotion.currentSpeed, chaseSpeed);
+
     }
 
     public void Kill()
@@ -112,19 +118,40 @@ public class EnemyBrain : MonoBehaviour
             case EnemyState.Attack:
                 attackCooldownTimer -= Time.deltaTime;
 
-                // Después de atacar, vuelve a perseguir
                 if (attackCooldownTimer <= 0f)
                 {
-                    ChangeState(EnemyState.Chase);
+                    if (sensors.Target == null || !sensors.CanSeeTarget)
+                    {
+                        ChangeState(EnemyState.Chase);
+                        break;
+                    }
+
+                    float distance = Vector3.Distance(transform.position, sensors.Target.position);
+
+                    if (distance <= attackDistance)
+                    {
+                        attackCooldownTimer = attackCooldown;
+                        OnAttackTriggered?.Invoke();
+                    }
+                    else
+                    {
+                        ChangeState(EnemyState.Chase);
+                    }
                 }
                 break;
 
             case EnemyState.Alert:
                 alertTimer -= Time.deltaTime;
-                if (alertTimer <= 0f)
+
+                if (sensors.CanSeeTarget)
+                {
+                    lastKnownTargetPosition = sensors.Target.position;
+                    ChangeState(EnemyState.Chase);
+                }
+                else if (alertTimer <= 0f)
                 {
                     ChangeState(EnemyState.Patrol);
-                }
+                }                
                 break;
         }
     }
@@ -243,6 +270,7 @@ public class EnemyBrain : MonoBehaviour
             case EnemyState.Scream:
                 screamTimer = screamDuration;
                 TriggerScream();
+                OnScream?.Invoke();
                 break;
 
             case EnemyState.Patrol:
@@ -252,14 +280,13 @@ public class EnemyBrain : MonoBehaviour
 
             case EnemyState.Attack:
                 attackCooldownTimer = attackCooldown;
-                OnAttackTriggered?.Invoke();
                 break;
         }
     }
 
     private void TriggerScream()
     {
-        // Acá podés agregar tu audio/animación del grito
+        // Acá agregar tu audio/animación del grito
     }
 
     private void HandleAttack()
@@ -276,7 +303,6 @@ public class EnemyBrain : MonoBehaviour
 
         locomotion.SetForcedLookDirection(direction);
 
-        attack.TryAttack();
     }
 
     private void HandleDead()
