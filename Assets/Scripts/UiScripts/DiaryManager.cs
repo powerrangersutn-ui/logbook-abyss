@@ -106,6 +106,12 @@ public class DiaryManager : MonoBehaviour
         {
             logbookButton.interactable = true;
         }
+
+        if (bottleInteractionFeedback != null)
+        {
+            bottleInteractionFeedback.SetActive(true);
+            StartCoroutine(HideFeedbackAfterDelay(3f));
+        }
     }
 
     private System.Collections.IEnumerator HideFeedbackAfterDelay(float delay)
