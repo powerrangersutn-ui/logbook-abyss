@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Cinemachine;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class PlayerControl : MonoBehaviour
     [Header("Look Sensitivity")]
     [SerializeField] private float mouseSensitivity = 2.0f;
     [SerializeField] private float upDownRange = 80.0f;
+    [SerializeField] private GameObject cmFpCamera;
 
     [Header("Footstep Sounds")]
     [SerializeField] private AudioSource footsteepSource;
@@ -169,7 +171,7 @@ private void OnDisable()
 
         verticalRotation -= lookInput.y * mouseSensitivity;
         verticalRotation = Mathf.Clamp(verticalRotation, -upDownRange, upDownRange);
-        mainCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+        cmFpCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
     }
 
     private void HandleInteraction()
