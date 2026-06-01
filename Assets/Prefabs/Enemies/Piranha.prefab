@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3722095719384006058}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25120974, y: 0.07, z: 0.81}
+  m_LocalPosition: {x: 0.25121668, y: 0.07, z: 0.84977984}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 6947407420896624589}
   - component: {fileID: 2366129569692377886}
   - component: {fileID: 2855898051771777264}
+  - component: {fileID: 938573392780664307}
   m_Layer: 6
   m_Name: Piranha
   m_TagString: Enemy
@@ -122,9 +123,11 @@ MonoBehaviour:
   chaseSpeed: 12
   attackDistance: 1.5
   desiredCombatDistance: 3
-  attackCooldown: 1.05
+  attackCooldown: 2
   jumpscareScreamDuration: 0.3
-  jumpscareSound: {fileID: 0}
+  audioSource: {fileID: 938573392780664307}
+  screamAtChasePlayer: {fileID: 8300000, guid: a73b672b8405666468ba3d83d715ac1d, type: 3}
+  attackSound: {fileID: 8300000, guid: ea5d4d48ed648ac47affcff85f8fe16f, type: 3}
 --- !u!114 &3900058042866649377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
   damage: 5
   attackRange: 2
-  attackCooldown: 1.05
+  attackCooldown: 2
   playerMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -278,6 +281,139 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &938573392780664307
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074436024843249244}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -6178252071633794735, guid: bec69c627300e92478ef09f4fd96c93a, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 24
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.041666668
+      value: 1
+      inSlope: -24.009596
+      outSlope: -24.009596
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.083333336
+      value: 0.5
+      inSlope: -6.002399
+      outSlope: -6.002399
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.16666667
+      value: 0.25
+      inSlope: -1.5005997
+      outSlope: -1.5005997
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.33333334
+      value: 0.125
+      inSlope: -0.37514994
+      outSlope: -0.37514994
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6666667
+      value: 0.0625
+      inSlope: -0.093787484
+      outSlope: -0.093787484
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.041683298
+      outSlope: -0.041683298
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &4204284625229911120
 PrefabInstance:
   m_ObjectHideFlags: 0

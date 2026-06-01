@@ -19,9 +19,9 @@ GameObject:
   - component: {fileID: 864943042973049537}
   - component: {fileID: 2351403135655798417}
   - component: {fileID: 1737592942828393293}
-  - component: {fileID: 2419330514345718350}
   - component: {fileID: 2226660495569461395}
   - component: {fileID: 904614962392409738}
+  - component: {fileID: 8902221914599453538}
   m_Layer: 6
   m_Name: Siren
   m_TagString: Enemy
@@ -142,6 +142,9 @@ MonoBehaviour:
   attackDistance: 2
   attackCooldown: 1.35
   currentState: 0
+  audioSource: {fileID: 8902221914599453538}
+  screamAtChasePlayer: {fileID: 8300000, guid: 399309ce2dde41947896a37f094f181a, type: 3}
+  attackSound: {fileID: 8300000, guid: 942d42314c8950c4b801d09cf3082e81, type: 3}
 --- !u!114 &800702882632720716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +241,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7335784cfadc2e47b2ef90e6a2abbcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimator
---- !u!82 &2419330514345718350
+--- !u!95 &2226660495569461395
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989338585170645242}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 4a64fc5a3fa492646a715741dca65990, type: 3}
+  m_Controller: {fileID: 9100000, guid: 65fe8fafd93af1246ad88cea2f9791bd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &904614962392409738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989338585170645242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05df935b75a113746b9195803bf1f9aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SirenaAttackEvent
+  enemyAttack: {fileID: 864943042973049537}
+--- !u!82 &8902221914599453538
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -249,20 +287,20 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -6178252071633794735, guid: bec69c627300e92478ef09f4fd96c93a, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: fc479daad38af4648a79d5d08fb81f52, type: 3}
-  m_PlayOnAwake: 0
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 107
   DopplerLevel: 1
-  MinDistance: 2
-  MaxDistance: 18
+  MinDistance: 1
+  MaxDistance: 23.9
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -270,23 +308,59 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.09679243
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -18.007198
+      outSlope: -18.007198
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.14204067
+      value: 0.51527405
+      inSlope: -4.5017996
+      outSlope: -4.5017996
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.22222222
+      value: 0.25
+      inSlope: -1.1254499
+      outSlope: -1.1254499
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.44444445
+      value: 0.125
+      inSlope: -0.28136247
+      outSlope: -0.28136247
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.83218724
+      value: 0.0395813
+      inSlope: -0.07034062
+      outSlope: -0.07034062
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.0555777
+      outSlope: -0.0555777
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -335,41 +409,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &2226660495569461395
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3989338585170645242}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4a64fc5a3fa492646a715741dca65990, type: 3}
-  m_Controller: {fileID: 9100000, guid: 65fe8fafd93af1246ad88cea2f9791bd, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &904614962392409738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3989338585170645242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05df935b75a113746b9195803bf1f9aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SirenaAttackEvent
-  enemyAttack: {fileID: 864943042973049537}
 --- !u!1 &9004887754009592635
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,6 +36,11 @@ public class EnemyBrain : MonoBehaviour
     [Header("State")]
     [SerializeField] private EnemyState currentState;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip screamAtChasePlayer;
+    [SerializeField] private AudioClip attackSound;
+
     public EnemyState CurrentState => currentState;
 
     private int patrolIndex;
@@ -91,6 +96,7 @@ public class EnemyBrain : MonoBehaviour
                 screamTimer -= Time.deltaTime;
                 if (screamTimer <= 0f)
                 {
+                    audioSource.PlayOneShot(screamAtChasePlayer);
                     ChangeState(EnemyState.Chase);
                 }
                 break;
@@ -98,6 +104,7 @@ public class EnemyBrain : MonoBehaviour
             case EnemyState.Chase:
                 if (sensors.CanSeeTarget)
                 {
+                    
                     lastKnownTargetPosition = sensors.Target.position;
                     alertTimer = alertDuration;
 
@@ -130,8 +137,10 @@ public class EnemyBrain : MonoBehaviour
 
                     if (distance <= attackDistance)
                     {
+                        audioSource.PlayOneShot(attackSound);
                         attackCooldownTimer = attackCooldown;
                         OnAttackTriggered?.Invoke();
+
                     }
                     else
                     {

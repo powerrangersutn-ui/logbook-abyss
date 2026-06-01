@@ -254,7 +254,7 @@ Transform:
   m_GameObject: {fileID: 2728684648649308606}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.77, y: 0.79, z: 0.34}
+  m_LocalPosition: {x: 0.051996488, y: 0.82606244, z: 0.6328372}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5121,7 +5121,7 @@ Transform:
   m_GameObject: {fileID: 5174057506137734555}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.29, y: 1.21, z: 0.84}
+  m_LocalPosition: {x: 0.05200042, y: 0.8335508, z: 0.6201383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5264,6 +5264,7 @@ MonoBehaviour:
   sprintMultiplier: 1.3
   gravity: 9
   jumpForce: 3
+  coyoteTime: 0.15
   mouseSensitivity: 1
   upDownRange: 80
   footsteepSource: {fileID: 3786779706432571100}
@@ -5719,6 +5720,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1656996385654481865, guid: e2d09acf41252fd4e9b3016f04ac7f8b, type: 3}
   m_PrefabInstance: {fileID: 930204479788339496}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &4529546785986102922 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3617778936575170466, guid: e2d09acf41252fd4e9b3016f04ac7f8b, type: 3}
+  m_PrefabInstance: {fileID: 930204479788339496}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6055776780427297420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6404876157903131556, guid: e2d09acf41252fd4e9b3016f04ac7f8b, type: 3}
@@ -5751,8 +5757,8 @@ MonoBehaviour:
   moveAction: {fileID: 0}
   ammoText: {fileID: 0}
   showAmmoCount: 1
-  weaponModel: {fileID: 1879713416990978785}
-  enableWalkBobbing: 0
+  weaponModel: {fileID: 4529546785986102922}
+  enableWalkBobbing: 1
   bobbingSpeed: 6
   bobbingAmountHorizontal: 0.08
   bobbingTiltAngle: 2
