@@ -10,6 +10,7 @@ public class FallDeath : MonoBehaviour
             gameOverPanel.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            Time.timeScale = 0f;
         }
     }
 }
