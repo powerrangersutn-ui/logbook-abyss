@@ -11,11 +11,14 @@ public class DialogManager : MonoBehaviour
     [SerializeField] float timeBetweenLines = 3f;
 
     private Dictionary<string, string[]> dialogData = new Dictionary<string, string[]>() {
-        { "hint_intro", new string[] { "Recuerda tu objetivo: buscar la bitácora en el submarino. Es de suma importancia que la traigas de nuevo a tu punto de salida." }},
-        { "hint_hole", new string[] { "Recuerda que este terreno es como una montaña: si te caes mueres." }},
+        { "hint_intro", new string[] { "Recuerda tu objetivo: buscar la bitácora en el submarino. Es de suma importancia que la traigas de nuevo a tu punto de salida."
+                                           ,"Cuida tu oxígeno, correr y saltar hará que se acabe más rápido."}},
+        { "hint_hole", new string[] { "Recuerda que este terreno es como una montaña: si te caes mueres."
+                                           ,"Puedo ver que hay algunas botellas con información. Por favor recoléctalas para nuestras documentaciones"}},
         { "hint_fightEnemy", new string[] { "Hey, puedo ver en tu radar que hay alguna criatura peligrosa. Puedes usar tu arpón para acabarla."
                                            ,"Apunta bien: estas flechas son frágiles pero poderosas. Si le pegas a algún objeto duro seguro se romperán."
-                                           ,"Presiona la e o click izquierdo para disparar. Apunta con tu mouse."}},
+                                           ,"Presiona la e o click izquierdo para disparar. Apunta con tu mouse."
+                                           ,"Según nuestros informes debería haber cajas de expediciones anteriores con recursos como tanques de oxígeno y flechas. Aprovechalas"}},
         { "hint_goal", new string[] { "Atención! el submarino está cerca. Tu objetivo se encuentra dentro." }},
         { "hint_logbook", new string[] { "Eureka!!! Ya tienes la bitácora. Ahora apúrate, debes volver al ascensor antes de que te agarren esas escorias."}},
         { "hint_elevator", new string[] { "El ascensor está cerca!"}},

@@ -65,7 +65,6 @@ public class PausePanelController : MonoBehaviour
             {
                 Pause();
             }
-            ChangePausedAudio(pausedGame);
         }
     }
 
@@ -75,6 +74,7 @@ public class PausePanelController : MonoBehaviour
         if (pausePanelMenu != null) pausePanelMenu.SetActive(true);
         Time.timeScale = 0f;
         pausedGame = true;
+        ChangePausedAudio(pausedGame);
 
     }
 
@@ -84,6 +84,7 @@ public class PausePanelController : MonoBehaviour
         if (pausePanelMenu != null) pausePanelMenu.SetActive(false);
         Time.timeScale = 1f;
         pausedGame = false;
+        ChangePausedAudio(pausedGame);
 
         if (pausePanelMenu != null)
         {

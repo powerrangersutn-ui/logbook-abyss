@@ -24,6 +24,7 @@ public class LogbookManager : MonoBehaviour, IInteractable
         wasPickedUp = true;
 
         DiaryManager.RaiseLogbookFound();
+        GameManager.Instance.hasLogbook = wasPickedUp;
 
         //Muestra mensaje de que se encontró la bitácora
         DialogManager.Instance.ShowDialog(dialogID);
