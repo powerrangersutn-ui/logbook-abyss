@@ -18,6 +18,8 @@ public class PausePanelController : MonoBehaviour
     [Header("AudioMixer Snapshots")]
     [SerializeField] private AudioMixerSnapshot snapshotDefault;
     [SerializeField] private AudioMixerSnapshot snapshotPause;
+    [SerializeField] private AudioMixerSnapshot snapshotChase;
+    [SerializeField] private GameObject behemot;
 
 
     private InputAction pauseAction;
@@ -74,38 +76,42 @@ public class PausePanelController : MonoBehaviour
         if (pausePanelMenu != null) pausePanelMenu.SetActive(true);
         Time.timeScale = 0f;
         pausedGame = true;
-        ChangePausedAudio(pausedGame);
+        ChangePausedAudio(pausedGame, behemot);
 
     }
 
 
     public void Unpause()
     {
-        if (pausePanelMenu != null) pausePanelMenu.SetActive(false);
+        if (pausePanelMenu) pausePanelMenu.SetActive(false);
         Time.timeScale = 1f;
         pausedGame = false;
-        ChangePausedAudio(pausedGame);
+        ChangePausedAudio(pausedGame, behemot);
 
-        if (pausePanelMenu != null)
+        if (pausePanelMenu)
         {
             pausePanelMenu.SetActive(false);
         }
     }
 
-    public void ChangePausedAudio(bool isPaused)
+    public void ChangePausedAudio(bool isPaused, bool behemotState)
     {
         // El número adentro de TransitionTo es el tiempo en segundos que dura el "fade"
         float transitionTime = 0f;
 
-        if (isPaused)
+        if (!isPaused && behemotState)
         {
             // Activa el efecto de pausa (ej: volumen bajo, filtro de ecualizador)
-            snapshotPause.TransitionTo(transitionTime);
+            snapshotChase.TransitionTo(transitionTime);
         }
-        else
+        else if (!isPaused)
         {
             // Vuelve a la mezcla de sonido normal
             snapshotDefault.TransitionTo(transitionTime);
+        }
+        else
+        {
+            snapshotPause.TransitionTo(transitionTime);
         }
     }
 
