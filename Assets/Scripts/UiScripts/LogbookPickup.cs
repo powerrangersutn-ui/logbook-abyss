@@ -4,6 +4,7 @@ public class LogbookPickup : MonoBehaviour
 {
     [SerializeField] private float uiShowDistance = 3f;
     [SerializeField] private GameObject interactionCanvas;
+    [SerializeField] private GameObject behemot;
 
     private Transform playerTransform;
 
@@ -33,6 +34,7 @@ public class LogbookPickup : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, playerTransform.position);
         interactionCanvas.SetActive(distance <= uiShowDistance);
+        
     }
 
     private void OnDrawGizmosSelected()
@@ -44,6 +46,7 @@ public class LogbookPickup : MonoBehaviour
     public void MarkAsCollected()
     {
         isCollected = true;
+        behemot.SetActive(true);
         if (interactionCanvas != null) interactionCanvas.SetActive(false);
     }
 }
