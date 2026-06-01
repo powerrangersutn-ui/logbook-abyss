@@ -20,8 +20,8 @@ public class DialogManager : MonoBehaviour
                                            ,"Presiona la e o click izquierdo para disparar. Apunta con tu mouse."
                                            ,"Según nuestros informes debería haber cajas de expediciones anteriores con recursos como tanques de oxígeno y flechas. Aprovechalas"}},
         { "hint_goal", new string[] { "Atención! el submarino está cerca. Tu objetivo se encuentra dentro." }},
-        { "hint_logbook", new string[] { "Eureka!!! Ya tienes la bitácora. Ahora apúrate, debes volver al ascensor antes de que te agarren esas escorias."}},
-        { "hint_elevator", new string[] { "El ascensor está cerca!"}},
+        { "hint_logbook", new string[] { "Ahora que tenés la bitácora, apurate en volver! Estoy detectando una criatura colosal acercandose!"}},
+        { "hint_elevator", new string[] { "El ascensor está cerca! Ya casi estás!"}},
     };
 
 
