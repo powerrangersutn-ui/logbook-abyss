@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: d61f8a02ea8612f4689b0e218e534464
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - snapshotDefault: {fileID: 24500006, guid: bec69c627300e92478ef09f4fd96c93a, type: 2}
+  - snapshotPause: {fileID: -743641450752932432, guid: bec69c627300e92478ef09f4fd96c93a, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
