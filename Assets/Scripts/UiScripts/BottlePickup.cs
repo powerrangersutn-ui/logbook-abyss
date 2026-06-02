@@ -9,7 +9,7 @@ public class BottlePickup : MonoBehaviour, IInteractable
 
     private Transform playerTransform;
 
-    [Header("Ruidos")]
+    [Header("Sounds")]
     [SerializeField] private AudioClip pickupSound;
 
     private void Start()
@@ -47,6 +47,7 @@ public class BottlePickup : MonoBehaviour, IInteractable
         DiaryManager.RaiseBottleFound();
 
         AudioSource.PlayClipAtPoint(pickupSound, transform.position);
+
         Destroy(gameObject);
     }
 

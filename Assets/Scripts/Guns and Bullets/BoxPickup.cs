@@ -13,7 +13,7 @@ public class BoxPickup : MonoBehaviour, IInteractable
     [Header("Probabilidad general")]
     [Range(0, 100)][SerializeField] private float harpoonChanceWhenNormal = 80f;
 
-    [Header("Ruidos")]
+    [Header("Sounds")]
     [SerializeField] private AudioClip pickupSound;
 
     private bool wasPickedUp = false;

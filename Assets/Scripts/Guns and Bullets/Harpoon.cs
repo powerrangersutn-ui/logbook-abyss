@@ -28,6 +28,9 @@ public class Harpoon : MonoBehaviour
     [SerializeField] private GameObject pickupIndicator;  // Opcional: sprite o partículas
     [SerializeField] private float indicatorPulseSpeed = 2f;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioClip pickupSound;
+
     private Rigidbody rb;
     private Collider mainCollider;
     private SphereCollider pickupTrigger;
@@ -390,6 +393,7 @@ public class Harpoon : MonoBehaviour
 
         if (canPickup)
         {
+            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
             CollectHarpoon();
         }
     }
