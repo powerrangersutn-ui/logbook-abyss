@@ -23,7 +23,6 @@ public class PiranhaIA : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip screamAtChasePlayer;
-    [SerializeField] private AudioClip attackSound;
 
     private enum State { Idle, Jumpscare, Chase, Attack }
     private State currentState = State.Idle;
@@ -162,7 +161,6 @@ public class PiranhaIA : MonoBehaviour
                 break;
 
             case State.Attack:
-                audioSource.PlayOneShot(attackSound);
                 attackTimer = attackCooldown;
                 OnAttack?.Invoke();
                 break;
@@ -171,7 +169,7 @@ public class PiranhaIA : MonoBehaviour
 
     private void TriggerJumpscare()
     {
-        if (attackSound != null)
+        if (screamAtChasePlayer != null)
         {
             audioSource.PlayOneShot(screamAtChasePlayer);
         }
