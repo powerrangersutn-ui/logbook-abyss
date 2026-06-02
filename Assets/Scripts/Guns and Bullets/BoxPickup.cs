@@ -14,7 +14,6 @@ public class BoxPickup : MonoBehaviour, IInteractable
     [Range(0, 100)][SerializeField] private float harpoonChanceWhenNormal = 80f;
 
     [Header("Ruidos")]
-    private AudioSource m_audiosource;
     [SerializeField] private AudioClip pickupSound;
 
     private bool wasPickedUp = false;
@@ -26,7 +25,6 @@ public class BoxPickup : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        m_audiosource = GetComponent<AudioSource>();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null) playerTransform = player.transform;
     }
@@ -74,9 +72,9 @@ public class BoxPickup : MonoBehaviour, IInteractable
 
         if (interactionCanvas != null) interactionCanvas.SetActive(false);
 
-        m_audiosource.PlayOneShot(pickupSound);
+        AudioSource.PlayClipAtPoint(pickupSound, transform.position);
 
-        Destroy(gameObject, 1f);
+        Destroy(gameObject);
     }
 
     private void GiveOxygen(PlayerInventory inventory)

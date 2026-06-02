@@ -8,15 +8,10 @@ public class LogbookManager : MonoBehaviour, IInteractable
     [SerializeField] private GameObject dialogElevator;
 
     [Header("Sounds")]
-    private AudioSource m_audiosource;
     [SerializeField] private AudioClip pickupSound;
 
     private bool wasPickedUp = false;
 
-    private void Start()
-    {
-        m_audiosource = GetComponent<AudioSource>();
-    }
 
     public void OnInteract(PlayerInventory inventory)
     {
@@ -33,8 +28,8 @@ public class LogbookManager : MonoBehaviour, IInteractable
             dialogElevator.SetActive(true);
 
         GetComponent<LogbookPickup>()?.MarkAsCollected();
-        m_audiosource.PlayOneShot(pickupSound);
+        AudioSource.PlayClipAtPoint(pickupSound, transform.position);
 
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject);
     }
 }

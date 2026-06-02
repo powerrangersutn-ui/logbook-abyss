@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LogbookUI
   uiShowDistance: 3
   interactionCanvas: {fileID: 5043317971533003952}
+  behemot: {fileID: 0}
 --- !u!114 &3695567788543001252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,6 +145,7 @@ MonoBehaviour:
   dialogID: hint_logbook
   messageKey: logbook
   dialogElevator: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: ab93349bc7f16ad47ad4e53dfe265556, type: 3}
 --- !u!1 &1908471132899167102
 GameObject:
   m_ObjectHideFlags: 0

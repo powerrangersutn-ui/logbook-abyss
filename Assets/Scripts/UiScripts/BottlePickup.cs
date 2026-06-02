@@ -10,12 +10,10 @@ public class BottlePickup : MonoBehaviour, IInteractable
     private Transform playerTransform;
 
     [Header("Ruidos")]
-    private AudioSource m_audiosource;
     [SerializeField] private AudioClip pickupSound;
 
     private void Start()
     {
-        m_audiosource = GetComponent<AudioSource>();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null) playerTransform = player.transform;
     }
@@ -48,8 +46,8 @@ public class BottlePickup : MonoBehaviour, IInteractable
 
         DiaryManager.RaiseBottleFound();
 
-        m_audiosource.PlayOneShot(pickupSound);
-        Destroy(gameObject, 0.5f);
+        AudioSource.PlayClipAtPoint(pickupSound, transform.position);
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
