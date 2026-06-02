@@ -1380,14 +1380,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8902221914599453538, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
-      propertyPath: Loop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8902221914599453538, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
-      propertyPath: Priority
-      value: 128
-      objectReference: {fileID: 0}
     - target: {fileID: 8987163813665814204, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'
       value: 

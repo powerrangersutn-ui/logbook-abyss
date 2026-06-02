@@ -9,6 +9,10 @@ public class EnemyHealth : MonoBehaviour
     [Header("Debug Visual")]
     [SerializeField] private bool showStuckHarpoons = true;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip deathSound;
+    [SerializeField][Range(0f, 1f)] private float soundVolume = 0.5f;
+
     private HealthSystem healthSystem;
     private List<Harpoon> stuckHarpoons = new List<Harpoon>();
     private bool isDead = false;
@@ -62,6 +66,8 @@ public class EnemyHealth : MonoBehaviour
     private void HandleDeath()
     {
         if (isDead) return;
+
+        AudioSource.PlayClipAtPoint(deathSound, transform.position, soundVolume);
 
         isDead = true;
 

@@ -215,6 +215,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   maxHealth: 1
   showStuckHarpoons: 1
+  deathSound: {fileID: 8300000, guid: ab6818d799cd5a24394dd01d99512a90, type: 3}
+  soundVolume: 0.5
 --- !u!114 &2599940317644617705
 MonoBehaviour:
   m_ObjectHideFlags: 0
