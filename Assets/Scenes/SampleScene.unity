@@ -4070,6 +4070,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Caja_Suministro (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7773623825724621661, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
+      propertyPath: maxOxygen
+      value: 41.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7773623825724621661, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
+      propertyPath: minOxygen
+      value: 40.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7961000364784138602, guid: bc51b06cdb9d2104d8b81fbac6d34543, type: 3}
       propertyPath: m_LocalPosition.x
       value: -76.818
@@ -9808,7 +9816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1197265067
 MonoBehaviour:
   m_ObjectHideFlags: 0
