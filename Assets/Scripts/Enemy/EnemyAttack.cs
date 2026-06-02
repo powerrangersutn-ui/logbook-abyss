@@ -14,6 +14,10 @@ public class EnemyAttack : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform attackPoint;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip attackSound;
+
     private float cooldownTimer;
 
     public bool CanAttack => cooldownTimer <= 0f;
@@ -27,6 +31,9 @@ public class EnemyAttack : MonoBehaviour
     {
         if (!CanAttack)
             return false;
+
+        if(attackSound!=null)
+            audioSource.PlayOneShot(attackSound);
 
         Collider[] hits =
             Physics.OverlapSphere(

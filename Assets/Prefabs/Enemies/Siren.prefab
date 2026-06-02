@@ -142,11 +142,10 @@ MonoBehaviour:
   patrolTurnThreshold: 360
   patrolStopTime: 1
   attackDistance: 2
-  attackCooldown: 1.35
+  attackCooldown: 0
   currentState: 0
   audioSource: {fileID: 8902221914599453538}
   screamAtChasePlayer: {fileID: 8300000, guid: 399309ce2dde41947896a37f094f181a, type: 3}
-  attackSound: {fileID: 8300000, guid: 942d42314c8950c4b801d09cf3082e81, type: 3}
 --- !u!114 &800702882632720716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +217,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   attackPoint: {fileID: 7838155648736082411}
+  audioSource: {fileID: 8902221914599453538}
+  attackSound: {fileID: 8300000, guid: 942d42314c8950c4b801d09cf3082e81, type: 3}
 --- !u!114 &2351403135655798417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,7 +301,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 23.9
+  MaxDistance: 24
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0

@@ -39,7 +39,6 @@ public class EnemyBrain : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip screamAtChasePlayer;
-    [SerializeField] private AudioClip attackSound;
 
     public EnemyState CurrentState => currentState;
 
@@ -137,7 +136,6 @@ public class EnemyBrain : MonoBehaviour
 
                     if (distance <= attackDistance)
                     {
-                        audioSource.PlayOneShot(attackSound);
                         attackCooldownTimer = attackCooldown;
                         OnAttackTriggered?.Invoke();
 
