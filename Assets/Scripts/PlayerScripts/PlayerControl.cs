@@ -163,6 +163,7 @@ private void OnDisable()
         characterController.Move(currentMovement * Time.deltaTime);
     }
 
+
     void HandleRotation()
     {
         float mouseXRotation = lookInput.x * mouseSensitivity;
