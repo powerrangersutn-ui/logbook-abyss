@@ -7,7 +7,7 @@ public class EnemyAnimator : MonoBehaviour
 
     public void PlayAttack() => animator.SetTrigger("attack");
     public void PlayScream() => animator.SetTrigger("Scream");
-    public void PlayJumpscare() => animator.SetTrigger("Jumpscare");
+    //public void PlayJumpscare() => animator.SetTrigger("Jumpscare");
 
     public void UpdateSpeed(float speed, float maxSpeed)
     {

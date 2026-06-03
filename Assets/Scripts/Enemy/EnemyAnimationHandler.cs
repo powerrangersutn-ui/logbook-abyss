@@ -15,7 +15,7 @@ public class EnemyAnimationHandler : MonoBehaviour
         if (piranha != null)
         {
             piranha.OnAttack += animator.PlayAttack;
-            piranha.OnJumpscare += animator.PlayJumpscare;
+           // piranha.OnJumpscare += animator.PlayJumpscare;
         }
 
         if (siren != null)
@@ -30,7 +30,7 @@ public class EnemyAnimationHandler : MonoBehaviour
         if (piranha != null)
         {
             piranha.OnAttack -= animator.PlayAttack;
-            piranha.OnJumpscare -= animator.PlayJumpscare;
+            //piranha.OnJumpscare -= animator.PlayJumpscare;
         }
 
         if (siren != null)
