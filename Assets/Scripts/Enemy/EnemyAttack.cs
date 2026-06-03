@@ -72,6 +72,7 @@ public class EnemyAttack : MonoBehaviour
 
     public void PlayAttackSound()
     {
+        Debug.Log("audio atack");
         if(attackSound != null)
                 audioSource.PlayOneShot(attackSound);
     }
