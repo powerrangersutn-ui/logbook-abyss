@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Harpoon : MonoBehaviour
@@ -393,7 +394,10 @@ public class Harpoon : MonoBehaviour
 
         if (canPickup)
         {
-            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
+
+            Transform childOther = other.transform.Find("AudioPickUp");
+            AudioSource audioSoucePick = childOther.GetComponent<AudioSource>();
+            audioSoucePick.PlayOneShot(pickupSound);
             CollectHarpoon();
         }
     }

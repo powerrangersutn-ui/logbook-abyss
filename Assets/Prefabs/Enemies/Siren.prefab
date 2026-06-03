@@ -61,7 +61,7 @@ MonoBehaviour:
   maxHealth: 2
   showStuckHarpoons: 1
   deathSound: {fileID: 8300000, guid: 1e490d92172bf9b4390febf5d2fa75d8, type: 3}
-  soundVolume: 0.5
+  soundVolume: 0.69
 --- !u!54 &4092937891475810697
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class EnemyHealth : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private AudioClip deathSound;
-    [SerializeField][Range(0f, 1f)] private float soundVolume = 0.5f;
+    [SerializeField] private float soundVolume = 3f;
 
     private HealthSystem healthSystem;
     private List<Harpoon> stuckHarpoons = new List<Harpoon>();

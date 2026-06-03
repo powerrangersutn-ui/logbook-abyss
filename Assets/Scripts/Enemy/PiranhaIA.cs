@@ -17,7 +17,7 @@ public class PiranhaIA : MonoBehaviour
     [SerializeField] private float attackCooldown = 0.5f;
 
     [Header("Jumpscare")]
-    [SerializeField] private float jumpscareScreamDuration = 0.3f;
+    [SerializeField] private float jumpscareScreamDuration = 2f;
     //[SerializeField] private AudioClip jumpscareSound;
 
     [Header("Audio")]
