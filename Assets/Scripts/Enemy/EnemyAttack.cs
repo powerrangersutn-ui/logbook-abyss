@@ -32,8 +32,6 @@ public class EnemyAttack : MonoBehaviour
         if (!CanAttack)
             return false;
 
-        if(attackSound!=null)
-            audioSource.PlayOneShot(attackSound);
 
         Collider[] hits =
             Physics.OverlapSphere(
@@ -43,11 +41,12 @@ public class EnemyAttack : MonoBehaviour
 
         foreach (Collider hit in hits)
         {
+
             if (!hit.TryGetComponent(out PlayerHealth player))
                 continue;
 
             if (player.IsDead)
-                continue;
+                continue;   
 
             player.TakeDamage(damage);
             
@@ -69,5 +68,11 @@ public class EnemyAttack : MonoBehaviour
         Gizmos.DrawWireSphere(
             attackPoint.position,
             attackRange);
+    }
+
+    public void PlayAttackSound()
+    {
+        if(attackSound != null)
+                audioSource.PlayOneShot(attackSound);
     }
 }
