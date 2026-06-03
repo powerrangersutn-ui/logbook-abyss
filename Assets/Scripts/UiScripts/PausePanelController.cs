@@ -26,6 +26,7 @@ public class PausePanelController : MonoBehaviour
 
     public void GoToMenu(string mainMenuScene)
     {
+        ChangePausedAudio(false, false);
         SceneManager.LoadScene(mainMenuScene);
     }
 
