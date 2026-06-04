@@ -17,15 +17,9 @@ public class PlayerDeathHandler : MonoBehaviour
 
     private void OnPlayerDied()
     {
-        Debug.Log("=== [DeathHandler] El evento de muerte fue captado ===");
-
         if (GameManager.Instance != null)
         {
             GameManager.Instance.PlayerDied();
-        }
-        else
-        {
-            Debug.LogWarning("GameManager.Instance no encontrado. Asegúrate de que exista uno en la escena.");
         }
     }
 }

@@ -8,76 +8,39 @@ public class PlayerInventory : MonoBehaviour
 
     [Header("Referencias")]
     [SerializeField] private HarpoonPool harpoonPool;
-
     private OxygenSystem oxygenSystem;
 
-    // Propiedades públicas
     public int CurrentHarpoons => currentHarpoons;
     public int MaxHarpoons => maxHarpoons;
 
     private void Awake()
     {
         oxygenSystem = GetComponent<OxygenSystem>();
-
         if (harpoonPool == null)
             harpoonPool = FindAnyObjectByType<HarpoonPool>();
-
-        Debug.Log($"[PlayerInventory] Inicializado - Munición: {currentHarpoons}/{maxHarpoons}");
     }
 
-    public void AddOxygen(float amount)
-    {
-        oxygenSystem?.AddOxygen(amount);
-    }
+    public void AddOxygen(float amount) => oxygenSystem?.AddOxygen(amount);
 
-    /// <summary>
-    /// Agrega munición de arpones al inventario (pickups)
-    /// </summary>
     public int AddHarpoons(int desiredAmount)
     {
         int spaceAvailable = maxHarpoons - currentHarpoons;
-
-        if (spaceAvailable <= 0)
-        {
-            Debug.LogWarning("[PlayerInventory] Munición llena, no se pueden agregar más arpones");
-            return 0;
-        }
+        if (spaceAvailable <= 0) return 0;
 
         int toAdd = Mathf.Min(desiredAmount, spaceAvailable);
         currentHarpoons += toAdd;
-
-        Debug.Log($"[PlayerInventory] +{toAdd} arpones! Munición: {currentHarpoons}/{maxHarpoons}");
-
+        Debug.Log($"[Inventory] +{toAdd} arpones. Current: {currentHarpoons}/{maxHarpoons}");
         return toAdd;
     }
 
-    /// Verifica si puede recibir más munición
-    public bool CanReceiveHarpoons()
-    {
-        bool can = currentHarpoons < maxHarpoons;
-        Debug.Log($"[PlayerInventory] CanReceiveHarpoons() = {can} (munición: {currentHarpoons}/{maxHarpoons})");
-        return can;
-    }
+    public bool CanReceiveHarpoons() => currentHarpoons < maxHarpoons;
 
-    /// Usa un arpón al disparar. Llama esto desde HarpoonGun.
     public bool UseHarpoon()
     {
-        if (currentHarpoons <= 0)
-        {
-            Debug.LogWarning("[PlayerInventory] Sin munición!");
-            return false;
-        }
-
+        if (currentHarpoons <= 0) return false;
         currentHarpoons--;
-        Debug.Log($"[PlayerInventory] Arpón disparado. Munición restante: {currentHarpoons}/{maxHarpoons}");
         return true;
     }
 
-    /// <summary>
-    /// Verifica si tiene munición disponible
-    /// </summary>
-    public bool HasAmmo()
-    {
-        return currentHarpoons > 0;
-    }
+    public bool HasAmmo() => currentHarpoons > 0;
 }

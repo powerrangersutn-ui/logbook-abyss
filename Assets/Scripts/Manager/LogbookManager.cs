@@ -7,7 +7,12 @@ public class LogbookManager : MonoBehaviour, IInteractable
     public string messageKey = "logbook";
     [SerializeField] private GameObject dialogElevator;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioSource playerPickAudio;
+    [SerializeField] private AudioClip pickupSound;
+
     private bool wasPickedUp = false;
+
 
     public void OnInteract(PlayerInventory inventory)
     {
@@ -15,12 +20,17 @@ public class LogbookManager : MonoBehaviour, IInteractable
         wasPickedUp = true;
 
         DiaryManager.RaiseLogbookFound();
+        GameManager.Instance.hasLogbook = wasPickedUp;
+
+        //Muestra mensaje de que se encontró la bitácora
+        DialogManager.Instance.ShowDialog(dialogID);
 
         if (dialogElevator != null)
             dialogElevator.SetActive(true);
 
         GetComponent<LogbookPickup>()?.MarkAsCollected();
+        playerPickAudio.PlayOneShot(pickupSound);
 
-        Destroy(gameObject, 0.1f);
+        Destroy(gameObject);
     }
 }

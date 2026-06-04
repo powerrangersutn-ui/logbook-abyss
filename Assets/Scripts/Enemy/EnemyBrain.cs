@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyBrain : MonoBehaviour
@@ -6,6 +7,7 @@ public class EnemyBrain : MonoBehaviour
     [SerializeField] private EnemySensors sensors;
     [SerializeField] private AquaticLocomotion locomotion;
     [SerializeField] private EnemyAttack attack;
+    [SerializeField] private EnemyAnimator enemyAnimator;
 
     [Header("Patrol")]
     [SerializeField] private PatrolPoint[] patrolPoints;
@@ -34,6 +36,10 @@ public class EnemyBrain : MonoBehaviour
     [Header("State")]
     [SerializeField] private EnemyState currentState;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip screamAtChasePlayer;
+
     public EnemyState CurrentState => currentState;
 
     private int patrolIndex;
@@ -46,6 +52,10 @@ public class EnemyBrain : MonoBehaviour
 
     public bool IsDead => currentState == EnemyState.Dead;
 
+    //Animations
+    public event Action OnAttackTriggered;
+    public event Action OnScream;
+
     private void Start()
     {
         ChangeState(EnemyState.Patrol);
@@ -56,6 +66,9 @@ public class EnemyBrain : MonoBehaviour
     {
         EvaluateState();
         ExecuteState();
+
+        enemyAnimator.UpdateSpeed(locomotion.currentSpeed, chaseSpeed);
+
     }
 
     public void Kill()
@@ -82,6 +95,7 @@ public class EnemyBrain : MonoBehaviour
                 screamTimer -= Time.deltaTime;
                 if (screamTimer <= 0f)
                 {
+                    audioSource.PlayOneShot(screamAtChasePlayer);
                     ChangeState(EnemyState.Chase);
                 }
                 break;
@@ -89,6 +103,7 @@ public class EnemyBrain : MonoBehaviour
             case EnemyState.Chase:
                 if (sensors.CanSeeTarget)
                 {
+                    
                     lastKnownTargetPosition = sensors.Target.position;
                     alertTimer = alertDuration;
 
@@ -109,31 +124,52 @@ public class EnemyBrain : MonoBehaviour
             case EnemyState.Attack:
                 attackCooldownTimer -= Time.deltaTime;
 
-                // Después de atacar, vuelve a perseguir
                 if (attackCooldownTimer <= 0f)
                 {
-                    ChangeState(EnemyState.Chase);
+                    if (sensors.Target == null || !sensors.CanSeeTarget)
+                    {
+                        ChangeState(EnemyState.Chase);
+                        break;
+                    }
+
+                    float distance = Vector3.Distance(transform.position, sensors.Target.position);
+
+                    if (distance <= attackDistance)
+                    {
+                        attackCooldownTimer = attackCooldown;
+                        OnAttackTriggered?.Invoke();
+
+                    }
+                    else
+                    {
+                        ChangeState(EnemyState.Chase);
+                    }
                 }
                 break;
 
             case EnemyState.Alert:
                 alertTimer -= Time.deltaTime;
-                if (alertTimer <= 0f)
+
+                if (sensors.CanSeeTarget)
+                {
+                    lastKnownTargetPosition = sensors.Target.position;
+                    ChangeState(EnemyState.Chase);
+                }
+                else if (alertTimer <= 0f)
                 {
                     ChangeState(EnemyState.Patrol);
-                }
+                }                
                 break;
         }
     }
 
     private void ExecuteState()
     {
-        Debug.Log($"Estado actual: {currentState}");
-
+      
         switch (currentState)
         {
             case EnemyState.Patrol:
-                Debug.Log($"Patrullando hacia punto {patrolIndex}");
+                
                 locomotion.SetMoveSpeed(patrolSpeed);
                 HandlePatrol();
                 break;
@@ -174,9 +210,7 @@ public class EnemyBrain : MonoBehaviour
 
         PatrolPoint point = patrolPoints[patrolIndex];
         Vector3 direction = point.transform.position - transform.position;
-        float distance = direction.magnitude;
-
-        Debug.Log($"Distancia al punto {patrolIndex}: {distance} | Timer: {patrolStopTimer}");
+        float distance = direction.magnitude; 
 
         Vector3 flatDirection = direction.normalized;
         float angle = Vector3.Angle(transform.forward, flatDirection);
@@ -192,7 +226,6 @@ public class EnemyBrain : MonoBehaviour
             // Después del tiempo de espera, avanza al siguiente punto
             if (patrolStopTimer <= 0f)
             {
-                Debug.Log("En el punto, esperando...");
                 patrolIndex++;
                 if (patrolIndex >= patrolPoints.Length)
                     patrolIndex = 0;
@@ -206,13 +239,11 @@ public class EnemyBrain : MonoBehaviour
         // Si el ángulo es grande, solo gira
         if (angle > patrolTurnThreshold)
         {
-            Debug.Log($"Ángulo muy grande ({angle}°), solo girando");
             locomotion.SetMovementLocked(true);
             locomotion.SetDesiredDirection(flatDirection);
         }
         else
         {
-            Debug.Log($"Ángulo OK ({angle}°), moviéndose hacia el punto");
             // Ya está mirando bien, ahora sí se mueve
             locomotion.SetMovementLocked(false);
             MoveTo(point.transform.position);
@@ -246,6 +277,7 @@ public class EnemyBrain : MonoBehaviour
             case EnemyState.Scream:
                 screamTimer = screamDuration;
                 TriggerScream();
+                OnScream?.Invoke();
                 break;
 
             case EnemyState.Patrol:
@@ -261,8 +293,7 @@ public class EnemyBrain : MonoBehaviour
 
     private void TriggerScream()
     {
-        Debug.Log("SIREN SCREAM");
-        // Acá podés agregar tu audio/animación del grito
+        // Acá agregar tu audio/animación del grito
     }
 
     private void HandleAttack()
@@ -279,7 +310,6 @@ public class EnemyBrain : MonoBehaviour
 
         locomotion.SetForcedLookDirection(direction);
 
-        attack.TryAttack();
     }
 
     private void HandleDead()

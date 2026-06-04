@@ -14,6 +14,10 @@ public class EnemyAttack : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform attackPoint;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip attackSound;
+
     private float cooldownTimer;
 
     public bool CanAttack => cooldownTimer <= 0f;
@@ -28,6 +32,7 @@ public class EnemyAttack : MonoBehaviour
         if (!CanAttack)
             return false;
 
+
         Collider[] hits =
             Physics.OverlapSphere(
                 attackPoint.position,
@@ -36,19 +41,17 @@ public class EnemyAttack : MonoBehaviour
 
         foreach (Collider hit in hits)
         {
-            PlayerHealth player =
-                hit.GetComponent<PlayerHealth>();
 
-            if (player == null)
+            if (!hit.TryGetComponent(out PlayerHealth player))
                 continue;
 
             if (player.IsDead)
-                continue;
-            Debug.Log("HIT PLAYER");
+                continue;   
+
             player.TakeDamage(damage);
-
+            
             cooldownTimer = attackCooldown;
-
+            
             return true;
         }
 
@@ -65,5 +68,12 @@ public class EnemyAttack : MonoBehaviour
         Gizmos.DrawWireSphere(
             attackPoint.position,
             attackRange);
+    }
+
+    public void PlayAttackSound()
+    {
+        Debug.Log("audio atack");
+        if(attackSound != null)
+                audioSource.PlayOneShot(attackSound);
     }
 }

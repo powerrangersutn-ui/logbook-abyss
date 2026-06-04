@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: 7961000364784138602}
   - component: {fileID: 8695992247640641181}
   - component: {fileID: 7773623825724621661}
-  - component: {fileID: 9187210818467371396}
   m_Layer: 8
   m_Name: Caja_Suministro
   m_TagString: Untagged
@@ -159,112 +158,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab02d45cf0e5e1344b2c8607211174b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupBox
-  minOxygen: 5
-  maxOxygen: 33
+  minOxygen: 15
+  maxOxygen: 28
   chance1Harpoon: 90
   chance2Harpoons: 50
-  chance3Harpoons: 15
   harpoonChanceWhenNormal: 74
+  volume: 0.48
+  playerPickAudio: {fileID: 0}
   pickupSound: {fileID: 8300000, guid: 69eee6593d24b3846b0f9e52d8f98bd0, type: 3}
-  uiShowDistance: 3
+  uiShowDistance: 4
   interactionCanvas: {fileID: 9197895439608968267}
---- !u!82 &9187210818467371396
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5591129402118195260}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &5681121074617278692
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,10 +492,10 @@ RectTransform:
   - {fileID: 4086054311939343439}
   m_Father: {fileID: 7961000364784138602}
   m_LocalEulerAnglesHint: {x: -25.374, y: -8.145, z: 18.112}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.8}
-  m_SizeDelta: {x: 5, y: 3}
+  m_SizeDelta: {x: 3, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3367929203694780916
 Canvas:

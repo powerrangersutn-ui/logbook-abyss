@@ -167,6 +167,7 @@ MonoBehaviour:
   canPickupFromEnemy: 1
   pickupIndicator: {fileID: 0}
   indicatorPulseSpeed: 2
+  pickupSound: {fileID: 8300000, guid: ab93349bc7f16ad47ad4e53dfe265556, type: 3}
 --- !u!1 &3844519418647053937
 GameObject:
   m_ObjectHideFlags: 0

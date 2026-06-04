@@ -2936,7 +2936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5278,6 +5278,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1832208991158413332}
+  - {fileID: 6653948758044552976}
+  - {fileID: 1944557066283002369}
   - {fileID: 8066265775452130477}
   - {fileID: 1867490943338359537}
   - {fileID: 807587840528297039}
@@ -5288,8 +5290,6 @@ RectTransform:
   - {fileID: 1932111034954163969}
   - {fileID: 5699049145442081010}
   - {fileID: 4582394865629903828}
-  - {fileID: 6653948758044552976}
-  - {fileID: 1944557066283002369}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5409,7 +5409,7 @@ AudioSource:
   m_GameObject: {fileID: 4670083981289853034}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -531828703092097608, guid: bec69c627300e92478ef09f4fd96c93a, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -5833,7 +5833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7026,6 +7026,8 @@ MonoBehaviour:
   mainMenuScene: Lobby
   pausePanelMenu: {fileID: 382156595000877926}
   UIControls: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  snapshotDefault: {fileID: 24500006, guid: bec69c627300e92478ef09f4fd96c93a, type: 2}
+  snapshotPause: {fileID: -743641450752932432, guid: bec69c627300e92478ef09f4fd96c93a, type: 2}
 --- !u!1 &6781949018606520555
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,11 +1,13 @@
+using System;
 using UnityEngine;
 
-public class PiranhaAI : MonoBehaviour
+public class PiranhaIA : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private EnemySensors sensors;
     [SerializeField] private AquaticLocomotion locomotion;
     [SerializeField] private EnemyAttack attack;
+    [SerializeField] private EnemyAnimator enemyAnimator;
 
     [Header("Behavior")]
     [SerializeField] private float detectionRange = 8f; // Rango para activarse
@@ -15,8 +17,12 @@ public class PiranhaAI : MonoBehaviour
     [SerializeField] private float attackCooldown = 0.5f;
 
     [Header("Jumpscare")]
-    [SerializeField] private float jumpscareScreamDuration = 0.3f;
-    [SerializeField] private AudioClip jumpscareSound;
+    [SerializeField] private float jumpscareScreamDuration = 2f;
+    //[SerializeField] private AudioClip jumpscareSound;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip screamAtChasePlayer;
 
     private enum State { Idle, Jumpscare, Chase, Attack }
     private State currentState = State.Idle;
@@ -25,8 +31,17 @@ public class PiranhaAI : MonoBehaviour
     private float screamTimer;
     private bool hasScreamed;
 
+    //Animations
+    public event Action OnJumpscare;
+    public event Action OnAttack;
+
+
     private void Update()
     {
+        if (this == null || !gameObject.activeInHierarchy) return;
+
+        enemyAnimator.UpdateSpeed(locomotion.currentSpeed, chaseSpeed);
+
         switch (currentState)
         {
             case State.Idle:
@@ -127,14 +142,13 @@ public class PiranhaAI : MonoBehaviour
 
         if (attackTimer <= 0f)
         {
-            attack.TryAttack();
-
             ChangeState(State.Chase);
         }
     }
 
     private void ChangeState(State newState)
     {
+        Debug.Log("Cambiando estado a: " + newState);
         currentState = newState;
         locomotion.ClearForcedLookDirection();
 
@@ -143,21 +157,25 @@ public class PiranhaAI : MonoBehaviour
             case State.Jumpscare:
                 screamTimer = jumpscareScreamDuration;
                 hasScreamed = false;
+                OnJumpscare?.Invoke();
                 break;
 
             case State.Attack:
                 attackTimer = attackCooldown;
+                OnAttack?.Invoke();
                 break;
         }
     }
 
     private void TriggerJumpscare()
     {
-        Debug.Log("PIRAÑA JUMPSCARE");
-
-        if (jumpscareSound != null)
+        if (screamAtChasePlayer != null)
         {
-            AudioSource.PlayClipAtPoint(jumpscareSound, transform.position, 1f);
+            audioSource.PlayOneShot(screamAtChasePlayer);
         }
+    }
+    public void OnAttackHit()
+    {
+        attack.TryAttack();
     }
 }

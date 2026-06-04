@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
 
     [Header("Textos")]
-    [SerializeField] private TextMeshProUGUI victoryText;
     [SerializeField] private TextMeshProUGUI gameOverText;
 
     [Header("Estado del Juego")]
@@ -66,10 +65,6 @@ public class GameManager : MonoBehaviour
         {
             ShowVictoryScreen();
         }
-        else
-        {
-            Debug.LogWarning("¡Necesitas recoger la Vitácora para escapar!");
-        }
     }
 
     private void ShowVictoryScreen()
@@ -89,17 +84,13 @@ public class GameManager : MonoBehaviour
         {
             victoryPanel.SetActive(true);
         }
-        if (victoryText != null)
-        {
-            victoryText.text = "¡VICTORIA!\nEscapaste con la Vitácora";
-        }
-        Debug.Log("¡Victoria!");
     }
 
     // ====================== DERROTA ======================
     public void PlayerDied()
     {
         if (gameEnded) return;
+        
         gameEnded = true;
         Time.timeScale = 0f;
 
@@ -116,24 +107,17 @@ public class GameManager : MonoBehaviour
         {
             gameOverPanel.SetActive(true);
         }
-        if (gameOverText != null)
-        {
-            gameOverText.text = "PERDISTE";
-        }
-        Debug.Log("Game Over - Te quedaste sin vidas");
     }
 
     // ====================== VITÁCORA ======================
     public void CollectLogbook()
     {
         hasLogbook = true;
-        Debug.Log("¡Vitácora recogida!");
     }
 
     // ====================== REINICIO (opcional) ======================
     public void RestartLevel()
     {
-        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

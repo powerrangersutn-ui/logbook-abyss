@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.Audio;
+
 public class PausePanelController : MonoBehaviour
 {
 
@@ -13,10 +15,18 @@ public class PausePanelController : MonoBehaviour
     [Header("Input Actions")]
     [SerializeField] private InputActionAsset UIControls;
 
+    [Header("AudioMixer Snapshots")]
+    [SerializeField] private AudioMixerSnapshot snapshotDefault;
+    [SerializeField] private AudioMixerSnapshot snapshotPause;
+    [SerializeField] private AudioMixerSnapshot snapshotChase;
+    [SerializeField] private GameObject behemot;
+
+
     private InputAction pauseAction;
 
     public void GoToMenu(string mainMenuScene)
     {
+        ChangePausedAudio(false, false);
         SceneManager.LoadScene(mainMenuScene);
     }
 
@@ -67,19 +77,44 @@ public class PausePanelController : MonoBehaviour
         if (pausePanelMenu != null) pausePanelMenu.SetActive(true);
         Time.timeScale = 0f;
         pausedGame = true;
+        ChangePausedAudio(pausedGame, behemot);
+
     }
 
 
     public void Unpause()
     {
-        if (pausePanelMenu != null) pausePanelMenu.SetActive(false);
+        if (pausePanelMenu) pausePanelMenu.SetActive(false);
         Time.timeScale = 1f;
         pausedGame = false;
+        ChangePausedAudio(pausedGame, behemot);
 
-        if (pausePanelMenu != null)
+        if (pausePanelMenu)
         {
             pausePanelMenu.SetActive(false);
         }
     }
 
+    public void ChangePausedAudio(bool isPaused, bool behemotState)
+    {
+        // El número adentro de TransitionTo es el tiempo en segundos que dura el "fade"
+        float transitionTime = 0f;
+
+        if (!isPaused && behemotState)
+        {
+            // Activa el efecto de pausa (ej: volumen bajo, filtro de ecualizador)
+            snapshotChase.TransitionTo(transitionTime);
+        }
+        else if (!isPaused)
+        {
+            // Vuelve a la mezcla de sonido normal
+            snapshotDefault.TransitionTo(transitionTime);
+        }
+        else
+        {
+            snapshotPause.TransitionTo(transitionTime);
+        }
+    }
+
 }
+
