@@ -163,7 +163,7 @@ MonoBehaviour:
   chance1Harpoon: 90
   chance2Harpoons: 50
   harpoonChanceWhenNormal: 74
-  volume: 0.6
+  volume: 0.48
   playerPickAudio: {fileID: 0}
   pickupSound: {fileID: 8300000, guid: 69eee6593d24b3846b0f9e52d8f98bd0, type: 3}
   uiShowDistance: 4
