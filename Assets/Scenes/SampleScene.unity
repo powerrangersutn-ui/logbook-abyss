@@ -11013,6 +11013,10 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4901672327882763457, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
+      propertyPath: coyoteTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901672327882763457, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
       propertyPath: deathPanel
       value: 
       objectReference: {fileID: 1212627297}
