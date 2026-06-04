@@ -10988,6 +10988,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 271750659150100623, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 4958204139031242737, guid: bec69c627300e92478ef09f4fd96c93a, type: 2}
     - target: {fileID: 3646132069775439863, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
       propertyPath: ammoText
       value: 
@@ -11004,6 +11008,14 @@ PrefabInstance:
       propertyPath: harpoonPool
       value: 
       objectReference: {fileID: 1191218619}
+    - target: {fileID: 3646132069775439863, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
+      propertyPath: fireCooldown
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901672327882763457, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
+      propertyPath: coyoteTime
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4901672327882763457, guid: 9baa73a85cd7c9c42baec2f6950b31de, type: 3}
       propertyPath: deathPanel
       value: 
@@ -11568,6 +11580,10 @@ PrefabInstance:
     - target: {fileID: 6200297101936091051, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337552761181585814, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
+      propertyPath: timeBetweenLines
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7060614573773734861, guid: f69327c60ed830a47bcf98789e6a4680, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
