@@ -3,8 +3,8 @@ using UnityEngine.Audio;
 
 public class ChangeMúsic : MonoBehaviour
 {
-    [SerializeField] private GameObject normalAmbience;
-    [SerializeField] private GameObject chaseAmbience;
+    [SerializeField] private AudioSource musicAudio;
+    [SerializeField] private AudioClip musicClip;
 
     [Header("AudioMixer Snapshots")]
     [SerializeField] private AudioMixerSnapshot snapshotChase;
@@ -12,9 +12,9 @@ public class ChangeMúsic : MonoBehaviour
 
     private void Awake()
     {
-        normalAmbience.SetActive(false);
-        chaseAmbience.SetActive(true);
-
+        musicAudio.Stop();
+        musicAudio.clip = musicClip;
+        musicAudio.Play();
         snapshotChase.TransitionTo(transitionTime);
     }
 }
