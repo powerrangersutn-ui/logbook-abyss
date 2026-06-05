@@ -279,7 +279,7 @@ Transform:
   m_GameObject: {fileID: 2728684648649308606}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.741, z: 0.7}
+  m_LocalPosition: {x: -0.061, y: -0.808, z: 0.885}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5145,13 +5145,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5174057506137734555}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.289, z: 0.7}
+  m_LocalRotation: {x: -2.2956799e-10, y: -0.17082785, z: 4.962873e-10, w: 0.9853009}
+  m_LocalPosition: {x: -0.28, y: -0.112, z: 1.093}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5401094430856146449}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -19.672, z: 0}
 --- !u!1 &5260229298217460630
 GameObject:
   m_ObjectHideFlags: 0
@@ -5288,7 +5288,7 @@ MonoBehaviour:
   sprintMultiplier: 1.3
   gravity: 9
   jumpForce: 3
-  coyoteTime: 0.15
+  coyoteTime: 0.24
   mouseSensitivity: 1
   upDownRange: 80
   cmFpCamera: {fileID: 1676652061025122735}
@@ -5776,7 +5776,7 @@ MonoBehaviour:
   firePoint: {fileID: 6055776780427297420}
   playerInventory: {fileID: 0}
   harpoonSpeed: 40
-  fireCooldown: 2
+  fireCooldown: 1.5
   bubbleDuration: 1.5
   fireAction: {fileID: 0}
   moveAction: {fileID: 0}
@@ -5802,7 +5802,7 @@ AudioSource:
   m_GameObject: {fileID: 8305736613668640234}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4958204139031242737, guid: bec69c627300e92478ef09f4fd96c93a, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 29db4bc38d2f45c4582cc40e1311edfd, type: 3}
   m_PlayOnAwake: 0
