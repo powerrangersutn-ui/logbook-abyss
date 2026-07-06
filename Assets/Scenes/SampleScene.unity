@@ -14382,6 +14382,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Siren (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4571831383596038378, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571831383596038378, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571831383596038378, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5389804904809842159, guid: e3113727822ec5141b6e274d5e609efe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 59.06785
