@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System;
+using System.Collections;
 
 public class BoxPickup : MonoBehaviour, IInteractable
 {
@@ -24,6 +26,10 @@ public class BoxPickup : MonoBehaviour, IInteractable
     [SerializeField] private GameObject interactionCanvas;
 
     private Transform playerTransform;
+
+    public event Action OnOpen;
+    [Header("Animation Settings")]
+    [SerializeField] private float timeBeforeDestroy = 5f;
 
     private void Start()
     {
@@ -55,6 +61,7 @@ public class BoxPickup : MonoBehaviour, IInteractable
         if (wasPickedUp) return;
         wasPickedUp = true;
 
+        OnOpen?.Invoke();
 
         if (inventory.GetComponent<OxygenSystem>().IsLowOxygen)
         {
@@ -62,7 +69,7 @@ public class BoxPickup : MonoBehaviour, IInteractable
         }
         else
         {
-            if (Random.value * 100f <= harpoonChanceWhenNormal && inventory.CanReceiveHarpoons())
+            if (UnityEngine.Random.value * 100f <= harpoonChanceWhenNormal && inventory.CanReceiveHarpoons())
             {
                 GiveHarpoons(inventory);
             }
@@ -76,12 +83,18 @@ public class BoxPickup : MonoBehaviour, IInteractable
 
         playerPickAudio.PlayOneShot(pickupSound, volume);
 
+        StartCoroutine(DestroyAfterAnimation());
+    }
+
+    private IEnumerator DestroyAfterAnimation()
+    {
+        yield return new WaitForSeconds(timeBeforeDestroy);
         Destroy(gameObject);
     }
 
     private void GiveOxygen(PlayerInventory inventory)
     {
-        float amount = Random.Range(minOxygen, maxOxygen);
+        float amount = UnityEngine.Random.Range(minOxygen, maxOxygen);
         inventory.AddOxygen(amount);
     }
 
@@ -98,7 +111,7 @@ public class BoxPickup : MonoBehaviour, IInteractable
 
     private int GetHarpoonAmountByProbability()
     {
-        float roll = Random.value * 100f;
+        float roll = UnityEngine.Random.value * 100f;
         float cumulative = chance1Harpoon;
 
         if (roll <= cumulative) return 1;
