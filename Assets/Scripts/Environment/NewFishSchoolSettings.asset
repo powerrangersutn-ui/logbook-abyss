@@ -20,7 +20,7 @@ MonoBehaviour:
   boundsWeight: 3
   avoidanceLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1728
   avoidanceDetectionRadius: 2.5
   avoidanceWeight: 4
   minSpeed: 0.8
@@ -29,7 +29,7 @@ MonoBehaviour:
   rotationSpeed: 6
   scareLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1088
   scareDetectionRadius: 3.5
   scareDuration: 1.5
   scareSpeedMultiplier: 2.2
