@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c0f5119054e4724db4a48419be43d05, type: 3}
+  m_Name: NewFishSchoolSettings
+  m_EditorClassIdentifier: Assembly-CSharp::FishSchoolSettings
+  neighborDetectionRadius: 5
+  separationDistance: {x: 1.2, y: 0.8, z: 1.2}
+  separationWeight: 1.6
+  alignmentWeight: 1
+  cohesionWeight: 0.8
+  boundsWeight: 3
+  avoidanceLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  avoidanceDetectionRadius: 2.5
+  avoidanceWeight: 4
+  minSpeed: 0.8
+  maxSpeed: 2.5
+  maxSteerForce: 3
+  rotationSpeed: 6
+  scareLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  scareDetectionRadius: 3.5
+  scareDuration: 1.5
+  scareSpeedMultiplier: 2.2
+  scareAvoidanceMultiplier: 2.5
+  scareRotationMultiplier: 1.8
+  scareCohesionFactor: 0.15
+  scareJitter: 1.5
